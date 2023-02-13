@@ -18,10 +18,10 @@ class Game extends Phaser.Scene {
   }
 
   preload(): void {
-    this.load.image(AssetKeys.BACKGROUND, 'background.png');
-    this.load.image(AssetKeys.FOG, 'fog.png');
-    this.load.image(AssetKeys.FOREGROUND, 'foreground.png');
-    this.load.image(AssetKeys.TREES, 'trees.png');
+    this.load.image(AssetKeys.BACKGROUND, 'assets/images/background.png');
+    this.load.image(AssetKeys.FOG, 'assets/images/fog.png');
+    this.load.image(AssetKeys.FOREGROUND, 'assets/images/foreground.png');
+    this.load.image(AssetKeys.TREES, 'assets/images/trees.png');
   }
 
   create(): void {
@@ -48,7 +48,6 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
     parent: 'game-container',
     width: 640,
     height: 416,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
   },
   backgroundColor: '#5c5b5b',
   scene: [Game],
