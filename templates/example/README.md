@@ -35,3 +35,7 @@ After you run the `yarn build` command, your code will be built into a single bu
 
 If you put the contents of the `dist` folder in a publicly-accessible location (say something like `http://myserver.com`),
 you should be able to open `http://myserver.com/index.html` and play your game.
+
+### Static Assets
+
+Any static assets like images or audio files should be placed in the `public` folder. It'll then be served at `http://localhost:8080/path-to-file-your-file/file-name.file-type`.
