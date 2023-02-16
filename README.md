@@ -2,7 +2,7 @@
 
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-This project contains all of the code for the Phaser 3 TypeScript projects and examples that I share on my YouTube channel here: ADD LINK
+This project contains all of the code for the Phaser 3 TypeScript projects and examples that I share on my YouTube channel here: [YouTube](https://www.youtube.com/@swestover/featured)
 
 Each sub project includes a `README.md` file that has more details on that particular project. Some of the information includes:
 

@@ -6,6 +6,14 @@ Parallax scrolling is a technique where background images move past the camera m
 
 **Credit:** The images used in this demo were created by [Ansimuz](www.ansimuz.com).
 
+If you are interested in learning more about this example, you can watch a video on YouTube by clicking on the thumbnail below:
+
+[<img src="https://i9.ytimg.com/vi_webp/-lJ2SQnbPSU/mqdefault.webp?v=63eead14&sqp=CPDqup8G&rs=AOn4CLBfAKM8BzXxdslt9ZVRN4EUNLhlEQ">](https://youtu.be/-lJ2SQnbPSU "Parallax Scrolling Background Tutorial in Phaser 3")
+
+You can see a live demo of this example here: [Parallax Scrolling Background - Phaser 3](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/parallax-scrolling-background/index.html)
+
+![Phaser 3 Parallax Scrolling Background](example.gif?raw=true)
+
 ## Local Development
 
 ### Requirements
