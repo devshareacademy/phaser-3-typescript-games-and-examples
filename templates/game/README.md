@@ -1,6 +1,6 @@
-# Phaser 3 TypeScript - PLACEHOLDER
+# Phaser 3 TypeScript - TEMPLATE
 
-A Phaser 3 TypeScript implementation of PLACEHOLDER.
+A Phaser 3 TypeScript implementation TEMPLATE.
 
 ## Local Development
 
