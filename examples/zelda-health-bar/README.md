@@ -4,6 +4,10 @@ A Phaser 3 TypeScript example of implementing a Zelda style health bar.
 
 If you click on the Phaser 3 Scene, the health bar will update to show that the player has taken damage.
 
+You can see a live demo of this example here: [Zelda Like Health Bar - Phaser 3](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/zelda-health-bar/index.html)
+
+![Phaser 3 Parallax Scrolling Background](example.gif?raw=true)
+
 ## Local Development
 
 ### Requirements
