@@ -1,0 +1,16 @@
+{
+  "eslint.format.enable": true,
+  "eslint.options": {
+    "overrideConfigFile": "config/.eslintrc"
+  },
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "cSpell.words": [
+    "anims",
+    "devshareacademy",
+    "spritesheet",
+    "tweens"
+  ]
+}
