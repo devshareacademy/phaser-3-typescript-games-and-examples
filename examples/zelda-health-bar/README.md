@@ -6,7 +6,13 @@ If you click on the Phaser 3 Scene, the health bar will update to show that the 
 
 You can see a live demo of this example here: [Zelda Like Health Bar - Phaser 3](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/zelda-health-bar/index.html)
 
-![Phaser 3 Parallax Scrolling Background](example.gif?raw=true)
+![Zelda Like Health Bar Example](example.gif?raw=true)
+
+## Example with events
+
+The `src/inter-scene-communication` folder contains the source code for an example of implementing the same Zelda like health bar in multiple scenes with an example of how to communicate between the two scenes. The example will look the same as the one above, but in the codebase we are using multiple Phaser Scenes!
+
+You can view this example here: [Zelda Like Health Bar (Multiple Scenes & Events) - Phaser 3](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/zelda-health-bar/inter-scene-communication.html)
 
 ## Local Development
 
