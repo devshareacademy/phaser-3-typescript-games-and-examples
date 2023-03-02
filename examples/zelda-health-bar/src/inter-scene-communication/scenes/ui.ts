@@ -43,8 +43,8 @@ export class Ui extends Phaser.Scene {
       hearts.push(heart);
     }
 
-    customEmitter.on(HEALTH_EVENTS.LOSE_HEALTH, (health, prevHealth) => {
-      console.log('event received', health, prevHealth);
+    customEmitter.on(HEALTH_EVENTS.LOSE_HEALTH, (newHealth, prevHealth) => {
+      console.log('event received', newHealth, prevHealth);
       const heartIndex = Math.round(prevHealth / 2) - 1;
       const isHalfHeart = prevHealth % 2 === 1;
       if (isHalfHeart) {
