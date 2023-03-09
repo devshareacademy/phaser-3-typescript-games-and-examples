@@ -7,6 +7,10 @@ export default defineConfig({
       output: {
         entryFileNames: 'assets/js/[name]-[hash].js',
       },
+      input: {
+        main: 'index.html',
+        interSceneExample: 'inter-scene-communication.html'
+      }
     },
   },
 });
