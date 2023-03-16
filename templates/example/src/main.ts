@@ -24,7 +24,7 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
   backgroundColor: '#5c5b5b',
-  scenes: [Game],
+  scene: [Game],
 };
 
 const game = new Phaser.Game(gameConfig);
