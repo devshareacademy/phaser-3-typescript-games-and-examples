@@ -9,7 +9,8 @@ export default defineConfig({
       },
       input: {
         main: 'index.html',
-        interSceneExample: 'inter-scene-communication.html'
+        interSceneExample: 'inter-scene-communication.html',
+        dependencyInjectionExample: 'simple-dependency-injection.html'
       }
     },
   },
