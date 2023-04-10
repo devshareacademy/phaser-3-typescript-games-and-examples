@@ -14,6 +14,12 @@ The `src/inter-scene-communication` folder contains the source code for an examp
 
 You can view this example here: [Zelda Like Health Bar (Multiple Scenes & Events) - Phaser 3](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/zelda-health-bar/inter-scene-communication.html)
 
+## Example with simple dependency injection
+
+The `src/simple-dependency-injection` folder contains the source code for an example of extending the same Zelda like health bar to use dependency injection when creating the custom Phaser 3 Scenes. The example will look the same as the one above, but in the codebase we are using dependency injection to provide the health and event components to the various classes!
+
+You can view this example here: [Zelda Like Health Bar (Dependency Injection) - Phaser 3](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/zelda-health-bar/simple-dependency-injection.html)
+
 ## Local Development
 
 ### Requirements
