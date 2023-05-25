@@ -1,6 +1,6 @@
-# Phaser 3 TypeScript - TEMPLATE
+# Phaser 3 TypeScript - Tic-Tac-Toe
 
-A Phaser 3 TypeScript example TEMPLATE.
+A Phaser 3 implementation of the game Tic-Tac-Toe.
 
 ## Local Development
 
