@@ -40,19 +40,6 @@ you should be able to open `http://myserver.com/index.html` and play your game.
 
 Any static assets like images or audio files should be placed in the `public` folder. It'll then be served at `http://localhost:8080/path-to-file-your-file/file-name.file-type`.
 
-## Project Task List
-
-- [ ] download & setup project template (refer to video)
-- [ ] update game config
-- [ ] load in assets
-- [ ] draw game board
-- [ ] draw game pieces
-- [ ] interact with game pieces and toggle frames
-- [ ] create basic tic tac toe class
-- [ ] handle players making a move
-- [ ] add getters to tic tac toe class
-- [ ] connect tic tac toe class to phaser scene
-
 ## Ideas for improvements
 
 - add validation logic to tic tac toe class for input

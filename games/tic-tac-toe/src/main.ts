@@ -1,14 +1,29 @@
 import Phaser from 'phaser';
 
+class Game extends Phaser.Scene {
+  constructor() {
+    super({ key: 'Game' });
+  }
+
+  preload(): void {
+    // load in data
+  }
+
+  create(): void {
+    // Create game objects
+  }
+}
+
 const gameConfig: Phaser.Types.Core.GameConfig = {
   type: Phaser.CANVAS,
   pixelArt: true,
   scale: {
     parent: 'game-container',
-    width: 480,
-    height: 640,
+    width: 800,
+    height: 600,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
   },
-  backgroundColor: '#d3d3d3',
+  backgroundColor: '#5c5b5b',
   scene: [Game],
 };
 
