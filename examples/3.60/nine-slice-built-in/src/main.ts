@@ -17,6 +17,7 @@ class Game extends Phaser.Scene {
     const { height, width } = this.scale;
 
     this.add.image(width / 2, height / 2, AssetKeys.PANEL, 0);
+    this.add.nineslice(width / 2, height / 2, AssetKeys.PANEL, 0, 600, 400, 32, 32, 32, 32);
   }
 }
 
