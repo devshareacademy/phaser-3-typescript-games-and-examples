@@ -1,7 +1,7 @@
 {
-	"name": "@devshareacademy/phaser-3-typescript-game-template",
+	"name": "@devshareacademy/phaser-3-simon-prototype",
 	"version": "1.0.0",
-	"description": "A basic Phaser 3 Typescript project template that uses Vite.",
+	"description": "A basic Phaser 3 Typescript prototype for the game Simon.",
 	"scripts": {
 		"start": "vite --config config/vite.config.js",
 		"build": "tsc && vite build --config config/vite.config.js",
