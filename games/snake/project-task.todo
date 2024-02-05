@@ -1,0 +1,14 @@
+☐ download project assets
+☐ update game config
+☐ load in assets
+☐ create game objects for player and food
+☐ add input handling
+☐ core snake logic
+  ☐ generate snake cells
+  ☐ spawn food
+  ☐ update cells based on input
+☐ connect snake class to core scene
+  ☐ create objects based on core snake class
+  ☐ sync objects based on core snake class
+☐ handle collisions
+☐ handle scene wrap
