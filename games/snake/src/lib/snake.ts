@@ -1,11 +1,5 @@
-export type Direction = keyof typeof DIRECTION;
-
-export const DIRECTION = {
-  UP: 'UP',
-  DOWN: 'DOWN',
-  LEFT: 'LEFT',
-  RIGHT: 'RIGHT',
-} as const;
+import { Direction, DIRECTION } from './common';
+import { randomNumberBetween } from './utils';
 
 type Coordinate = {
   x: number;
@@ -22,10 +16,6 @@ type Player = {
 type Apple = {
   position: Coordinate;
 };
-
-function randomNumberBetween(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
 
 export class Snake {
   #numberOfRows: number;

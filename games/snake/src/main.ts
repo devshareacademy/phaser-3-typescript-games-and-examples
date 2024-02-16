@@ -1,5 +1,6 @@
 import * as Phaser from 'phaser';
-import { DIRECTION, Snake } from './snake';
+import { Snake } from './lib/snake';
+import { DIRECTION } from './lib/common';
 
 const SPRITE_ASSET_KEY = 'SPRITE_ASSET_KEY';
 const SPRITE_SIZE = 16;
