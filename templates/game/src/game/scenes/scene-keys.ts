@@ -1,3 +1,3 @@
 export const SceneKeys = {
-  GameScene: 'GameScene'
+  GameScene: 'GameScene',
 } as const;
