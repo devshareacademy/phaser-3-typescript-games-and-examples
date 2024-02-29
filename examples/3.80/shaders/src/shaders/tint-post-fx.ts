@@ -1,5 +1,5 @@
 const frag = `
-#define SHADER_NAME TINT
+#define SHADER_NAME TINT_POST
 
 #ifdef GL_ES
 precision mediump float;
@@ -21,6 +21,7 @@ export class TintPostFx extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline {
     super({
       game,
       renderTarget: true,
+      // fragShader: (game.cache.shader.get('tint') as Phaser.Display.BaseShader).fragmentSrc,
       fragShader: frag,
     });
   }

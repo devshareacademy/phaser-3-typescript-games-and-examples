@@ -1,5 +1,5 @@
 const frag = `
-#define SHADER_NAME WIPE
+#define SHADER_NAME CURTAIN_FALL
 
 #ifdef GL_ES
 precision mediump float;
@@ -11,7 +11,7 @@ varying vec2 outTexCoord;
 uniform float uCutoff;
 
 void main() {
-  if (outTexCoord.x < uCutoff) {
+  if (outTexCoord.y > uCutoff) {
     gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
   } else {
     // returns the original color of the pixel that is being processed
@@ -20,17 +20,16 @@ void main() {
 }
 `;
 
-export class WipeFx extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline {
+export class CurtainFallFx extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline {
   #progress: number;
 
   constructor(game: Phaser.Game) {
     super({
       game,
       renderTarget: true,
-      // fragShader: (game.cache.shader.get('wipe') as Phaser.Display.BaseShader).fragmentSrc,
       fragShader: frag,
     });
-    this.#progress = 0;
+    this.#progress = 1;
   }
 
   get progress(): number {
