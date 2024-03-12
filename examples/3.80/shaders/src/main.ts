@@ -228,6 +228,7 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
+  // pipeline: { TintFx, TintPostFx },
   backgroundColor: '#5c5b5b',
 };
 

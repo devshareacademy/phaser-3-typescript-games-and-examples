@@ -18,8 +18,8 @@ export class NothingFx extends Phaser.Renderer.WebGL.Pipelines.MultiPipeline {
   constructor(game: Phaser.Game) {
     super({
       game,
-      renderTarget: true,
       fragShader: frag,
     });
   }
 }
+// TODO, need to fix uMainSampler to use an array

@@ -18,8 +18,9 @@ export class ColorFx extends Phaser.Renderer.WebGL.Pipelines.MultiPipeline {
   constructor(game: Phaser.Game) {
     super({
       game,
-      renderTarget: true,
       fragShader: frag,
     });
   }
 }
+
+// need to fix

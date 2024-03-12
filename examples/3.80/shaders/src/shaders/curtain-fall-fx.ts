@@ -26,7 +26,6 @@ export class CurtainFallFx extends Phaser.Renderer.WebGL.Pipelines.PostFXPipelin
   constructor(game: Phaser.Game) {
     super({
       game,
-      renderTarget: true,
       fragShader: frag,
     });
     this.#progress = 1;

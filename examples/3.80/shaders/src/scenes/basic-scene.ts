@@ -1,5 +1,8 @@
 import Phaser from 'phaser';
-import { WipeFx, NothingFx, TintFx, TintPostFx, ColorFx } from '../shaders';
+import { WipeFx, NothingFx, TintPostFx, ColorFx, TintFx } from '../shaders';
+import GrayScalePipeline from '../GrayScale';
+import HueRotatePostFX from '../HueRotatePostFX';
+import CustomFx from '../CustomFx';
 
 const IMAGE_ASSET_KEY = 'BG';
 const SPRITE_SHEET_ASSET_KEY = 'CHARACTERS';
@@ -25,22 +28,35 @@ export class BasicScene extends Phaser.Scene {
 
     // create pipeline
     // just renders out the existing texture
-    // const fx = new NothingFx(this.game);
-    // just renders out a basic folor
-    const fx = new ColorFx(this.game);
+    const fx = new NothingFx(this.game);
+    // just renders out a basic color
+    // const fx = new ColorFx(this.game);
+    // renders out grey tint object
+    // const fx = new TintFx(this.game);
 
+    // const fx = new GrayScalePipeline(this.game);
     (this.renderer as Phaser.Renderer.WebGL.WebGLRenderer).pipelines.add('SpecialFx', fx);
 
     // apply to game object
-    // bg.setPipeline(fx);
+    //const fx = (this.renderer as Phaser.Renderer.WebGL.WebGLRenderer).pipelines.get('TintFx');
+    bg.setPipeline(fx);
 
     // example for adding post-fx pipeline
-    (this.renderer as Phaser.Renderer.WebGL.WebGLRenderer).pipelines.addPostPipeline('TintPostFx', TintPostFx);
-    // this.cameras.main.setPostPipeline('TintPostFx');
+    // (this.renderer as Phaser.Renderer.WebGL.WebGLRenderer).pipelines.addPostPipeline('TintPostFx', TintPostFx);
+    // this.cameras.main.setPostPipeline(TintPostFx);
+
+    // (this.renderer as Phaser.Renderer.WebGL.WebGLRenderer).pipelines.addPostPipeline('CustomFx', CustomFx);
+    // this.cameras.main.setPostPipeline(CustomFx);
+
+    (this.renderer as Phaser.Renderer.WebGL.WebGLRenderer).pipelines.addPostPipeline(
+      'HueRotatePostFX',
+      HueRotatePostFX,
+    );
+    this.cameras.main.setPostPipeline(HueRotatePostFX);
 
     // example for passing a variable
-    (this.renderer as Phaser.Renderer.WebGL.WebGLRenderer).pipelines.addPostPipeline('WipePostFx', WipeFx);
-    this.cameras.main.setPostPipeline('WipePostFx');
+    //(this.renderer as Phaser.Renderer.WebGL.WebGLRenderer).pipelines.addPostPipeline('WipePostFx', WipeFx);
+    // this.cameras.main.setPostPipeline('WipePostFx');
     // this.tweens.add({
     //   targets: this.cameras.main.getPostPipeline('WipePostFx'),
     //   progress: 1,
