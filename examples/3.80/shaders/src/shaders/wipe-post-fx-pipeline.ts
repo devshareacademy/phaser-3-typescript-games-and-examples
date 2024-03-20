@@ -21,10 +21,25 @@ void main() {
 `;
 
 export class WipePostFxPipeline extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline {
+  #progress: number;
+
   constructor(game: Phaser.Game) {
     super({
       game,
       fragShader: frag,
     });
+    this.#progress = 0;
+  }
+
+  get progress(): number {
+    return this.#progress;
+  }
+
+  set progress(val: number) {
+    this.#progress = val;
+  }
+
+  onPreRender() {
+    this.set1f('uCutoff', this.#progress);
   }
 }

@@ -1,11 +1,11 @@
 import Phaser from 'phaser';
-import { GreyScalePostFxPipeline } from '../shaders/grey-scale-post-fx-pipeline';
+import { WipePostFxPipeline } from '../shaders/wipe-post-fx-pipeline';
 
 const IMAGE_ASSET_KEY = 'BG';
 
-export class GreyScalePostFxScene extends Phaser.Scene {
+export class WipePostFxScene extends Phaser.Scene {
   constructor() {
-    super({ key: GreyScalePostFxScene.name });
+    super({ key: WipePostFxScene.name });
   }
 
   preload(): void {
@@ -20,14 +20,22 @@ export class GreyScalePostFxScene extends Phaser.Scene {
     // example for adding post-fx pipeline
     // add the pipeline to our renderer
     (this.renderer as Phaser.Renderer.WebGL.WebGLRenderer).pipelines.addPostPipeline(
-      'GreyScalePostFxPipeline',
-      GreyScalePostFxPipeline,
+      'WipePostFxPipeline',
+      WipePostFxPipeline,
     );
     // update camera to use post pipeline
-    this.cameras.main.setPostPipeline(GreyScalePostFxPipeline);
+    this.cameras.main.setPostPipeline(WipePostFxPipeline);
+
+    // example with updating variable
+    this.tweens.add({
+      targets: this.cameras.main.getPostPipeline('WipePostFxPipeline'),
+      progress: 1,
+      duration: 2000,
+      delay: 1000,
+    });
 
     this.input.keyboard?.once('keydown-SPACE', () => {
-      this.scene.start('WipePostFxScene');
+      this.scene.start('BuiltInFxScene');
     });
   }
 }

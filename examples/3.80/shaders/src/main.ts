@@ -2,6 +2,8 @@ import Phaser from 'phaser';
 import { NothingPostFxScene } from './scenes/nothing-post-fx-scene';
 import { ColorPostFxScene } from './scenes/color-post-fx-scene';
 import { GreyScalePostFxScene } from './scenes/grey-scale-post-fx-scene';
+import { WipePostFxScene } from './scenes/wipe-post-fx-scene';
+import { BuiltInFxScene } from './scenes/built-in-fx-scene';
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
   type: Phaser.WEBGL,
@@ -20,4 +22,6 @@ const game = new Phaser.Game(gameConfig);
 game.scene.add(NothingPostFxScene.name, NothingPostFxScene);
 game.scene.add(ColorPostFxScene.name, ColorPostFxScene);
 game.scene.add(GreyScalePostFxScene.name, GreyScalePostFxScene);
-game.scene.start(GreyScalePostFxScene.name);
+game.scene.add(WipePostFxScene.name, WipePostFxScene);
+game.scene.add(BuiltInFxScene.name, BuiltInFxScene);
+game.scene.start(BuiltInFxScene.name);
