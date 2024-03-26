@@ -5,7 +5,7 @@ const SPRITE_SHEET_ASSET_KEY = 'CHARACTERS';
 
 export class BuiltInFxScene extends Phaser.Scene {
   constructor() {
-    super({ key: BuiltInFxScene.name });
+    super({ key: 'BuiltInFxScene' });
   }
 
   preload(): void {

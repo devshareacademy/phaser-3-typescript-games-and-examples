@@ -19,9 +19,9 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
 };
 
 const game = new Phaser.Game(gameConfig);
-game.scene.add(NothingPostFxScene.name, NothingPostFxScene);
-game.scene.add(ColorPostFxScene.name, ColorPostFxScene);
-game.scene.add(GreyScalePostFxScene.name, GreyScalePostFxScene);
-game.scene.add(WipePostFxScene.name, WipePostFxScene);
-game.scene.add(BuiltInFxScene.name, BuiltInFxScene);
-game.scene.start(NothingPostFxScene.name);
+game.scene.add('NothingPostFxScene', NothingPostFxScene);
+game.scene.add('ColorPostFxScene', ColorPostFxScene);
+game.scene.add('GreyScalePostFxScene', GreyScalePostFxScene);
+game.scene.add('WipePostFxScene', WipePostFxScene);
+game.scene.add('BuiltInFxScene', BuiltInFxScene);
+game.scene.start('NothingPostFxScene');
