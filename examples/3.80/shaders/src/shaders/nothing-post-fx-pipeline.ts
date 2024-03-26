@@ -1,24 +1,23 @@
 const frag = `
-#define SHADER_NAME COLOR
+#define SHADER_NAME NOTHING_POST_TINT
 
 #ifdef GL_ES
 precision mediump float;
 #endif
 
-uniform sampler2D uMainSampler;
 // coordinate from the vertex shader
 varying vec2 outTexCoord;
+uniform sampler2D uMainSampler;
 
 void main() {
-  gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+  gl_FragColor = texture2D(uMainSampler, outTexCoord);
 }
 `;
 
-export class ColorFx extends Phaser.Renderer.WebGL.Pipelines.MultiPipeline {
+export class NothingPostFxPipeline extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline {
   constructor(game: Phaser.Game) {
     super({
       game,
-      renderTarget: true,
       fragShader: frag,
     });
   }
