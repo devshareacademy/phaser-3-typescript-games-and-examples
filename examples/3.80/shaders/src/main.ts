@@ -24,4 +24,4 @@ game.scene.add(ColorPostFxScene.name, ColorPostFxScene);
 game.scene.add(GreyScalePostFxScene.name, GreyScalePostFxScene);
 game.scene.add(WipePostFxScene.name, WipePostFxScene);
 game.scene.add(BuiltInFxScene.name, BuiltInFxScene);
-game.scene.start(BuiltInFxScene.name);
+game.scene.start(NothingPostFxScene.name);

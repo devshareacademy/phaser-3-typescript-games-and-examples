@@ -1,6 +1,20 @@
-# Phaser 3 TypeScript - TEMPLATE
+# Phaser 3 TypeScript - Basic Shader Examples
 
-A Phaser 3 TypeScript example TEMPLATE.
+Contains example code of how to use various shaders in Phaser 3. This is the sample code that I shared in my tutorial video hosted on YouTube here: TODO.
+
+You can see a live demo of the examples here: TODO
+
+While viewing the examples, if you press the `space` key, you can navigate between various examples. Below is a list of the examples shaders that can be seen and the corresponding files to that example:
+
+| Example | Description | Location |
+|---------|-------------|----------|
+| Simple Shader | Example of how to just render out the existing pixels using a shader. | `./src/shaders/nothing-post-fx-pipeline.ts` |
+| Simple Color | Example of how to replace pixels with another color. | `./src/shaders/color-post-fx-pipeline.ts` |
+| Grey Scale | Example of how to apply a grey scale affect to all pixels. | `./src/shaders/grey-scale-post-fx-pipeline.ts` |
+| Screen Wipe | Example of how to use custom variables in a shader to create animations, like a scene transition. | `./src/shaders/wipe-post-fx-pipeline.ts` |
+| Built In Fx | Example of how to use the built in shader effects on game objects. | `./src/scenes/built-in-fx-scene.ts` |
+
+![Shader Examples](./docs/example.gif?raw=true)
 
 ## Local Development
 
@@ -39,3 +53,13 @@ you should be able to open `http://myserver.com/index.html` and play your game.
 ### Static Assets
 
 Any static assets like images or audio files should be placed in the `public` folder. It'll then be served at `http://localhost:8080/path-to-file-your-file/file-name.file-type`.
+
+## Credits
+
+The assets used in this demo were made from free assets that were created from the following artists: [AxulArt](https://axulart.itch.io/) and [The Pixel Nook](https://the-pixel-nook.itch.io)
+
+List of assets:
+
+* [Basic Plains Set](https://axulart.itch.io/axularts-basicplains-tileset-ver2)
+* [Character](https://axulart.itch.io/small-8-direction-characters)
+* [Buildings](https://the-pixel-nook.itch.io/rpg-building-pack)
