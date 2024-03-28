@@ -1,0 +1,48 @@
+{
+	"name": "@devshareacademy/phaser-3-typescript-game-template",
+	"version": "1.0.0",
+	"description": "A basic Phaser 3 Typescript project template that uses Vite.",
+	"scripts": {
+		"start": "vite --config config/vite.config.js",
+		"build": "tsc && vite build --config config/vite.config.js",
+		"serve": "vite preview --config config/vite.config.js",
+		"lint": "eslint ./src --ext .ts,.tsx --config ./config/.eslintrc"
+	},
+	"author": "scottwestover",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/devshareacademy/phaser-3-typescript-games-and-examples.git"
+	},
+	"homepage": "https://github.com/devshareacademy/phaser-3-typescript-games-and-examples",
+	"devDependencies": {
+		"@devshareacademy/eslint-config": "0.0.18",
+		"@devshareacademy/prettier-config": "0.0.6",
+		"@devshareacademy/tsconfig": "0.0.3",
+		"@tweakpane/core": "2.0.3",
+		"@typescript-eslint/eslint-plugin": "7.1.0",
+		"@typescript-eslint/parser": "7.1.0",
+		"eslint": "8.57.0",
+		"eslint-config-prettier": "9.1.0",
+		"eslint-plugin-prettier": "5.1.3",
+		"prettier": "3.2.5",
+		"typescript": "5.3.3",
+		"vite": "5.1.4"
+	},
+	"dependencies": {
+		"phaser": "3.80.0",
+		"tweakpane": "4.0.3"
+	},
+	"resolutions": {},
+	"prettier": "@devshareacademy/prettier-config",
+	"volta": {
+		"node": "20.11.1",
+		"yarn": "1.22.11",
+		"pnpm": "8.15.4"
+	},
+	"engines": {
+		"node": ">=20.11.0",
+		"npm": ">=10.2.0",
+		"pnpm": ">=8.15.0"
+	}
+}
