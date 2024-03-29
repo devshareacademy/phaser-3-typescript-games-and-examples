@@ -1,5 +1,5 @@
 const frag = `
-#define SHADER_NAME NOTHING_POST_TINT
+#define SHADER_NAME DYNAMIC_POST_TINT
 
 #ifdef GL_ES
 precision mediump float;

@@ -27,7 +27,7 @@ export class DynamicColorPostFxScene extends Phaser.Scene {
     this.cameras.main.setPostPipeline(DynamicColorPostFxPipeline);
 
     this.tweens.add({
-      targets: this.cameras.main.getPostPipeline('DynamicColorPostFxPipeline'),
+      targets: this.cameras.main.getPostPipeline(DynamicColorPostFxPipeline),
       progress: 1,
       duration: 2000,
       delay: 1000,
