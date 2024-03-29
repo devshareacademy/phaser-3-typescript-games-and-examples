@@ -1,11 +1,11 @@
 import Phaser from 'phaser';
-import { GreyScalePostFxPipeline } from '../shaders/grey-scale-post-fx-pipeline';
+import { DynamicColorPostFxPipeline } from '../shaders/dynamic-color-post-fx-pipeline';
 
 const IMAGE_ASSET_KEY = 'BG';
 
-export class GreyScalePostFxScene extends Phaser.Scene {
+export class DynamicColorPostFxScene extends Phaser.Scene {
   constructor() {
-    super({ key: 'GreyScalePostFxScene' });
+    super({ key: 'DynamicColorPostFxScene' });
   }
 
   preload(): void {
@@ -20,14 +20,23 @@ export class GreyScalePostFxScene extends Phaser.Scene {
     // example for adding post-fx pipeline
     // add the pipeline to our renderer
     (this.renderer as Phaser.Renderer.WebGL.WebGLRenderer).pipelines.addPostPipeline(
-      'GreyScalePostFxPipeline',
-      GreyScalePostFxPipeline,
+      'DynamicColorPostFxPipeline',
+      DynamicColorPostFxPipeline,
     );
     // update camera to use post pipeline
-    this.cameras.main.setPostPipeline(GreyScalePostFxPipeline);
+    this.cameras.main.setPostPipeline(DynamicColorPostFxPipeline);
+
+    this.tweens.add({
+      targets: this.cameras.main.getPostPipeline('DynamicColorPostFxPipeline'),
+      progress: 1,
+      duration: 2000,
+      delay: 1000,
+      repeat: -1,
+      yoyo: true,
+    });
 
     this.input.keyboard?.once('keydown-SPACE', () => {
-      this.scene.start('DynamicColorPostFxScene');
+      this.scene.start('WipePostFxScene');
     });
   }
 }

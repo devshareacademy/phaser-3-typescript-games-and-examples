@@ -24,6 +24,8 @@ export class BuiltInFxScene extends Phaser.Scene {
     // example for builtin
     character.preFX?.addGradient(0x0000ff, 0x00ff00, 0);
 
+    this.cameras.main.postFX.addGradient(0xff0000);
+
     this.input.keyboard?.once('keydown-SPACE', () => {
       this.scene.start('NothingPostFxScene');
     });
