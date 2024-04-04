@@ -1,7 +1,7 @@
 import { CustomPipeline } from './custom-pipeline';
 
 const frag = `
-#define SHADER_NAME WIPE_POST_FX
+#define SHADER_NAME FADE_TO_BLACK_POST_FX
 
 #ifdef GL_ES
 precision mediump float;
@@ -13,16 +13,13 @@ varying vec2 outTexCoord;
 uniform float uCutoff;
 
 void main() {
-  if (outTexCoord.x < uCutoff) {
-    gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
-  } else {
-    // returns the original color of the pixel that is being processed
-    gl_FragColor = texture2D(uMainSampler, outTexCoord);
-  }
+  vec4 color = texture2D(uMainSampler, outTexCoord);
+  color.rgb = color.rgb * (1.0 - uCutoff);
+  gl_FragColor = color;
 }
 `;
 
-export class WipePostFxPipeline extends CustomPipeline {
+export class FadeToBlackPostFxPipeline extends CustomPipeline {
   constructor(game: Phaser.Game) {
     super(game, frag);
   }

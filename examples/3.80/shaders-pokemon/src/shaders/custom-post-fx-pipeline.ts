@@ -1,4 +1,5 @@
 import { SHADER_TEXTURE_ASSET_KEYS } from '../common';
+import { CustomPipeline } from './custom-pipeline';
 
 const frag = `
 #define SHADER_NAME WIPE_POST_FX
@@ -24,25 +25,12 @@ void main() {
 }
 `;
 
-export class CustomPostFxPipeline extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline {
-  #progress: number;
+export class CustomPostFxPipeline extends CustomPipeline {
   #customTexture: Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper | null;
 
   constructor(game: Phaser.Game) {
-    super({
-      game,
-      fragShader: frag,
-    });
-    this.#progress = 0;
+    super(game, frag);
     this.#customTexture = null;
-  }
-
-  get progress(): number {
-    return this.#progress;
-  }
-
-  set progress(val: number) {
-    this.#progress = val;
   }
 
   onBoot() {
@@ -51,7 +39,7 @@ export class CustomPostFxPipeline extends Phaser.Renderer.WebGL.Pipelines.PostFX
   }
 
   onPreRender() {
-    this.set1f('uCutoff', this.#progress);
+    super.onPreRender();
     if (this.#customTexture === null) {
       return;
     }

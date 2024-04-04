@@ -1,3 +1,5 @@
+import { CustomPipeline } from './custom-pipeline';
+
 const frag = `
 #define SHADER_NAME CURTAIN_RISE_POST_FX
 
@@ -20,26 +22,9 @@ void main() {
 }
 `;
 
-export class CurtainRisePostFxPipeline extends Phaser.Renderer.WebGL.Pipelines.PostFXPipeline {
-  #progress: number;
-
+export class CurtainRisePostFxPipeline extends CustomPipeline {
   constructor(game: Phaser.Game) {
-    super({
-      game,
-      fragShader: frag,
-    });
-    this.#progress = 1;
-  }
-
-  get progress(): number {
-    return this.#progress;
-  }
-
-  set progress(val: number) {
-    this.#progress = val;
-  }
-
-  onPreRender() {
-    this.set1f('uCutoff', this.#progress);
+    super(game, frag);
+    this._progress = 1;
   }
 }

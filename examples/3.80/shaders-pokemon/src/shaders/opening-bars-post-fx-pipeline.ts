@@ -1,7 +1,7 @@
 import { CustomPipeline } from './custom-pipeline';
 
 const frag = `
-#define SHADER_NAME CURTAIN_FALL_POST_FX
+#define SHADER_NAME OPENING_BARS_POST_FX
 
 #ifdef GL_ES
 precision mediump float;
@@ -13,18 +13,17 @@ varying vec2 outTexCoord;
 uniform float uCutoff;
 
 void main() {
-  float dif = abs(1.0 - uCutoff);
-  if (outTexCoord.y > dif) {
-    gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+  if (abs(outTexCoord.y - 0.5) * 2.0 > (uCutoff)) {
+    gl_FragColor = vec4(0, 0, 0, 1);
   } else {
-    // returns the original color of the pixel that is being processed
     gl_FragColor = texture2D(uMainSampler, outTexCoord);
   }
 }
 `;
 
-export class CurtainFallPostFxPipeline extends CustomPipeline {
+export class OpeningBarsPostFxPipeline extends CustomPipeline {
   constructor(game: Phaser.Game) {
     super(game, frag);
+    this._progress = 1;
   }
 }
