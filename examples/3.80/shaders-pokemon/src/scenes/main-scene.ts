@@ -3,8 +3,6 @@ import { FolderApi, Pane } from 'tweakpane';
 import { WipePostFxPipeline } from '../shaders/wipe-post-fx-pipeline';
 import { CurtainRisePostFxPipeline } from '../shaders/curtain-rise-post-fx-pipeline';
 import { CurtainFallPostFxPipeline } from '../shaders/curtain-fall-post-fx-pipeline';
-import { CustomPostFxPipeline } from '../shaders/custom-post-fx-pipeline';
-import { SHADER_TEXTURE_ASSET_KEYS } from '../common';
 import { CustomPipeline } from '../shaders/custom-pipeline';
 import { ClosingBarsPostFxPipeline } from '../shaders/closing-bars-post-fx-pipeline';
 import { OpeningBarsPostFxPipeline } from '../shaders/opening-bars-post-fx-pipeline';
@@ -17,7 +15,6 @@ const pipelines = [
   WipePostFxPipeline,
   CurtainRisePostFxPipeline,
   CurtainFallPostFxPipeline,
-  CustomPostFxPipeline,
   ClosingBarsPostFxPipeline,
   OpeningBarsPostFxPipeline,
   FadeToWhitePostFxPipeline,
@@ -32,10 +29,6 @@ export class MainScene extends Phaser.Scene {
   preload(): void {
     // load in data
     this.load.image(IMAGE_ASSET_KEY, 'assets/images/bg.png');
-    this.load.image(SHADER_TEXTURE_ASSET_KEYS.WIPE, 'assets/images/wipe-left-to-right.png');
-    this.load.image(SHADER_TEXTURE_ASSET_KEYS.VERT_REFLECT, 'assets/images/wipe-vertical-reflected.png');
-    this.load.image(SHADER_TEXTURE_ASSET_KEYS.SPIRAL, 'assets/images/spinning-spiral.png');
-    this.load.image(SHADER_TEXTURE_ASSET_KEYS.TRIANGLE, 'assets/images/enclosing-triangles.png');
   }
 
   create(): void {
@@ -50,17 +43,6 @@ export class MainScene extends Phaser.Scene {
     });
 
     this.#createPane();
-
-    // this.tweens.add({
-    //   targets: this.cameras.main.getPostPipeline(FadeToBlackPostFxPipeline),
-    //   progress: 1,
-    //   duration: 2000,
-    //   onComplete: () => {
-    //     this.time.delayedCall(600, () => {
-    //       (this.cameras.main.getPostPipeline(FadeToBlackPostFxPipeline) as CustomPostFxPipeline).progress = 0;
-    //     });
-    //   },
-    // });
   }
 
   #createPane(): void {
