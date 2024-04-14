@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const TILED_DOOR_STATE = {
+export const TILED_DOOR_STATE = {
   CLOSED: 'CLOSED',
   OPEN: 'OPEN',
 } as const;
@@ -30,6 +30,25 @@ export const TiledObjectCurrentEnergyPropertySchema = z.object({
   name: z.literal('currentEnergy'),
   type: z.literal('int'),
   value: z.number(),
+});
+
+export const TiledTargetObjectIdPropertySchema = z.object({
+  name: z.literal('objectId'),
+  type: z.literal('int'),
+  value: z.number(),
+});
+
+export const BUTTON_ACTIVE_OBJECT_TYPE = {
+  DOOR: 'Door',
+} as const;
+export const TiledButtonActiveTypeEnumSchema = z.nativeEnum(BUTTON_ACTIVE_OBJECT_TYPE);
+export type TiledButtonActiveTypeEnum = z.infer<typeof TiledButtonActiveTypeEnumSchema>;
+
+export const TiledObjectActiveObjectTypePropertySchema = z.object({
+  name: z.literal('activeObjectType'),
+  type: z.literal('string'),
+  value: TiledButtonActiveTypeEnumSchema,
+  propertytype: z.literal('ButtonActivateObjectType'),
 });
 
 export const TILED_DOOR_PROPERTY_NAME = {
@@ -155,3 +174,11 @@ export const TiledEnergyObjectSchema = z.object({
     ),
 });
 export type TiledEnergyObject = z.infer<typeof TiledEnergyObjectSchema>;
+
+export const TiledExitObjectSchema = z.object({
+  x: z.number(),
+  y: z.number(),
+  width: z.number(),
+  height: z.number(),
+});
+export type TiledExitObject = z.infer<typeof TiledExitObjectSchema>;

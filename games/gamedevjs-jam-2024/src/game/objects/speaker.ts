@@ -1,4 +1,4 @@
-import { SPRITE_SHEET_ASSET_KEYS } from '../assets/asset-keys';
+import { IMAGE_ASSET_KEYS, SPRITE_SHEET_ASSET_KEYS } from '../assets/asset-keys';
 import GameScene from '../scenes/game-scene';
 
 type SpeakerConfig = {
@@ -16,6 +16,7 @@ export class Speaker {
   #energyLevel: number;
   #maxEnergy: number;
   #id: number;
+  #speakerRange: Phaser.GameObjects.Image;
 
   constructor(config: SpeakerConfig) {
     this.#id = config.id;
@@ -27,6 +28,11 @@ export class Speaker {
       .setFlipX(config.flipX)
       .setOrigin(0, 1)
       .setInteractive();
+    this.#setTexture();
+
+    const center = this.#sprite.getCenter();
+    this.#speakerRange = this.#scene.add.image(center.x, center.y, IMAGE_ASSET_KEYS.DASH_CIRCLE).setAlpha(0);
+    // this.#displaySpeakerRange();
 
     this.#sprite.on(Phaser.Input.Events.POINTER_DOWN, () => {
       this.#handlePlayerClick();
@@ -41,9 +47,14 @@ export class Speaker {
     return this.#energyLevel;
   }
 
-  #handlePlayerClick(): void {
-    console.log(`speaker ${this.#id} click`);
+  public update(): void {
+    if (this.#speakerRange.alpha === 0) {
+      return;
+    }
+    this.#speakerRange.angle += 0.5;
+  }
 
+  #handlePlayerClick(): void {
     if (this.#scene.currentEnergy === 0 && this.#energyLevel === 0) {
       return;
     }
@@ -57,6 +68,28 @@ export class Speaker {
       this.#energyLevel = 0;
     }
 
-    // TODO: animate
+    this.#setTexture();
+  }
+
+  #setTexture(): void {
+    if (this.#energyLevel === 0) {
+      this.#sprite.setAlpha(0.25);
+      return;
+    }
+    if (this.#energyLevel === 1) {
+      this.#sprite.setAlpha(0.5);
+      return;
+    }
+    if (this.#energyLevel === 2) {
+      this.#sprite.setAlpha(0.75);
+      return;
+    }
+    this.#sprite.setAlpha(1);
+  }
+
+  #displaySpeakerRange(): void {
+    this.#speakerRange.setAlpha(0.5);
+    this.#speakerRange.setScale(0.4);
+    // this.#speakerRange.setRadius(100);
   }
 }

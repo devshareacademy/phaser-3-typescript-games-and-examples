@@ -1,5 +1,6 @@
 import { SPRITE_SHEET_ASSET_KEYS } from '../assets/asset-keys';
 import GameScene from '../scenes/game-scene';
+import { ButtonPoweredObject } from './button-powered-object';
 
 type ButtonConfig = {
   scene: GameScene;
@@ -8,6 +9,7 @@ type ButtonConfig = {
   flipX: boolean;
   startingEnergy: number;
   id: number;
+  connectedObject: ButtonPoweredObject;
 };
 
 export class Button {
@@ -16,17 +18,20 @@ export class Button {
   #energyLevel: number;
   #maxEnergy: number;
   #id: number;
+  #connectedObject: ButtonPoweredObject;
 
   constructor(config: ButtonConfig) {
     this.#id = config.id;
     this.#scene = config.scene;
     this.#maxEnergy = 3;
     this.#energyLevel = config.startingEnergy;
+    this.#connectedObject = config.connectedObject;
     this.#sprite = config.scene.add
       .sprite(config.x, config.y, SPRITE_SHEET_ASSET_KEYS.BUTTON, 0)
       .setFlipX(config.flipX)
       .setOrigin(0, 1)
       .setInteractive();
+    this.#setTexture();
 
     this.#sprite.on(Phaser.Input.Events.POINTER_DOWN, () => {
       this.#handlePlayerClick();
@@ -42,8 +47,6 @@ export class Button {
   }
 
   #handlePlayerClick(): void {
-    console.log(`button ${this.#id} click`);
-
     if (this.#scene.currentEnergy === 0 && this.#energyLevel === 0) {
       return;
     }
@@ -57,6 +60,23 @@ export class Button {
       this.#energyLevel = 0;
     }
 
-    // TODO: animate
+    this.#setTexture();
+    this.#connectedObject.powerLevelChanged(this.#energyLevel);
+  }
+
+  #setTexture(): void {
+    if (this.#energyLevel === 0) {
+      this.#sprite.setAlpha(0.25);
+      return;
+    }
+    if (this.#energyLevel === 1) {
+      this.#sprite.setAlpha(0.5);
+      return;
+    }
+    if (this.#energyLevel === 2) {
+      this.#sprite.setAlpha(0.75);
+      return;
+    }
+    this.#sprite.setAlpha(1);
   }
 }

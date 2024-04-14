@@ -9,6 +9,7 @@ export const SPRITE_SHEET_ASSET_KEYS = {
 export const IMAGE_ASSET_KEYS = {
   LEVEL: 'LEVEL',
   COLLISION: 'COLLISION',
+  DASH_CIRCLE: 'DASH_CIRCLE',
 } as const;
 
 export const TILED_LEVEL_JSON = {

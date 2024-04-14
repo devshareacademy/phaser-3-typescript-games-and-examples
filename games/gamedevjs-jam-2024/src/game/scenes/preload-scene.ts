@@ -37,6 +37,7 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.tilemapTiledJSON(TILED_LEVEL_JSON.TILED_LEVEL, '/test_level.json');
     this.load.setPath('assets/images');
     this.load.image(IMAGE_ASSET_KEYS.COLLISION, '/collision.png');
+    this.load.image(IMAGE_ASSET_KEYS.DASH_CIRCLE, '/dash-circle.png');
     this.load.setPath('assets/data');
     this.load.json(DATA_ASSET_KEYS.ANIMATIONS, '/animations.json');
   }

@@ -1,37 +1,50 @@
 import Phaser from 'phaser';
 import { SceneKeys } from './scene-keys';
-import { IMAGE_ASSET_KEYS, SPRITE_SHEET_ASSET_KEYS, TILED_LEVEL_JSON } from '../assets/asset-keys';
+import { IMAGE_ASSET_KEYS, TILED_LEVEL_JSON } from '../assets/asset-keys';
 import { TILED_LAYER_NAMES, TILED_OBJECT_LAYER_NAMES } from '../assets/tiled-keys';
 import {
+  BUTTON_ACTIVE_OBJECT_TYPE,
+  TILED_BUTTON_PROPERTY_NAME,
   TILED_DOOR_PROPERTY_NAME,
+  TILED_DOOR_STATE,
   TILED_ENERGY_PROPERTY_NAME,
   TiledButtonObjectSchema,
   TiledDoorObjectSchema,
+  TiledDoorObjectStatePropertySchema,
+  TiledDoorStateEnum,
   TiledEnergyObjectSchema,
+  TiledExitObjectSchema,
   TiledNpcObjectSchema,
+  TiledObjectActiveObjectTypePropertySchema,
   TiledObjectCurrentEnergyPropertySchema,
   TiledObjectFlipPropertySchema,
   TiledObjectIdPropertySchema,
   TiledObjectProperty,
   TiledSpeakerObjectSchema,
+  TiledTargetObjectIdPropertySchema,
 } from '../../schema/tiled-schema';
 import { NPC } from '../objects/npc';
 import { Speaker } from '../objects/speaker';
 import { Button } from '../objects/button';
+import { Door } from '../objects/door';
 
 export default class GameScene extends Phaser.Scene {
   #npcs: NPC[];
   #speakers: Speaker[];
   #buttons: Button[];
+  #doors: Door[];
   #doorGroup!: Phaser.Physics.Arcade.Group;
   #currentEnergy: number;
   #maxEnergy: number;
+  #energyText!: Phaser.GameObjects.Text;
+  #exitZone!: Phaser.GameObjects.Zone;
 
   constructor() {
     super({ key: SceneKeys.GameScene });
     this.#npcs = [];
     this.#speakers = [];
     this.#buttons = [];
+    this.#doors = [];
     this.#currentEnergy = 0;
     this.#maxEnergy = 0;
   }
@@ -40,20 +53,19 @@ export default class GameScene extends Phaser.Scene {
     return this.#currentEnergy;
   }
 
-  public updateEnergy(energyAmount: number): void {
-    console.log(`updateEnergy: before amount ${this.#currentEnergy}`);
-    this.#currentEnergy += energyAmount;
-    console.log(`updateEnergy: new amount ${this.#currentEnergy}`);
-  }
-
   public create(): void {
     // main background
     this.add.image(this.scale.width / 2, this.scale.height / 2, IMAGE_ASSET_KEYS.LEVEL, 0);
     const tiledMapData = this.make.tilemap({ key: TILED_LEVEL_JSON.TILED_LEVEL });
-    this.#npcs = this.#createNpcs(tiledMapData);
+    const exitZone = this.#createExitZone(tiledMapData);
+    if (exitZone === undefined) {
+      return;
+    }
+    this.#exitZone = exitZone;
     this.#doorGroup = this.#createDoors(tiledMapData);
     this.#buttons = this.#createButtons(tiledMapData);
     this.#speakers = this.#createSpeakers(tiledMapData);
+    this.#npcs = this.#createNpcs(tiledMapData);
     this.#calculateEnergy(tiledMapData);
 
     const collisionLayer = this.#createCollisionLayer(tiledMapData);
@@ -64,20 +76,66 @@ export default class GameScene extends Phaser.Scene {
     collisionLayer.setAlpha(0);
 
     this.#npcs.forEach((npc) => {
-      this.physics.add.collider(npc.sprite, collisionLayer, () => {
+      const wallCollider = this.physics.add.collider(npc.sprite, collisionLayer, () => {
         npc.collidedWithWall();
       });
-      this.physics.add.collider(npc.sprite, this.#doorGroup, () => {
+      npc.addCollider(wallCollider);
+      const doorCollider = this.physics.add.collider(npc.sprite, this.#doorGroup, () => {
         npc.collidedWithWall();
       });
+      npc.addCollider(doorCollider);
+      const exitOverlap = this.physics.add.overlap(npc.sprite, this.#exitZone, () => {
+        npc.hasEnteredExit();
+      });
+      npc.addCollider(exitOverlap);
     });
     // collisionLayer.renderDebug(this.add.graphics());
 
-    console.log(this.#currentEnergy, this.#maxEnergy);
+    this.#energyText = this.add.text(10, 10, '').setOrigin(0);
+    this.#updateEnergyUI();
   }
 
   public update(): void {
     this.#npcs.forEach((npc) => npc.update());
+    this.#speakers.forEach((speaker) => speaker.update());
+  }
+
+  public updateEnergy(energyAmount: number): void {
+    this.#currentEnergy += energyAmount;
+    this.#updateEnergyUI();
+  }
+
+  public npcHasLeftScene(): void {
+    const hasAllNpcsLeft = this.#npcs.every((npc) => npc.hasExitedLevel);
+    if (hasAllNpcsLeft) {
+      console.log('level complete');
+    } else {
+      console.log('keep playing');
+    }
+  }
+
+  #updateEnergyUI(): void {
+    this.#energyText.setText(`${this.currentEnergy} / ${this.#maxEnergy}`);
+  }
+
+  #createExitZone(tiledMapData: Phaser.Tilemaps.Tilemap): Phaser.GameObjects.Zone | undefined {
+    const layerData = tiledMapData.getObjectLayer(TILED_OBJECT_LAYER_NAMES.EXIT);
+    if (!layerData || layerData.objects.length > 1) {
+      console.warn(`[${GameScene.name}:#createExitZone] encountered error while parsing tiled map data for level exit`);
+      return;
+    }
+    const parsedObject = TiledExitObjectSchema.safeParse(layerData.objects[0]);
+    if (!parsedObject.success) {
+      console.warn(
+        `[${GameScene.name}:#calculateEnergy] encountered error while parsing tiled map data`,
+        parsedObject.error,
+      );
+      return;
+    }
+    const obj = parsedObject.data;
+    const zone = this.add.zone(obj.x, obj.y, obj.width, obj.height).setOrigin(0, 1);
+    this.physics.world.enable(zone);
+    return zone;
   }
 
   #createNpcs(tiledMapData: Phaser.Tilemaps.Tilemap): NPC[] {
@@ -104,6 +162,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   #createDoors(tiledMapData: Phaser.Tilemaps.Tilemap): Phaser.Physics.Arcade.Group {
+    this.#doors = [];
     const gameObjects = this.physics.add.group({ immovable: true });
     const layerData = tiledMapData.getObjectLayer(TILED_OBJECT_LAYER_NAMES.DOORS);
     if (!layerData) {
@@ -120,11 +179,16 @@ export default class GameScene extends Phaser.Scene {
         continue;
       }
       const obj = parsedObject.data;
-      const gameObj = this.physics.add
-        .sprite(obj.x, obj.y, SPRITE_SHEET_ASSET_KEYS.DOOR, 0)
-        .setFlipX(this.#shouldFlipGameObject(obj.properties))
-        .setOrigin(0, 0.5);
-      gameObjects.add(gameObj);
+      const door = new Door({
+        scene: this,
+        x: obj.x,
+        y: obj.y,
+        startingState: this.#getDoorStateFromObject(obj.properties),
+        flipX: this.#shouldFlipGameObject(obj.properties),
+        id: this.#getIdFromObject(obj.properties),
+      });
+      gameObjects.add(door.sprite);
+      this.#doors.push(door);
     }
     return gameObjects;
   }
@@ -146,6 +210,13 @@ export default class GameScene extends Phaser.Scene {
         continue;
       }
       const obj = parsedObject.data;
+      const connectedObject = this.#getButtonConnectedObject(obj.properties);
+      if (!connectedObject) {
+        console.warn(
+          `[${GameScene.name}:#createButtons] was not able to find connected object while parsing tiled data`,
+        );
+        continue;
+      }
       const button = new Button({
         scene: this,
         x: obj.x,
@@ -153,10 +224,40 @@ export default class GameScene extends Phaser.Scene {
         flipX: this.#shouldFlipGameObject(obj.properties),
         startingEnergy: this.#getEnergyDetailsFromObject(obj.properties),
         id: this.#getIdFromObject(obj.properties),
+        connectedObject: connectedObject,
       });
       gameObjects.push(button);
     }
     return gameObjects;
+  }
+
+  #getButtonConnectedObject(objectProperties: TiledObjectProperty[]) {
+    // get the object type from the tiled data
+    const activeObjectProp = objectProperties.find(
+      (prop) => prop.name === TILED_BUTTON_PROPERTY_NAME.ACTIVE_OBJECT_TYPE,
+    );
+    if (!activeObjectProp) {
+      return;
+    }
+    const parsedProperty = TiledObjectActiveObjectTypePropertySchema.safeParse(activeObjectProp);
+    if (!parsedProperty.success) {
+      return;
+    }
+
+    // find the object id from the tiled data
+    const targetObjectIdProp = objectProperties.find((prop) => prop.name === TILED_BUTTON_PROPERTY_NAME.OBJECT_ID);
+    if (targetObjectIdProp === undefined) {
+      return;
+    }
+    const parsedTargetObjectIdProperty = TiledTargetObjectIdPropertySchema.safeParse(targetObjectIdProp);
+    if (!parsedTargetObjectIdProperty.success) {
+      return;
+    }
+
+    // find the matching object in the game objects that have already been created based on the type and id field we found above
+    if (parsedProperty.data.value === BUTTON_ACTIVE_OBJECT_TYPE.DOOR) {
+      return this.#doors.find((door) => door.id === parsedTargetObjectIdProperty.data.value);
+    }
   }
 
   #createSpeakers(tiledMapData: Phaser.Tilemaps.Tilemap): Speaker[] {
@@ -225,6 +326,18 @@ export default class GameScene extends Phaser.Scene {
     return parsedProperty.data.value;
   }
 
+  #getDoorStateFromObject(objectProperties: TiledObjectProperty[]): TiledDoorStateEnum {
+    const doorStateProp = objectProperties.find((prop) => prop.name === TILED_DOOR_PROPERTY_NAME.STATE);
+    if (!doorStateProp) {
+      return TILED_DOOR_STATE.CLOSED;
+    }
+    const parsedProperty = TiledDoorObjectStatePropertySchema.safeParse(doorStateProp);
+    if (!parsedProperty.success) {
+      return TILED_DOOR_STATE.CLOSED;
+    }
+    return parsedProperty.data.value;
+  }
+
   #createCollisionLayer(tiledMapData: Phaser.Tilemaps.Tilemap): Phaser.Tilemaps.TilemapLayer | undefined {
     const collisionTiles = tiledMapData.addTilesetImage(
       IMAGE_ASSET_KEYS.COLLISION.toLowerCase(),
@@ -242,7 +355,7 @@ export default class GameScene extends Phaser.Scene {
     return collisionLayer;
   }
 
-  #calculateEnergy(tiledMapData: Phaser.Tilemaps.Tilemap) {
+  #calculateEnergy(tiledMapData: Phaser.Tilemaps.Tilemap): void {
     const layerData = tiledMapData.getObjectLayer(TILED_OBJECT_LAYER_NAMES.ENERGY);
     if (!layerData || layerData.objects.length > 1) {
       console.warn(

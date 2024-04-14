@@ -86,3 +86,8 @@ Power Breakout
 
 https://github.com/yandeu/phaser3-optimal-resolution/tree/master/src
 https://exceptrea.itch.io/laboratory-tileset-revamped-lite
+
+
+## Bugs
+
+if player closed door on npc, npc is stuck, this should result in player restarting level
