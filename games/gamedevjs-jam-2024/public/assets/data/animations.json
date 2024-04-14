@@ -1,0 +1,18 @@
+[
+  {
+    "key": "NPC_1_IDLE",
+    "frameRate": 6,
+    "repeat": -1,
+    "delay": 0,
+    "yoyo": false,
+    "assetKey": "NPC_1_IDLE"
+  },
+  {
+    "key": "NPC_1_WALK",
+    "frameRate": 4,
+    "repeat": -1,
+    "delay": 0,
+    "yoyo": false,
+    "assetKey": "NPC_1_WALK"
+  }
+]
