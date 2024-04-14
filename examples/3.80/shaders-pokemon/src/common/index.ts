@@ -1,6 +1,0 @@
-export const SHADER_TEXTURE_ASSET_KEYS = {
-  WIPE: 'WIPE',
-  VERT_REFLECT: 'VERT_REFLECT',
-  SPIRAL: 'SPIRAL',
-  TRIANGLE: 'TRIANGLE',
-} as const;
