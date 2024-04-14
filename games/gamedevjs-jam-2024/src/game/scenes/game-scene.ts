@@ -88,6 +88,11 @@ export default class GameScene extends Phaser.Scene {
         npc.hasEnteredExit();
       });
       npc.addCollider(exitOverlap);
+      // this.#speakers.forEach((speaker) => {
+      //   const speakerOverlap = this.physics.add.overlap(npc.sprite, speaker.speakerRange, () => {
+      //     console.log('npc is overlapping with speaker');
+      //   });
+      // });
     });
     // collisionLayer.renderDebug(this.add.graphics());
 
@@ -155,7 +160,7 @@ export default class GameScene extends Phaser.Scene {
         continue;
       }
       const obj = parsedObject.data;
-      const npc = new NPC({ scene: this, x: obj.x, y: obj.y });
+      const npc = new NPC({ scene: this, x: obj.x, y: obj.y, speakers: this.#speakers });
       npcs.push(npc);
     }
     return npcs;

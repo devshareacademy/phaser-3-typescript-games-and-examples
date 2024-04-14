@@ -17,6 +17,7 @@ export class Speaker {
   #maxEnergy: number;
   #id: number;
   #speakerRange: Phaser.GameObjects.Image;
+  #speakerRangeTween: Phaser.Tweens.Tween | undefined;
 
   constructor(config: SpeakerConfig) {
     this.#id = config.id;
@@ -32,6 +33,12 @@ export class Speaker {
 
     const center = this.#sprite.getCenter();
     this.#speakerRange = this.#scene.add.image(center.x, center.y, IMAGE_ASSET_KEYS.DASH_CIRCLE).setAlpha(0);
+    this.#scene.physics.world.once(Phaser.Physics.Arcade.Events.WORLD_STEP, () => {
+      this.#scene.physics.world.enable(this.#speakerRange);
+      const body = this.#speakerRange.body as Phaser.Physics.Arcade.Body;
+      body.setCircle(body.halfWidth, 0, body.halfHeight - body.halfWidth);
+      this.#speakerRange.setScale(0.01);
+    });
     // this.#displaySpeakerRange();
 
     this.#sprite.on(Phaser.Input.Events.POINTER_DOWN, () => {
@@ -41,6 +48,10 @@ export class Speaker {
 
   get sprite(): Phaser.GameObjects.Sprite {
     return this.#sprite;
+  }
+
+  get speakerRange(): Phaser.GameObjects.Image {
+    return this.#speakerRange;
   }
 
   get currentEnergy(): number {
@@ -69,6 +80,7 @@ export class Speaker {
     }
 
     this.#setTexture();
+    this.#displaySpeakerRange();
   }
 
   #setTexture(): void {
@@ -88,8 +100,26 @@ export class Speaker {
   }
 
   #displaySpeakerRange(): void {
+    if (this.#energyLevel === 0) {
+      this.#speakerRange.setScale(0.01);
+      return;
+    }
+    if (this.#energyLevel === 1) {
+      this.#speakerRange.setScale(0.4);
+    } else if (this.#energyLevel === 2) {
+      this.#speakerRange.setScale(0.75);
+    } else {
+      this.#speakerRange.setScale(1.2);
+    }
     this.#speakerRange.setAlpha(0.5);
-    this.#speakerRange.setScale(0.4);
-    // this.#speakerRange.setRadius(100);
+    if (this.#speakerRangeTween !== undefined && !this.#speakerRangeTween.isDestroyed()) {
+      this.#speakerRangeTween.destroy();
+    }
+    this.#speakerRangeTween = this.#scene.tweens.add({
+      targets: this.#speakerRange,
+      alpha: 0,
+      duration: 500,
+      delay: 750,
+    });
   }
 }

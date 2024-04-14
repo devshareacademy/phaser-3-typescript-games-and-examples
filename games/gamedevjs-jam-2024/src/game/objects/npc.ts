@@ -1,6 +1,7 @@
 import { ANIMATION_KEY } from '../../schema/data-schema';
 import { SPRITE_SHEET_ASSET_KEYS } from '../assets/asset-keys';
 import GameScene from '../scenes/game-scene';
+import { Speaker } from './speaker';
 
 const DIRECTION = {
   LEFT: 'LEFT',
@@ -20,6 +21,7 @@ type NpcConfig = {
   scene: GameScene;
   x: number;
   y: number;
+  speakers: Speaker[];
 };
 
 export class NPC {
@@ -30,6 +32,7 @@ export class NPC {
   #hasEnteredExit: boolean;
   #hasLeftScene: boolean;
   #colliders: Phaser.Physics.Arcade.Collider[];
+  #speakers: Speaker[];
 
   constructor(config: NpcConfig) {
     this.#scene = config.scene;
@@ -44,6 +47,7 @@ export class NPC {
     this.#hasEnteredExit = false;
     this.#hasLeftScene = false;
     this.#colliders = [];
+    this.#speakers = config.speakers;
 
     this.#sprite.on(Phaser.Input.Events.POINTER_DOWN, () => {
       this.#handlePlayerClick();
@@ -125,7 +129,22 @@ export class NPC {
   }
 
   #handlePlayerClick(): void {
-    // TODO: see if npc is within range of speaker
-    this.#switchStates();
+    const npcBodyRect: Phaser.Geom.Rectangle = new Phaser.Geom.Rectangle(0, 0, 0, 0);
+    this.#sprite.body.getBounds(npcBodyRect);
+
+    const isOverlapWithSpeaker = this.#speakers.some((speaker) => {
+      const speakerBody = speaker.speakerRange.body as Phaser.Physics.Arcade.Body;
+      const speakerBodyBounds: Phaser.Geom.Circle = new Phaser.Geom.Circle(
+        speakerBody.x,
+        speakerBody.y,
+        speakerBody.radius,
+      );
+      speakerBody.getBounds(speakerBodyBounds);
+      return Phaser.Geom.Intersects.CircleToRectangle(speakerBodyBounds, npcBodyRect);
+    });
+
+    if (isOverlapWithSpeaker) {
+      this.#switchStates();
+    }
   }
 }
