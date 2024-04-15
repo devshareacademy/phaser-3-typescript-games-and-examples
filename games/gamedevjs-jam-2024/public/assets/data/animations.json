@@ -68,5 +68,38 @@
     "delay": 0,
     "yoyo": false,
     "assetKey": "DOOR"
+  },
+  {
+    "key": "BELT_START",
+    "frameRate": 4,
+    "repeat": -1,
+    "delay": 0,
+    "yoyo": false,
+    "assetKey": "BELT_START"
+  },
+  {
+    "key": "BELT_MID",
+    "frameRate": 4,
+    "repeat": -1,
+    "delay": 0,
+    "yoyo": false,
+    "assetKey": "BELT_MID"
+  },
+  {
+    "key": "BELT_END",
+    "frameRate": 4,
+    "repeat": -1,
+    "delay": 0,
+    "yoyo": false,
+    "assetKey": "BELT_END"
+  },
+  {
+    "key": "HAMMER_DOWN",
+    "frameRate": 5,
+    "frames": [0,1,2,3,4],
+    "repeat": 0,
+    "delay": 0,
+    "yoyo": false,
+    "assetKey": "HAMMER"
   }
 ]

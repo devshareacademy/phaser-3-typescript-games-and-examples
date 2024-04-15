@@ -36,6 +36,7 @@ export class Button {
     this.#sprite.on(Phaser.Input.Events.POINTER_DOWN, () => {
       this.#handlePlayerClick();
     });
+    this.#connectedObject.setInitialPowerLevel(this.#energyLevel);
   }
 
   get sprite(): Phaser.GameObjects.Sprite {

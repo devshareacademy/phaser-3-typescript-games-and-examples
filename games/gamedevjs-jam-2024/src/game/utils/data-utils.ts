@@ -1,4 +1,4 @@
-import { AnimationData, AnimationDataSchema } from '../../schema/data-schema';
+import { AnimationData, AnimationDataSchema } from '../schema/data-schema';
 import { DATA_ASSET_KEYS } from '../assets/asset-keys';
 
 export class DataUtils {

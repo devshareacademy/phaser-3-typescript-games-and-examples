@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { SPRITE_SHEET_ASSET_KEYS } from '../game/assets/asset-keys';
+import { SPRITE_SHEET_ASSET_KEYS } from '../assets/asset-keys';
 
 export const ANIMATION_KEY = {
   NPC_1_IDLE: 'NPC_1_IDLE',
@@ -10,6 +10,10 @@ export const ANIMATION_KEY = {
   DOOR_OPEN_TO_CLOSED: 'DOOR_OPEN_TO_CLOSED',
   DOOR_PARTIAL2_OPEN_TO_CLOSED: 'DOOR_PARTIAL2_OPEN_TO_CLOSED',
   DOOR_PARTIAL1_OPEN_TO_CLOSED: 'DOOR_PARTIAL1_OPEN_TO_CLOSED',
+  BELT_START: 'BELT_START',
+  BELT_MID: 'BELT_MID',
+  BELT_END: 'BELT_END',
+  HAMMER_DOWN: 'HAMMER_DOWN',
 } as const;
 export const AnimationKeySchema = z.nativeEnum(ANIMATION_KEY);
 export type AnimationKeyEnum = z.infer<typeof AnimationKeySchema>;
@@ -25,6 +29,7 @@ export const AnimationSchema = z.object({
   delay: z.number(),
   assetKey: SpriteAssetKeyEnumSchema,
   yoyo: z.boolean(),
+  repeatDelay: z.number().optional(),
 });
 export type Animation = z.infer<typeof AnimationSchema>;
 

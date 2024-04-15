@@ -11,4 +11,7 @@ export const TILED_OBJECT_LAYER_NAMES = {
   NPCS: 'npcs',
   ENERGY: 'energy',
   EXIT: 'exit',
+  BELTS: 'belts',
+  SMASHERS: 'smashers',
+  BRIDGES: 'bridges',
 } as const;

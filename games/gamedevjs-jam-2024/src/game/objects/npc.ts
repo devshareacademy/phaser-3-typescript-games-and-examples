@@ -1,7 +1,8 @@
-import { ANIMATION_KEY } from '../../schema/data-schema';
+import { ANIMATION_KEY } from '../schema/data-schema';
 import { SPRITE_SHEET_ASSET_KEYS } from '../assets/asset-keys';
 import GameScene from '../scenes/game-scene';
 import { Speaker } from './speaker';
+import { explode, fadeOut, flash, shake } from '../utils/juice-utils';
 
 const DIRECTION = {
   LEFT: 'LEFT',
@@ -30,6 +31,7 @@ export class NPC {
   #state: NpcState;
   #direction: Direction;
   #hasEnteredExit: boolean;
+  #hasDied: boolean;
   #hasLeftScene: boolean;
   #colliders: Phaser.Physics.Arcade.Collider[];
   #speakers: Speaker[];
@@ -46,6 +48,7 @@ export class NPC {
     this.#direction = DIRECTION.RIGHT;
     this.#hasEnteredExit = false;
     this.#hasLeftScene = false;
+    this.#hasDied = false;
     this.#colliders = [];
     this.#speakers = config.speakers;
 
@@ -67,6 +70,9 @@ export class NPC {
       return;
     }
     if (this.#hasLeftScene) {
+      return;
+    }
+    if (this.#hasDied) {
       return;
     }
     if (this.#sprite.x >= this.#scene.cameras.main.worldView.width) {
@@ -97,6 +103,39 @@ export class NPC {
     this.#colliders.forEach((collider) => {
       collider.destroy();
     });
+  }
+
+  public isOnBelt(speed: Phaser.Math.Vector2): void {
+    this.#sprite.body.position.add(speed);
+  }
+
+  public died(): void {
+    if (this.#hasDied) {
+      return;
+    }
+    this.#hasDied = true;
+    this.#sprite.removeInteractive();
+    this.#colliders.forEach((collider) => {
+      collider.destroy();
+    });
+    this.#sprite.setVelocityX(0);
+    this.#sprite.anims.stop();
+    shake(this.#scene, this.#sprite);
+    flash(this.#scene, this.#sprite);
+    this.#scene.time.delayedCall(500, () => {
+      fadeOut(this.#scene, this.#sprite);
+      explode(
+        this.#scene,
+        {
+          x: this.#sprite.x + 10,
+          y: this.#sprite.y - 12,
+        },
+        () => {
+          this.#scene.triggerGameOver();
+        },
+      );
+    });
+    // shake and emitter
   }
 
   #moveRight(): void {

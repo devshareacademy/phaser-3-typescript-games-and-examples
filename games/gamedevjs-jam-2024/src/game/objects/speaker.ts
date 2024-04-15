@@ -38,8 +38,8 @@ export class Speaker {
       const body = this.#speakerRange.body as Phaser.Physics.Arcade.Body;
       body.setCircle(body.halfWidth, 0, body.halfHeight - body.halfWidth);
       this.#speakerRange.setScale(0.01);
+      this.#displaySpeakerRange(false);
     });
-    // this.#displaySpeakerRange();
 
     this.#sprite.on(Phaser.Input.Events.POINTER_DOWN, () => {
       this.#handlePlayerClick();
@@ -80,7 +80,7 @@ export class Speaker {
     }
 
     this.#setTexture();
-    this.#displaySpeakerRange();
+    this.#displaySpeakerRange(true);
   }
 
   #setTexture(): void {
@@ -99,7 +99,7 @@ export class Speaker {
     this.#sprite.setAlpha(1);
   }
 
-  #displaySpeakerRange(): void {
+  #displaySpeakerRange(show: boolean): void {
     if (this.#energyLevel === 0) {
       this.#speakerRange.setScale(0.01);
       return;
@@ -110,6 +110,9 @@ export class Speaker {
       this.#speakerRange.setScale(0.75);
     } else {
       this.#speakerRange.setScale(1.2);
+    }
+    if (!show) {
+      return;
     }
     this.#speakerRange.setAlpha(0.5);
     if (this.#speakerRangeTween !== undefined && !this.#speakerRangeTween.isDestroyed()) {

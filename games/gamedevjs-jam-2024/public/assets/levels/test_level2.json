@@ -9,9 +9,9 @@
             25, 25, 25, 25, 25, 0, 0, 25, 25, 25, 25, 25, 0, 0, 25, 25,
             25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25,
-            25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25,
-            25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25],
+            25, 25, 25, 25, 82, 82, 82, 82, 82, 82, 82, 82, 82, 25, 25, 25,
+            25, 25, 25, 25, 83, 83, 83, 83, 83, 83, 83, 83, 83, 25, 25, 25,
+            25, 25, 25, 25, 83, 83, 83, 83, 83, 83, 83, 83, 55, 25, 25, 25],
          "height":9,
          "id":1,
          "locked":true,
@@ -28,9 +28,9 @@
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 2147483733, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 85,
-            0, 0, 0, 2147483741, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 93,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 83, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 85,
+            0, 0, 0, 83, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 93,
+            0, 0, 0, 0, 82, 82, 82, 82, 82, 82, 82, 82, 82, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":9,
@@ -38,6 +38,27 @@
          "locked":true,
          "name":"doors",
          "opacity":0.36,
+         "type":"tilelayer",
+         "visible":true,
+         "width":16,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 74, 75, 75, 75, 75, 75, 75, 75, 76, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "height":9,
+         "id":12,
+         "locked":true,
+         "name":"belts",
+         "opacity":0.44,
          "type":"tilelayer",
          "visible":true,
          "width":16,
@@ -123,29 +144,6 @@
                  "width":32,
                  "x":480,
                  "y":160
-                }, 
-                {
-                 "gid":2147483733,
-                 "height":32,
-                 "id":2,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"flip",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
-                         "name":"id",
-                         "type":"int",
-                         "value":0
-                        }],
-                 "rotation":0,
-                 "type":"Door",
-                 "visible":true,
-                 "width":32,
-                 "x":96,
-                 "y":160
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -156,7 +154,6 @@
         {
          "draworder":"topdown",
          "id":5,
-         "locked":true,
          "name":"speakers",
          "objects":[
                 {
@@ -168,7 +165,7 @@
                         {
                          "name":"currentEnergy",
                          "type":"int",
-                         "value":0
+                         "value":1
                         }, 
                         {
                          "name":"flip",
@@ -184,8 +181,8 @@
                  "type":"Speaker",
                  "visible":true,
                  "width":32,
-                 "x":61.6818,
-                 "y":149.727
+                 "x":61.6818181818182,
+                 "y":149.727272727273
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -196,7 +193,6 @@
         {
          "draworder":"topdown",
          "id":6,
-         "locked":true,
          "name":"buttons",
          "objects":[
                 {
@@ -214,7 +210,7 @@
                         {
                          "name":"currentEnergy",
                          "type":"int",
-                         "value":3
+                         "value":0
                         }, 
                         {
                          "name":"flip",
@@ -239,7 +235,7 @@
                  "y":193
                 }, 
                 {
-                 "gid":2147483753,
+                 "gid":105,
                  "height":42,
                  "id":5,
                  "name":"",
@@ -248,17 +244,17 @@
                          "name":"activeObjectType",
                          "propertytype":"ButtonActivateObjectType",
                          "type":"string",
-                         "value":"Door"
+                         "value":"Belt"
                         }, 
                         {
                          "name":"currentEnergy",
                          "type":"int",
-                         "value":0
+                         "value":3
                         }, 
                         {
                          "name":"flip",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }, 
                         {
                          "name":"id",
@@ -274,8 +270,8 @@
                  "type":"Button",
                  "visible":true,
                  "width":32,
-                 "x":113,
-                 "y":193
+                 "x":384,
+                 "y":257
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -298,7 +294,7 @@
                         {
                          "name":"currentEnergy",
                          "type":"int",
-                         "value":1
+                         "value":0
                         }],
                  "rotation":0,
                  "type":"Energy",
@@ -316,6 +312,7 @@
         {
          "draworder":"topdown",
          "id":10,
+         "locked":true,
          "name":"exit",
          "objects":[
                 {
@@ -335,9 +332,38 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":11,
+         "name":"belts",
+         "objects":[
+                {
+                 "gid":117,
+                 "height":16,
+                 "id":10,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"id",
+                         "type":"int",
+                         "value":0
+                        }],
+                 "rotation":0,
+                 "type":"Belt",
+                 "visible":true,
+                 "width":288,
+                 "x":128,
+                 "y":208
+                }],
+         "opacity":0.17,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":11,
- "nextobjectid":10,
+ "nextlayerid":13,
+ "nextobjectid":11,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.0",

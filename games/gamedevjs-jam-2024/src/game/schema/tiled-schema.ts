@@ -1,23 +1,15 @@
 import { z } from 'zod';
 
-export const TILED_DOOR_STATE = {
-  CLOSED: 'CLOSED',
-  OPEN: 'OPEN',
-} as const;
-export const TiledDoorStateEnumSchema = z.nativeEnum(TILED_DOOR_STATE);
-export type TiledDoorStateEnum = z.infer<typeof TiledDoorStateEnumSchema>;
-
-export const TiledDoorObjectStatePropertySchema = z.object({
-  name: z.literal('state'),
-  type: z.literal('string'),
-  propertytype: z.literal('DoorState'),
-  value: TiledDoorStateEnumSchema,
-});
-
 export const TiledObjectFlipPropertySchema = z.object({
   name: z.literal('flip'),
   type: z.literal('bool'),
   value: z.boolean(),
+});
+
+export const TiledStopsPropertySchema = z.object({
+  name: z.literal('stops'),
+  type: z.literal('string'),
+  value: z.string(),
 });
 
 export const TiledObjectIdPropertySchema = z.object({
@@ -40,6 +32,8 @@ export const TiledTargetObjectIdPropertySchema = z.object({
 
 export const BUTTON_ACTIVE_OBJECT_TYPE = {
   DOOR: 'Door',
+  BELT: 'Belt',
+  BRIDGE: 'Bridge',
 } as const;
 export const TiledButtonActiveTypeEnumSchema = z.nativeEnum(BUTTON_ACTIVE_OBJECT_TYPE);
 export type TiledButtonActiveTypeEnum = z.infer<typeof TiledButtonActiveTypeEnumSchema>;
@@ -54,7 +48,6 @@ export const TiledObjectActiveObjectTypePropertySchema = z.object({
 export const TILED_DOOR_PROPERTY_NAME = {
   FLIP: 'flip',
   ID: 'id',
-  STATE: 'state',
 } as const;
 export const TiledDoorPropertyEnumSchema = z.nativeEnum(TILED_DOOR_PROPERTY_NAME);
 export type TiledDoorPropertyEnum = z.infer<typeof TiledDoorPropertyEnumSchema>;
@@ -182,3 +175,72 @@ export const TiledExitObjectSchema = z.object({
   height: z.number(),
 });
 export type TiledExitObject = z.infer<typeof TiledExitObjectSchema>;
+
+export const TILED_BELT_PROPERTY_NAME = {
+  ID: 'id',
+} as const;
+export const TiledBeltPropertyEnumSchema = z.nativeEnum(TILED_BELT_PROPERTY_NAME);
+export type TiledBeltPropertyEnum = z.infer<typeof TiledBeltPropertyEnumSchema>;
+
+export const TiledBeltObjectSchema = z.object({
+  x: z.number(),
+  y: z.number(),
+  width: z.number(),
+  type: z.literal('Belt'),
+  properties: z
+    .array(TiledObjectPropertySchema)
+    .refine(
+      (elements) => Object.values(TILED_BELT_PROPERTY_NAME).every((el: string) => elements.some((x) => x.name === el)),
+      {
+        message: `There are missing names. Required names are ${Object.values(TILED_BELT_PROPERTY_NAME).join(', ')}`,
+      },
+    ),
+});
+export type TiledBeltObject = z.infer<typeof TiledBeltObjectSchema>;
+
+export const TILED_SMASHER_PROPERTY_NAME = {
+  ID: 'id',
+} as const;
+export const TiledSmasherPropertyEnumSchema = z.nativeEnum(TILED_SMASHER_PROPERTY_NAME);
+export type TiledSmasherPropertyEnum = z.infer<typeof TiledSmasherPropertyEnumSchema>;
+
+export const TiledSmasherObjectSchema = z.object({
+  x: z.number(),
+  y: z.number(),
+  type: z.literal('Smasher'),
+  properties: z
+    .array(TiledObjectPropertySchema)
+    .refine(
+      (elements) =>
+        Object.values(TILED_SMASHER_PROPERTY_NAME).every((el: string) => elements.some((x) => x.name === el)),
+      {
+        message: `There are missing names. Required names are ${Object.values(TILED_SMASHER_PROPERTY_NAME).join(', ')}`,
+      },
+    ),
+});
+export type TiledSmasherObject = z.infer<typeof TiledSmasherObjectSchema>;
+
+export const TILED_BRIDGE_PROPERTY_NAME = {
+  ID: 'id',
+  STOPS: 'stops',
+} as const;
+export const TiledBridgePropertyEnumSchema = z.nativeEnum(TILED_BRIDGE_PROPERTY_NAME);
+export type TiledBridgePropertyEnum = z.infer<typeof TiledBridgePropertyEnumSchema>;
+
+export const TiledBridgeObjectSchema = z.object({
+  x: z.number(),
+  y: z.number(),
+  width: z.number(),
+  height: z.number(),
+  type: z.literal('Bridge'),
+  properties: z
+    .array(TiledObjectPropertySchema)
+    .refine(
+      (elements) =>
+        Object.values(TILED_BRIDGE_PROPERTY_NAME).every((el: string) => elements.some((x) => x.name === el)),
+      {
+        message: `There are missing names. Required names are ${Object.values(TILED_BRIDGE_PROPERTY_NAME).join(', ')}`,
+      },
+    ),
+});
+export type TiledBridgeObject = z.infer<typeof TiledBridgeObjectSchema>;
