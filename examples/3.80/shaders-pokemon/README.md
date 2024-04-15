@@ -2,7 +2,7 @@
 
 Contains example code of how to create Pokemon like battle scene transitions using shaders in Phaser 3. This is the sample code that I shared in my tutorial video hosted on YouTube here: TODO.
 
-You can see a live demo of the examples here: [Pokemon Battle Scene Transitions Shader Examples](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/shader-examples/index.html)
+You can see a live demo of the examples here: [Pokemon Battle Scene Transitions Shader Examples](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/shader-battle-scene-transitions/index.html)
 
 While viewing the examples, you can use the [tweakpane](https://tweakpane.github.io/docs/) gui to switch between the various examples and play the scene transitions.
 
