@@ -1,6 +1,8 @@
 # Phaser 3 TypeScript - Basic Shader Examples
 
-Contains example code of how to use various shaders in Phaser 3. This is the sample code that I shared in my tutorial video hosted on YouTube here: TODO.
+Contains example code of how to use various shaders in Phaser 3. This is the sample code that I shared in my tutorial video hosted on YouTube here:
+
+[<img src="https://i.ytimg.com/vi/4Dj5PSKwjak/hqdefault.jpg">](https://youtu.be/4Dj5PSKwjak "Phaser 3 Tutorial: Getting Started with Shaders!")
 
 You can see a live demo of the examples here: [Shader Examples](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/shader-examples/index.html)
 
