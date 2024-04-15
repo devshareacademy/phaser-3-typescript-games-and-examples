@@ -83,7 +83,7 @@ https://sangoro.itch.io/vfx-starter-pack
 Escape Circuit
 Circuit Rescue
 Power Breakout
-
+https://labs.phaser.io/edit.html?src=src\fx\glow\glow%20fx.js
 https://github.com/yandeu/phaser3-optimal-resolution/tree/master/src
 https://exceptrea.itch.io/laboratory-tileset-revamped-lite
 
