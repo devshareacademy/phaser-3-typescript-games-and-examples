@@ -19,6 +19,7 @@
 		"@devshareacademy/eslint-config": "0.0.18",
 		"@devshareacademy/prettier-config": "0.0.6",
 		"@devshareacademy/tsconfig": "0.0.3",
+		"@types/webfontloader": "1.6.38",
 		"@typescript-eslint/eslint-plugin": "7.1.0",
 		"@typescript-eslint/parser": "7.1.0",
 		"eslint": "8.57.0",
@@ -30,6 +31,7 @@
 	},
 	"dependencies": {
 		"phaser": "3.80.0",
+		"webfontloader": "^1.6.28",
 		"zod": "3.22.4"
 	},
 	"resolutions": {},

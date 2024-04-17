@@ -24,6 +24,12 @@ export default class Game {
           debug: true,
         },
       },
+      fx: {
+        glow: {
+          distance: 6,
+          quality: 0.1,
+        },
+      },
     };
 
     this.game = new Phaser.Game(gameConfig);

@@ -8,6 +8,9 @@ dependencies:
   phaser:
     specifier: 3.80.0
     version: 3.80.0
+  webfontloader:
+    specifier: ^1.6.28
+    version: 1.6.28
   zod:
     specifier: 3.22.4
     version: 3.22.4
@@ -22,6 +25,9 @@ devDependencies:
   '@devshareacademy/tsconfig':
     specifier: 0.0.3
     version: 0.0.3
+  '@types/webfontloader':
+    specifier: 1.6.38
+    version: 1.6.38
   '@typescript-eslint/eslint-plugin':
     specifier: 7.1.0
     version: 7.1.0(@typescript-eslint/parser@7.1.0)(eslint@8.57.0)(typescript@5.3.3)
@@ -484,6 +490,10 @@ packages:
 
   /@types/semver@7.5.8:
     resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
+    dev: true
+
+  /@types/webfontloader@1.6.38:
+    resolution: {integrity: sha512-kUaF72Fv202suFx6yBrwXqeVRMx7hGtJTesyESZgn9sEPCUeDXm2p0SiyS1MTqW74nQP4p7JyrOCwZ7pNFns4w==}
     dev: true
 
   /@typescript-eslint/eslint-plugin@7.1.0(@typescript-eslint/parser@7.1.0)(eslint@8.57.0)(typescript@5.3.3):
@@ -1494,6 +1504,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
+
+  /webfontloader@1.6.28:
+    resolution: {integrity: sha512-Egb0oFEga6f+nSgasH3E0M405Pzn6y3/9tOVanv/DLfa1YBIgcv90L18YyWnvXkRbIM17v5Kv6IT2N6g1x5tvQ==}
+    dev: false
 
   /which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}

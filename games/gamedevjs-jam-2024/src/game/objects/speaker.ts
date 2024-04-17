@@ -18,8 +18,10 @@ export class Speaker {
   #id: number;
   #speakerRange: Phaser.GameObjects.Image;
   #speakerRangeTween: Phaser.Tweens.Tween | undefined;
+  #inTutorial: boolean;
 
   constructor(config: SpeakerConfig) {
+    this.#inTutorial = false;
     this.#id = config.id;
     this.#scene = config.scene;
     this.#maxEnergy = 3;
@@ -58,6 +60,10 @@ export class Speaker {
     return this.#energyLevel;
   }
 
+  set inTutorial(val: boolean) {
+    this.#inTutorial = val;
+  }
+
   public update(): void {
     if (this.#speakerRange.alpha === 0) {
       return;
@@ -66,6 +72,9 @@ export class Speaker {
   }
 
   #handlePlayerClick(): void {
+    if (this.#inTutorial) {
+      return;
+    }
     if (this.#scene.currentEnergy === 0 && this.#energyLevel === 0) {
       return;
     }

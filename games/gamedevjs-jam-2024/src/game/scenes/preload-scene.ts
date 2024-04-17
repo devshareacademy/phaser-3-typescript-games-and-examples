@@ -8,6 +8,7 @@ import {
   TILED_LEVEL_JSON,
 } from '../assets/asset-keys';
 import { DataUtils } from '../utils/data-utils';
+import { WebFontFileLoader } from '../assets/web-font-file-loader';
 
 export default class PreloadScene extends Phaser.Scene {
   constructor() {
@@ -77,6 +78,14 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.json(DATA_ASSET_KEYS.ANIMATIONS, '/animations.json');
     this.load.setPath('assets/images/flare');
     this.load.atlas(ATLAS_ASSET_KEYS.FLARES, '/flares.png', '/flares.json');
+    this.load.setPath('assets/images/ui');
+    this.load.image(IMAGE_ASSET_KEYS.NPC_MODAL, '/npc_modal.png');
+    this.load.image(IMAGE_ASSET_KEYS.MAIN_MODAL, '/main_modal.png');
+    this.load.image(IMAGE_ASSET_KEYS.ENERGY, '/energy.png');
+    this.load.image(IMAGE_ASSET_KEYS.PROFILE_HEAD, '/head.png');
+
+    // load custom fonts
+    this.load.addFile(new WebFontFileLoader(this.load, ['Orbitron:400']));
   }
 
   public create(): void {

@@ -19,8 +19,10 @@ export class Button {
   #maxEnergy: number;
   #id: number;
   #connectedObject: ButtonPoweredObject;
+  #inTutorial: boolean;
 
   constructor(config: ButtonConfig) {
+    this.#inTutorial = false;
     this.#id = config.id;
     this.#scene = config.scene;
     this.#maxEnergy = 3;
@@ -47,7 +49,14 @@ export class Button {
     return this.#energyLevel;
   }
 
+  set inTutorial(val: boolean) {
+    this.#inTutorial = val;
+  }
+
   #handlePlayerClick(): void {
+    if (this.#inTutorial) {
+      return;
+    }
     if (this.#scene.currentEnergy === 0 && this.#energyLevel === 0) {
       return;
     }

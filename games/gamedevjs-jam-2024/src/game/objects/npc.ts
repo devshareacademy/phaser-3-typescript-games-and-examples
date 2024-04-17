@@ -35,6 +35,8 @@ export class NPC {
   #hasLeftScene: boolean;
   #colliders: Phaser.Physics.Arcade.Collider[];
   #speakers: Speaker[];
+  #targetPosition: number | undefined;
+  #waitForNpcToReachTargetPositionCallback: (() => void) | undefined;
 
   constructor(config: NpcConfig) {
     this.#scene = config.scene;
@@ -66,6 +68,14 @@ export class NPC {
   }
 
   public update(): void {
+    if (
+      this.#waitForNpcToReachTargetPositionCallback !== undefined &&
+      this.#targetPosition !== undefined &&
+      this.#sprite.x >= this.#targetPosition
+    ) {
+      this.#waitForNpcToReachTargetPositionCallback();
+      return;
+    }
     if (this.#state === NPC_STATE.IDLE) {
       return;
     }
@@ -138,6 +148,33 @@ export class NPC {
     // shake and emitter
   }
 
+  public async moveToPosition(x: number): Promise<void> {
+    return new Promise((resolve) => {
+      this.#targetPosition = x;
+      this.#waitForNpcToReachTargetPositionCallback = () => {
+        this.#waitForNpcToReachTargetPositionCallback = undefined;
+        this.#targetPosition = undefined;
+        this.#switchStates();
+        resolve();
+      };
+      this.#switchStates();
+      this.#sprite.setVelocityX(20);
+    });
+  }
+
+  #switchStates(): void {
+    if (this.#state === NPC_STATE.IDLE) {
+      this.#state = NPC_STATE.WALKING;
+      this.#sprite.play(ANIMATION_KEY.NPC_1_WALK);
+      this.#moveRight();
+      return;
+    }
+
+    this.#state = NPC_STATE.IDLE;
+    this.#sprite.play(ANIMATION_KEY.NPC_1_IDLE);
+    this.#sprite.setVelocityX(0);
+  }
+
   #moveRight(): void {
     this.#direction = DIRECTION.RIGHT;
     this.#sprite.setX(this.#sprite.x + 20);
@@ -152,19 +189,6 @@ export class NPC {
     this.#sprite.setVelocityX(NPC_VELOCITY * -1);
     this.#sprite.setFlipX(true);
     this.#sprite.body.setOffset(22, 18);
-  }
-
-  #switchStates(): void {
-    if (this.#state === NPC_STATE.IDLE) {
-      this.#state = NPC_STATE.WALKING;
-      this.#sprite.play(ANIMATION_KEY.NPC_1_WALK);
-      this.#moveRight();
-      return;
-    }
-
-    this.#state = NPC_STATE.IDLE;
-    this.#sprite.play(ANIMATION_KEY.NPC_1_IDLE);
-    this.#sprite.setVelocityX(0);
   }
 
   #handlePlayerClick(): void {

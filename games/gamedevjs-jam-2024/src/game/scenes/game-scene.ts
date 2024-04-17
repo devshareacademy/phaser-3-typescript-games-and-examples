@@ -10,6 +10,8 @@ import { Door } from '../objects/door';
 import { Belt } from '../objects/belt';
 import { Smasher } from '../objects/smasher';
 import { Bridge } from '../objects/bridge';
+import { setupTutorial } from '../tutorial/tutorial-utils';
+import { Dialog } from '../objects/dialog';
 
 type GameSceneData = {
   level: number;
@@ -30,6 +32,8 @@ export default class GameScene extends Phaser.Scene {
   #energyText!: Phaser.GameObjects.Text;
   #exitZone!: Phaser.GameObjects.Zone;
   #currentLevel: number;
+  #npcDialogModal!: Dialog;
+  #mainDialogModal!: Dialog;
 
   constructor() {
     super({ key: SceneKeys.GameScene });
@@ -42,7 +46,7 @@ export default class GameScene extends Phaser.Scene {
     this.#bridges = [];
     this.#currentEnergy = 0;
     this.#maxEnergy = 0;
-    this.#currentLevel = 4;
+    this.#currentLevel = 1;
   }
 
   get currentEnergy(): number {
@@ -123,6 +127,32 @@ export default class GameScene extends Phaser.Scene {
 
     this.#energyText = this.add.text(10, 10, '').setOrigin(0);
     this.#updateEnergyUI();
+
+    this.#npcDialogModal = new Dialog({
+      scene: this,
+      x: 0,
+      y: 0,
+      uiBackGroundAssetKey: IMAGE_ASSET_KEYS.NPC_MODAL,
+      uiProfileAssetKey: IMAGE_ASSET_KEYS.PROFILE_HEAD,
+    });
+
+    this.#mainDialogModal = new Dialog({
+      scene: this,
+      x: 0,
+      y: 0,
+      uiBackGroundAssetKey: IMAGE_ASSET_KEYS.MAIN_MODAL,
+      uiProfileAssetKey: IMAGE_ASSET_KEYS.PROFILE_HEAD,
+    });
+
+    setupTutorial({
+      scene: this,
+      currentLevel: this.#currentLevel,
+      npcs: this.#npcs,
+      speakers: this.#speakers,
+      buttons: this.#buttons,
+      mainDialogModal: this.#mainDialogModal,
+      npcDialogModal: this.#npcDialogModal,
+    });
   }
 
   public update(): void {
