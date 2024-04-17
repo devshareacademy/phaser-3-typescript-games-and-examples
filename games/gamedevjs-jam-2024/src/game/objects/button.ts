@@ -36,7 +36,7 @@ export class Button {
     this.#setTexture();
 
     this.#sprite.on(Phaser.Input.Events.POINTER_DOWN, () => {
-      this.#handlePlayerClick();
+      this.handlePlayerClick();
     });
     this.#connectedObject.setInitialPowerLevel(this.#energyLevel);
   }
@@ -53,7 +53,7 @@ export class Button {
     this.#inTutorial = val;
   }
 
-  #handlePlayerClick(): void {
+  public handlePlayerClick(): void {
     if (this.#inTutorial) {
       return;
     }

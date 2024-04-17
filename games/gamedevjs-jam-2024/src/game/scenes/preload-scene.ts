@@ -6,6 +6,7 @@ import {
   IMAGE_ASSET_KEYS,
   SPRITE_SHEET_ASSET_KEYS,
   TILED_LEVEL_JSON,
+  TUTORIAL_IMAGE_ASSET_KEYS,
 } from '../assets/asset-keys';
 import { DataUtils } from '../utils/data-utils';
 import { WebFontFileLoader } from '../assets/web-font-file-loader';
@@ -83,6 +84,11 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image(IMAGE_ASSET_KEYS.MAIN_MODAL, '/main_modal.png');
     this.load.image(IMAGE_ASSET_KEYS.ENERGY, '/energy.png');
     this.load.image(IMAGE_ASSET_KEYS.PROFILE_HEAD, '/head.png');
+    this.load.image(IMAGE_ASSET_KEYS.INFO_PANEL, '/info_modal.png');
+
+    this.load.setPath('assets/images/tutorial');
+    this.load.image(TUTORIAL_IMAGE_ASSET_KEYS.TUTORIAL_SPEAKER, '/speaker.png');
+    this.load.image(TUTORIAL_IMAGE_ASSET_KEYS.TUTORIAL_ENERGY, '/energy.png');
 
     // load custom fonts
     this.load.addFile(new WebFontFileLoader(this.load, ['Orbitron:400']));

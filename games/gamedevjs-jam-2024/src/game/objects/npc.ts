@@ -37,6 +37,7 @@ export class NPC {
   #speakers: Speaker[];
   #targetPosition: number | undefined;
   #waitForNpcToReachTargetPositionCallback: (() => void) | undefined;
+  #inTutorial: boolean;
 
   constructor(config: NpcConfig) {
     this.#scene = config.scene;
@@ -53,9 +54,10 @@ export class NPC {
     this.#hasDied = false;
     this.#colliders = [];
     this.#speakers = config.speakers;
+    this.#inTutorial = false;
 
     this.#sprite.on(Phaser.Input.Events.POINTER_DOWN, () => {
-      this.#handlePlayerClick();
+      this.handlePlayerClick();
     });
   }
 
@@ -65,6 +67,10 @@ export class NPC {
 
   get hasExitedLevel(): boolean {
     return this.#hasLeftScene;
+  }
+
+  set inTutorial(val: boolean) {
+    this.#inTutorial = val;
   }
 
   public update(): void {
@@ -191,21 +197,25 @@ export class NPC {
     this.#sprite.body.setOffset(22, 18);
   }
 
-  #handlePlayerClick(): void {
+  public handlePlayerClick(): void {
+    if (this.#inTutorial) {
+      return;
+    }
+
     const npcBodyRect: Phaser.Geom.Rectangle = new Phaser.Geom.Rectangle(0, 0, 0, 0);
     this.#sprite.body.getBounds(npcBodyRect);
 
     const isOverlapWithSpeaker = this.#speakers.some((speaker) => {
       const speakerBody = speaker.speakerRange.body as Phaser.Physics.Arcade.Body;
+
       const speakerBodyBounds: Phaser.Geom.Circle = new Phaser.Geom.Circle(
         speakerBody.x,
         speakerBody.y,
-        speakerBody.radius,
+        speakerBody.halfWidth,
       );
       speakerBody.getBounds(speakerBodyBounds);
       return Phaser.Geom.Intersects.CircleToRectangle(speakerBodyBounds, npcBodyRect);
     });
-
     if (isOverlapWithSpeaker) {
       this.#switchStates();
     }

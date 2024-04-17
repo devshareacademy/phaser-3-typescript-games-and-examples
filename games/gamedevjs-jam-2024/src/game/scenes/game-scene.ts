@@ -12,6 +12,7 @@ import { Smasher } from '../objects/smasher';
 import { Bridge } from '../objects/bridge';
 import { setupTutorial } from '../tutorial/tutorial-utils';
 import { Dialog } from '../objects/dialog';
+import { InfoPanel } from '../objects/info-panel';
 
 type GameSceneData = {
   level: number;
@@ -30,10 +31,12 @@ export default class GameScene extends Phaser.Scene {
   #currentEnergy: number;
   #maxEnergy: number;
   #energyText!: Phaser.GameObjects.Text;
+  #energyContainer!: Phaser.GameObjects.Container;
   #exitZone!: Phaser.GameObjects.Zone;
   #currentLevel: number;
   #npcDialogModal!: Dialog;
   #mainDialogModal!: Dialog;
+  #infoPanel!: InfoPanel;
 
   constructor() {
     super({ key: SceneKeys.GameScene });
@@ -126,6 +129,14 @@ export default class GameScene extends Phaser.Scene {
     // collisionLayer.renderDebug(this.add.graphics());
 
     this.#energyText = this.add.text(10, 10, '').setOrigin(0);
+    this.#energyContainer = this.add.container(this.scale.width - 10, 10, []);
+    for (let i = 0; i < this.#maxEnergy; i += 1) {
+      const img = this.add
+        .image(24 * -i, 0, IMAGE_ASSET_KEYS.ENERGY, 0)
+        .setScale(0.2)
+        .setOrigin(1, 0);
+      this.#energyContainer.addAt(img, 0);
+    }
     this.#updateEnergyUI();
 
     this.#npcDialogModal = new Dialog({
@@ -143,16 +154,18 @@ export default class GameScene extends Phaser.Scene {
       uiBackGroundAssetKey: IMAGE_ASSET_KEYS.MAIN_MODAL,
       uiProfileAssetKey: IMAGE_ASSET_KEYS.PROFILE_HEAD,
     });
+    this.#infoPanel = new InfoPanel({ scene: this });
 
-    setupTutorial({
-      scene: this,
-      currentLevel: this.#currentLevel,
-      npcs: this.#npcs,
-      speakers: this.#speakers,
-      buttons: this.#buttons,
-      mainDialogModal: this.#mainDialogModal,
-      npcDialogModal: this.#npcDialogModal,
-    });
+    // setupTutorial({
+    //   scene: this,
+    //   currentLevel: this.#currentLevel,
+    //   npcs: this.#npcs,
+    //   speakers: this.#speakers,
+    //   buttons: this.#buttons,
+    //   mainDialogModal: this.#mainDialogModal,
+    //   npcDialogModal: this.#npcDialogModal,
+    //   infoPanel: this.#infoPanel,
+    // }).catch(() => undefined);
   }
 
   public update(): void {
@@ -182,6 +195,13 @@ export default class GameScene extends Phaser.Scene {
 
   #updateEnergyUI(): void {
     this.#energyText.setText(`${this.currentEnergy} / ${this.#maxEnergy}`);
+    this.#energyContainer.list.forEach((energy, index) => {
+      let alpha = 0.4;
+      if (index < this.#currentEnergy) {
+        alpha = 1;
+      }
+      (energy as Phaser.GameObjects.Sprite).setAlpha(alpha);
+    });
   }
 
   #createExitZone(tiledMapData: Phaser.Tilemaps.Tilemap): Phaser.GameObjects.Zone | undefined {

@@ -44,7 +44,7 @@ export class Speaker {
     });
 
     this.#sprite.on(Phaser.Input.Events.POINTER_DOWN, () => {
-      this.#handlePlayerClick();
+      this.handlePlayerClick();
     });
   }
 
@@ -71,7 +71,7 @@ export class Speaker {
     this.#speakerRange.angle += 0.5;
   }
 
-  #handlePlayerClick(): void {
+  public handlePlayerClick(): void {
     if (this.#inTutorial) {
       return;
     }
@@ -123,6 +123,7 @@ export class Speaker {
     if (!show) {
       return;
     }
+
     this.#speakerRange.setAlpha(0.5);
     if (this.#speakerRangeTween !== undefined && !this.#speakerRangeTween.isDestroyed()) {
       this.#speakerRangeTween.destroy();
