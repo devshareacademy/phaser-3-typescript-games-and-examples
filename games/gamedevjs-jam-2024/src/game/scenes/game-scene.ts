@@ -49,7 +49,7 @@ export default class GameScene extends Phaser.Scene {
     this.#bridges = [];
     this.#currentEnergy = 0;
     this.#maxEnergy = 0;
-    this.#currentLevel = 1;
+    this.#currentLevel = 2;
   }
 
   get currentEnergy(): number {
@@ -94,6 +94,12 @@ export default class GameScene extends Phaser.Scene {
 
     this.#npcs.forEach((npc) => {
       const wallCollider = this.physics.add.collider(npc.sprite, collisionLayer, () => {
+        if (npc.sprite.body.blocked.left || npc.sprite.body.blocked.right) {
+          npc.collideWithBridgeWall();
+        }
+        if (npc.sprite.body.blocked.down) {
+          return;
+        }
         npc.collidedWithWall();
       });
       npc.addCollider(wallCollider);
@@ -116,12 +122,14 @@ export default class GameScene extends Phaser.Scene {
       });
       npc.addCollider(smasherCollider);
       this.#bridges.forEach((bridge) => {
-        const bridgeCollider = this.physics.add.collider(npc.sprite, bridge.collisionZone, () => {
-          //npc.collidedWithWall();
-        });
-        npc.addCollider(bridgeCollider);
         const bridgeCollider2 = this.physics.add.collider(npc.sprite, bridge.bridgeContainer, () => {
-          npc.collidedWithWall();
+          if (npc.sprite.body.blocked.left || npc.sprite.body.blocked.right) {
+            npc.collideWithBridgeWall();
+          }
+          if (npc.sprite.body.blocked.down) {
+            return;
+          }
+          npc.collideWithBridgeWall();
         });
         npc.addCollider(bridgeCollider2);
       });
@@ -221,6 +229,7 @@ export default class GameScene extends Phaser.Scene {
     const obj = parsedObject.data;
     const zone = this.add.zone(obj.x, obj.y, obj.width, obj.height).setOrigin(0, 1);
     this.physics.world.enable(zone);
+    (zone.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
     return zone;
   }
 
@@ -249,7 +258,7 @@ export default class GameScene extends Phaser.Scene {
 
   #createDoors(tiledMapData: Phaser.Tilemaps.Tilemap): Phaser.Physics.Arcade.Group {
     this.#doors = [];
-    const gameObjects = this.physics.add.group({ immovable: true });
+    const gameObjects = this.physics.add.group({ immovable: true, allowGravity: false });
     const layerData = tiledMapData.getObjectLayer(TILED_OBJECT_LAYER_NAMES.DOORS);
     if (!layerData) {
       return gameObjects;

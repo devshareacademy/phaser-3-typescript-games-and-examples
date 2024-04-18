@@ -40,7 +40,6 @@ export class Bridge implements ButtonPoweredObject {
   #currentStopIndex: number;
   #bridgeDirection: BridgeDirection;
   #bridgeMovementTween: Phaser.Tweens.Tween | undefined;
-  #elevatorColliderZone: Phaser.GameObjects.Zone;
 
   constructor(config: DoorConfig) {
     this.#id = config.id;
@@ -55,23 +54,18 @@ export class Bridge implements ButtonPoweredObject {
     this.#bridgeDirection = BRIDGE_DIRECTION.UP;
     this.#spriteContainer = this.#scene.add.container(config.x, this.#stops[0], []).setDepth(2);
     this.#createBridgeSprites();
-    this.#elevatorColliderZone = this.#scene.add.zone(config.x, config.y, config.width, config.height).setOrigin(0, 1);
-    this.#scene.physics.world.enable(this.#elevatorColliderZone);
-    (this.#elevatorColliderZone.body as Phaser.Physics.Arcade.Body).setImmovable(true);
 
     this.#spriteContainer.setSize(this.#width, this.#height);
+
     this.#scene.physics.world.enable(this.#spriteContainer);
     (this.#spriteContainer.body as Phaser.Physics.Arcade.Body)
       .setOffset(TILE_SIZE * 2, TILE_SIZE * 2.5)
-      .setImmovable(true);
+      .setImmovable(true)
+      .setAllowGravity(false);
   }
 
   get id(): number {
     return this.#id;
-  }
-
-  get collisionZone(): Phaser.GameObjects.Zone {
-    return this.#elevatorColliderZone;
   }
 
   get bridgeContainer(): Phaser.GameObjects.Container {
@@ -177,7 +171,6 @@ export class Bridge implements ButtonPoweredObject {
       this.#bridgeMovementTween.destroy();
     }
 
-    (this.#elevatorColliderZone.body as Phaser.Physics.Arcade.Body).enable = true;
     this.#bridgeMovementTween = this.#scene.tweens.add({
       targets: this.#spriteContainer,
       y: this.#stops[nextStopIndex],
@@ -186,7 +179,6 @@ export class Bridge implements ButtonPoweredObject {
       onComplete: () => {
         this.#bridgeState = BRIDGE_STATE.ON_SAFE;
         this.#currentStopIndex = nextStopIndex;
-        (this.#elevatorColliderZone.body as Phaser.Physics.Arcade.Body).enable = false;
         // have small delay, and then move bridge again
         this.#scene.time.delayedCall(1500, () => {
           if (this.#bridgeState === BRIDGE_STATE.OFF || this.#bridgeState === BRIDGE_STATE.OFF_SAFE) {

@@ -38,7 +38,7 @@ export class Speaker {
     this.#scene.physics.world.once(Phaser.Physics.Arcade.Events.WORLD_STEP, () => {
       this.#scene.physics.world.enable(this.#speakerRange);
       const body = this.#speakerRange.body as Phaser.Physics.Arcade.Body;
-      body.setCircle(body.halfWidth, 0, body.halfHeight - body.halfWidth);
+      body.setCircle(body.halfWidth, 0, body.halfHeight - body.halfWidth).setAllowGravity(false);
       this.#speakerRange.setScale(0.01);
       this.#displaySpeakerRange(false);
     });

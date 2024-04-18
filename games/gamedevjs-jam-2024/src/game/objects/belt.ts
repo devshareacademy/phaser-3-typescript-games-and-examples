@@ -42,7 +42,10 @@ export class Belt implements ButtonPoweredObject {
     this.#createSprites();
     this.#beltSpriteContainer.setSize(this.#width, TILE_SIZE);
     this.#scene.physics.world.enable(this.#beltSpriteContainer);
-    (this.#beltSpriteContainer.body as Phaser.Physics.Arcade.Body).setOffset(TILE_SIZE * 4, -2).setImmovable(true);
+    (this.#beltSpriteContainer.body as Phaser.Physics.Arcade.Body)
+      .setOffset(TILE_SIZE * 4, -2)
+      .setImmovable(true)
+      .setAllowGravity(false);
 
     // this.#sprite = config.scene.physics.add
     //   .sprite(config.x, config.y, SPRITE_SHEET_ASSET_KEYS.DOOR, 0)

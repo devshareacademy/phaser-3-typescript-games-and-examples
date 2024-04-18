@@ -22,6 +22,9 @@ export default class Game {
         default: 'arcade',
         arcade: {
           debug: true,
+          gravity: {
+            y: 800,
+          },
         },
       },
       fx: {

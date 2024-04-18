@@ -45,7 +45,7 @@ export class NPC {
       .sprite(config.x, config.y, SPRITE_SHEET_ASSET_KEYS.NPC_1_IDLE, 0)
       .setOrigin(0, 1)
       .setInteractive();
-    this.#sprite.body.setSize(20, 30, true).setOffset(5, 18);
+    (this.#sprite.body as Phaser.Physics.Arcade.Body).setSize(20, 30, true).setOffset(5, 18).setAllowGravity(true);
     this.#state = NPC_STATE.IDLE;
     this.#sprite.play(ANIMATION_KEY.NPC_1_IDLE);
     this.#direction = DIRECTION.RIGHT;
@@ -110,12 +110,17 @@ export class NPC {
     this.#moveLeft();
   }
 
+  public collideWithBridgeWall(): void {
+    this.handlePlayerClick();
+  }
+
   public hasEnteredExit(): void {
     if (this.#hasEnteredExit) {
       return;
     }
     this.#hasEnteredExit = true;
     this.#sprite.removeInteractive();
+    (this.#sprite.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
     this.#colliders.forEach((collider) => {
       collider.destroy();
     });
@@ -136,6 +141,7 @@ export class NPC {
     });
     this.#sprite.setVelocityX(0);
     this.#sprite.anims.stop();
+    // shake and emitter
     shake(this.#scene, this.#sprite);
     flash(this.#scene, this.#sprite);
     this.#scene.time.delayedCall(500, () => {
@@ -151,7 +157,6 @@ export class NPC {
         },
       );
     });
-    // shake and emitter
   }
 
   public async moveToPosition(x: number): Promise<void> {
@@ -182,16 +187,24 @@ export class NPC {
   }
 
   #moveRight(): void {
-    this.#direction = DIRECTION.RIGHT;
-    this.#sprite.setX(this.#sprite.x + 20);
+    if (this.#direction !== DIRECTION.RIGHT) {
+      this.#direction = DIRECTION.RIGHT;
+      this.#sprite.setX(this.#sprite.x + 22);
+    } else {
+      this.#sprite.setX(this.#sprite.x - 5);
+    }
     this.#sprite.setVelocityX(NPC_VELOCITY);
     this.#sprite.setFlipX(false);
     this.#sprite.body.setOffset(5, 18);
   }
 
   #moveLeft(): void {
-    this.#direction = DIRECTION.LEFT;
-    this.#sprite.setX(this.#sprite.x - 20);
+    if (this.#direction !== DIRECTION.LEFT) {
+      this.#direction = DIRECTION.LEFT;
+      this.#sprite.setX(this.#sprite.x - 22);
+    } else {
+      this.#sprite.setX(this.#sprite.x + 5);
+    }
     this.#sprite.setVelocityX(NPC_VELOCITY * -1);
     this.#sprite.setFlipX(true);
     this.#sprite.body.setOffset(22, 18);
