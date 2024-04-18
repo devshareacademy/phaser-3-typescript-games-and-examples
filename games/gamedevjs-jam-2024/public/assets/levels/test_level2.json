@@ -181,8 +181,8 @@
                  "type":"Speaker",
                  "visible":true,
                  "width":32,
-                 "x":61.6818181818182,
-                 "y":149.727272727273
+                 "x":61.6818,
+                 "y":149.727
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -223,6 +223,11 @@
                          "value":1
                         }, 
                         {
+                         "name":"maxEnergy",
+                         "type":"int",
+                         "value":3
+                        }, 
+                        {
                          "name":"objectId",
                          "type":"int",
                          "value":1
@@ -260,6 +265,11 @@
                          "name":"id",
                          "type":"int",
                          "value":0
+                        }, 
+                        {
+                         "name":"maxEnergy",
+                         "type":"int",
+                         "value":3
                         }, 
                         {
                          "name":"objectId",

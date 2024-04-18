@@ -29,7 +29,10 @@ export class Smasher {
     this.#mainSprite = this.#scene.add.sprite(config.x, config.y, SPRITE_SHEET_ASSET_KEYS.HAMMER, 0).setOrigin(0, 0.5);
     this.#scene.physics.world.once(Phaser.Physics.Arcade.Events.WORLD_STEP, () => {
       this.#scene.physics.world.enable(this.#mainSprite);
-      (this.#mainSprite.body as Phaser.Physics.Arcade.Body).setOffset(0, TILE_SIZE * -1).setImmovable(true);
+      (this.#mainSprite.body as Phaser.Physics.Arcade.Body)
+        .setOffset(0, TILE_SIZE * -1)
+        .setImmovable(true)
+        .setAllowGravity(false);
       this.#mainSprite.on(
         Phaser.Animations.Events.ANIMATION_UPDATE,
         (animation: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame) => {

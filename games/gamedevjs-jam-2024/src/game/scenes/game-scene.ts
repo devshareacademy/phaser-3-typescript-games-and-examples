@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import OutlinePipelinePlugin from 'phaser3-rex-plugins/plugins/outlinepipeline-plugin.js';
 import { SceneKeys } from './scene-keys';
 import { IMAGE_ASSET_KEYS } from '../assets/asset-keys';
 import { TILED_LAYER_NAMES, TILED_OBJECT_LAYER_NAMES } from '../assets/tiled-keys';
@@ -13,6 +14,9 @@ import { Bridge } from '../objects/bridge';
 import { setupTutorial } from '../tutorial/tutorial-utils';
 import { Dialog } from '../objects/dialog';
 import { InfoPanel } from '../objects/info-panel';
+
+const isOutLinePipeline = (value: unknown): value is OutlinePipelinePlugin =>
+  !!value && typeof value === 'object' && 'add' in value;
 
 type GameSceneData = {
   level: number;
@@ -49,7 +53,7 @@ export default class GameScene extends Phaser.Scene {
     this.#bridges = [];
     this.#currentEnergy = 0;
     this.#maxEnergy = 0;
-    this.#currentLevel = 2;
+    this.#currentLevel = 1;
   }
 
   get currentEnergy(): number {
@@ -66,7 +70,7 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  public create(): void {
+  public async create(): Promise<void> {
     // main background
     this.add.image(this.scale.width / 2, this.scale.height / 2, `LEVEL_${this.#currentLevel}`, 0);
     const tiledMapData = this.make.tilemap({ key: `TILED_LEVEL_${this.#currentLevel}` });
@@ -95,7 +99,7 @@ export default class GameScene extends Phaser.Scene {
     this.#npcs.forEach((npc) => {
       const wallCollider = this.physics.add.collider(npc.sprite, collisionLayer, () => {
         if (npc.sprite.body.blocked.left || npc.sprite.body.blocked.right) {
-          npc.collideWithBridgeWall();
+          npc.collidedWithWall();
         }
         if (npc.sprite.body.blocked.down) {
           return;
@@ -164,16 +168,32 @@ export default class GameScene extends Phaser.Scene {
     });
     this.#infoPanel = new InfoPanel({ scene: this });
 
-    // setupTutorial({
-    //   scene: this,
-    //   currentLevel: this.#currentLevel,
-    //   npcs: this.#npcs,
-    //   speakers: this.#speakers,
-    //   buttons: this.#buttons,
-    //   mainDialogModal: this.#mainDialogModal,
-    //   npcDialogModal: this.#npcDialogModal,
-    //   infoPanel: this.#infoPanel,
-    // }).catch(() => undefined);
+    await setupTutorial({
+      scene: this,
+      currentLevel: this.#currentLevel,
+      npcs: this.#npcs,
+      speakers: this.#speakers,
+      buttons: this.#buttons,
+      mainDialogModal: this.#mainDialogModal,
+      npcDialogModal: this.#npcDialogModal,
+      infoPanel: this.#infoPanel,
+    });
+
+    const plugin = this.plugins.get('rexOutlinePipeline');
+    if (plugin !== null && isOutLinePipeline(plugin)) {
+      this.#buttons.forEach((button) => {
+        plugin.add(button.sprite, {
+          thickness: 1.5,
+          outlineColor: 0xff00fff,
+        });
+      });
+      this.#speakers.forEach((speaker) => {
+        plugin.add(speaker.sprite, {
+          thickness: 1.5,
+          outlineColor: 0xff00fff,
+        });
+      });
+    }
   }
 
   public update(): void {
@@ -312,6 +332,7 @@ export default class GameScene extends Phaser.Scene {
         );
         continue;
       }
+
       const button = new Button({
         scene: this,
         x: obj.x,
@@ -320,6 +341,7 @@ export default class GameScene extends Phaser.Scene {
         startingEnergy: this.#getEnergyDetailsFromObject(obj.properties),
         id: this.#getIdFromObject(obj.properties),
         connectedObject: connectedObject,
+        maxEnergy: this.#getMaxEnergyDetailsFromObject(obj.properties),
       });
       gameObjects.push(button);
     }
@@ -415,6 +437,18 @@ export default class GameScene extends Phaser.Scene {
     const parsedProperty = TiledSchema.TiledObjectCurrentEnergyPropertySchema.safeParse(energyProp);
     if (!parsedProperty.success) {
       return 0;
+    }
+    return parsedProperty.data.value;
+  }
+
+  #getMaxEnergyDetailsFromObject(objectProperties: TiledSchema.TiledObjectProperty[]): number {
+    const energyProp = objectProperties.find((prop) => prop.name === TiledSchema.TILED_BUTTON_PROPERTY_NAME.MAX_ENERGY);
+    if (!energyProp) {
+      return 3;
+    }
+    const parsedProperty = TiledSchema.TiledObjectMaxEnergyPropertySchema.safeParse(energyProp);
+    if (!parsedProperty.success) {
+      return 3;
     }
     return parsedProperty.data.value;
   }

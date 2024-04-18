@@ -196,7 +196,6 @@
         {
          "draworder":"topdown",
          "id":6,
-         "locked":true,
          "name":"buttons",
          "objects":[
                 {
@@ -214,7 +213,7 @@
                         {
                          "name":"currentEnergy",
                          "type":"int",
-                         "value":3
+                         "value":2
                         }, 
                         {
                          "name":"flip",
@@ -225,6 +224,11 @@
                          "name":"id",
                          "type":"int",
                          "value":1
+                        }, 
+                        {
+                         "name":"maxEnergy",
+                         "type":"int",
+                         "value":3
                         }, 
                         {
                          "name":"objectId",
@@ -253,7 +257,7 @@
                         {
                          "name":"currentEnergy",
                          "type":"int",
-                         "value":0
+                         "value":1
                         }, 
                         {
                          "name":"flip",
@@ -264,6 +268,11 @@
                          "name":"id",
                          "type":"int",
                          "value":0
+                        }, 
+                        {
+                         "name":"maxEnergy",
+                         "type":"int",
+                         "value":3
                         }, 
                         {
                          "name":"objectId",

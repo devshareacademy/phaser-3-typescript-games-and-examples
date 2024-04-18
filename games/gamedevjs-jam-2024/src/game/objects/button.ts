@@ -10,6 +10,7 @@ type ButtonConfig = {
   startingEnergy: number;
   id: number;
   connectedObject: ButtonPoweredObject;
+  maxEnergy: number;
 };
 
 export class Button {
@@ -25,7 +26,7 @@ export class Button {
     this.#inTutorial = false;
     this.#id = config.id;
     this.#scene = config.scene;
-    this.#maxEnergy = 3;
+    this.#maxEnergy = config.maxEnergy;
     this.#energyLevel = config.startingEnergy;
     this.#connectedObject = config.connectedObject;
     this.#sprite = config.scene.add

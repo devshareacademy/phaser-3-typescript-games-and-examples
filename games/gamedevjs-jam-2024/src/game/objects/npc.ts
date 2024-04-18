@@ -177,7 +177,11 @@ export class NPC {
     if (this.#state === NPC_STATE.IDLE) {
       this.#state = NPC_STATE.WALKING;
       this.#sprite.play(ANIMATION_KEY.NPC_1_WALK);
-      this.#moveRight();
+      if (this.#direction === DIRECTION.RIGHT) {
+        this.#moveRight();
+      } else {
+        this.#moveLeft();
+      }
       return;
     }
 

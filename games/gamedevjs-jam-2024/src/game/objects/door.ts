@@ -53,6 +53,7 @@ export class Door implements ButtonPoweredObject {
       this.#doorState = DOOR_STATE.CLOSED;
     } else if (powerLevel === 1) {
       this.#doorState = DOOR_STATE.PARTIAL1;
+      this.#sprite.play(ANIMATION_KEY.DOOR_CLOSED_TO_PARTIAL1_OPEN);
     } else if (powerLevel === 2) {
       this.#doorState = DOOR_STATE.PARTIAL2;
     } else {

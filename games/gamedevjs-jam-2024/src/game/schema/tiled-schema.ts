@@ -24,6 +24,12 @@ export const TiledObjectCurrentEnergyPropertySchema = z.object({
   value: z.number(),
 });
 
+export const TiledObjectMaxEnergyPropertySchema = z.object({
+  name: z.literal('maxEnergy'),
+  type: z.literal('int'),
+  value: z.number(),
+});
+
 export const TiledTargetObjectIdPropertySchema = z.object({
   name: z.literal('objectId'),
   type: z.literal('int'),
@@ -81,6 +87,7 @@ export const TILED_BUTTON_PROPERTY_NAME = {
   OBJECT_ID: 'objectId',
   ACTIVE_OBJECT_TYPE: 'activeObjectType',
   CURRENT_ENERGY: 'currentEnergy',
+  MAX_ENERGY: 'maxEnergy',
 } as const;
 export const TiledButtonPropertyEnumSchema = z.nativeEnum(TILED_BUTTON_PROPERTY_NAME);
 export type TiledButtonPropertyEnum = z.infer<typeof TiledButtonPropertyEnumSchema>;

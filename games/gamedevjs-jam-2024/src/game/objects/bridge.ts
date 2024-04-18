@@ -40,6 +40,7 @@ export class Bridge implements ButtonPoweredObject {
   #currentStopIndex: number;
   #bridgeDirection: BridgeDirection;
   #bridgeMovementTween: Phaser.Tweens.Tween | undefined;
+  #powerLevel: number;
 
   constructor(config: DoorConfig) {
     this.#id = config.id;
@@ -51,6 +52,7 @@ export class Bridge implements ButtonPoweredObject {
     this.#height = config.height;
     this.#stops = config.stops;
     this.#currentStopIndex = 0;
+    this.#powerLevel = 0;
     this.#bridgeDirection = BRIDGE_DIRECTION.UP;
     this.#spriteContainer = this.#scene.add.container(config.x, this.#stops[0], []).setDepth(2);
     this.#createBridgeSprites();
@@ -77,6 +79,7 @@ export class Bridge implements ButtonPoweredObject {
    * @param powerLevel the amount of power the connected button has, will be between 0 - 1 for bridges
    */
   public setInitialPowerLevel(powerLevel: number): void {
+    this.#powerLevel = powerLevel;
     if (powerLevel === 0) {
       this.#bridgeState === BRIDGE_STATE.OFF;
       return;
@@ -89,7 +92,15 @@ export class Bridge implements ButtonPoweredObject {
    *
    * @param powerLevel the amount of power the connected button has, will be between 0 - 3
    */
-  public powerLevelChanged(powerLevel: number): void {}
+  public powerLevelChanged(powerLevel: number): void {
+    this.#powerLevel = powerLevel;
+    if (powerLevel === 0) {
+      this.#bridgeState === BRIDGE_STATE.OFF;
+      return;
+    }
+    this.#bridgeState = BRIDGE_STATE.ON;
+    this.#handleBridgeMovement();
+  }
 
   #createBridgeSprites(): void {
     const leftBridgeRail = this.#scene.add.sprite(8, -1 * TILE_SIZE, SPRITE_SHEET_ASSET_KEYS.FENCE, 0).setOrigin(0, 1);
@@ -145,6 +156,9 @@ export class Bridge implements ButtonPoweredObject {
   }
 
   #handleBridgeMovement(): void {
+    if (this.#powerLevel === 0) {
+      this.#bridgeState = BRIDGE_STATE.OFF;
+    }
     if (this.#bridgeState === BRIDGE_STATE.OFF || this.#bridgeState === BRIDGE_STATE.OFF_SAFE) {
       return;
     }

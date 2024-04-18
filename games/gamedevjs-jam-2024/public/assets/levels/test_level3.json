@@ -155,7 +155,6 @@
         {
          "draworder":"topdown",
          "id":5,
-         "locked":true,
          "name":"speakers",
          "objects":[
                 {
@@ -223,6 +222,7 @@
         {
          "draworder":"topdown",
          "id":11,
+         "locked":true,
          "name":"smashers",
          "objects":[
                 {
@@ -288,7 +288,6 @@
         {
          "draworder":"topdown",
          "id":6,
-         "locked":true,
          "name":"buttons",
          "objects":[
                 {
@@ -319,6 +318,11 @@
                          "value":1
                         }, 
                         {
+                         "name":"maxEnergy",
+                         "type":"int",
+                         "value":3
+                        }, 
+                        {
                          "name":"objectId",
                          "type":"int",
                          "value":1
@@ -339,6 +343,7 @@
         {
          "draworder":"topdown",
          "id":9,
+         "locked":true,
          "name":"energy",
          "objects":[
                 {

@@ -93,6 +93,8 @@ export class Speaker {
   }
 
   #setTexture(): void {
+    this.#sprite.setAlpha(1);
+    return;
     if (this.#energyLevel === 0) {
       this.#sprite.setAlpha(0.25);
       return;

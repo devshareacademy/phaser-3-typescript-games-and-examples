@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import OutlinePipelinePlugin from 'phaser3-rex-plugins/plugins/outlinepipeline-plugin.js';
 import GameScene from './scenes/game-scene';
 import { SceneKeys } from './scenes/scene-keys';
 import PreloadScene from './scenes/preload-scene';
@@ -32,6 +33,15 @@ export default class Game {
           distance: 6,
           quality: 0.1,
         },
+      },
+      plugins: {
+        global: [
+          {
+            key: 'rexOutlinePipeline',
+            plugin: OutlinePipelinePlugin,
+            start: true,
+          },
+        ],
       },
     };
 

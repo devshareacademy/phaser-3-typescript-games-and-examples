@@ -91,3 +91,15 @@ https://exceptrea.itch.io/laboratory-tileset-revamped-lite
 ## Bugs
 
 if player closed door on npc, npc is stuck, this should result in player restarting level
+
+
+## Tasks
+
+- level 2, at start have npc just move to belt and get stuck
+  - have input locked, and then after short window have npc say message about needing a hand there
+  - reply and highlight button, when clicked show modal with details
+  - on clean, continue level
+- need updated sprites for power levels on speakers and buttons
+- level artwork
+- plan out new levels
+- handle whn npc dies, restart level

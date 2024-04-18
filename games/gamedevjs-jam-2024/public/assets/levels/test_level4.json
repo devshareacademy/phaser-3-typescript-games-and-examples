@@ -68,6 +68,7 @@
         {
          "draworder":"topdown",
          "id":14,
+         "locked":true,
          "name":"bridges",
          "objects":[
                 {
@@ -338,7 +339,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":17,
+ "nextlayerid":19,
  "nextobjectid":26,
  "orientation":"orthogonal",
  "renderorder":"right-down",

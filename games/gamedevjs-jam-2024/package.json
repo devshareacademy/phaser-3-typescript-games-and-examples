@@ -31,6 +31,7 @@
 	},
 	"dependencies": {
 		"phaser": "3.80.0",
+		"phaser3-rex-plugins": "1.80.2",
 		"webfontloader": "^1.6.28",
 		"zod": "3.22.4"
 	},
