@@ -46,10 +46,6 @@ export class Belt implements ButtonPoweredObject {
       .setOffset(TILE_SIZE * 4, -2)
       .setImmovable(true)
       .setAllowGravity(false);
-
-    // this.#sprite = config.scene.physics.add
-    //   .sprite(config.x, config.y, SPRITE_SHEET_ASSET_KEYS.DOOR, 0)
-    //   .setOrigin(0, 0.5);
   }
 
   get spriteContainer(): Phaser.GameObjects.Container {
@@ -86,8 +82,6 @@ export class Belt implements ButtonPoweredObject {
    * @param powerLevel the amount of power the connected button has, will be between 0 - 3
    */
   public powerLevelChanged(powerLevel: number): void {
-    // TODO
-    console.log(powerLevel);
     if (powerLevel === 0) {
       this.#beltState = BELT_STATE.OFF;
     } else if (powerLevel === 1) {

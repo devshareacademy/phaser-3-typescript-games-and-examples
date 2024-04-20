@@ -103,3 +103,4 @@ if player closed door on npc, npc is stuck, this should result in player restart
 - level artwork
 - plan out new levels
 - handle whn npc dies, restart level
+- add closing doors when entering level

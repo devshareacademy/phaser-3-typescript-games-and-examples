@@ -75,6 +75,7 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.setPath('assets/images');
     this.load.image(IMAGE_ASSET_KEYS.COLLISION, '/collision.png');
     this.load.image(IMAGE_ASSET_KEYS.DASH_CIRCLE, '/dash-circle.png');
+    this.load.image(IMAGE_ASSET_KEYS.BACKGROUND, '/Background.png');
     this.load.setPath('assets/data');
     this.load.json(DATA_ASSET_KEYS.ANIMATIONS, '/animations.json');
     this.load.setPath('assets/images/flare');

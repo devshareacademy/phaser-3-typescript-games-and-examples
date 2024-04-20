@@ -6,6 +6,12 @@ export const TiledObjectFlipPropertySchema = z.object({
   value: z.boolean(),
 });
 
+export const TiledObjectIsLevelEntrancePropertySchema = z.object({
+  name: z.literal('isLevelEntrance'),
+  type: z.literal('bool'),
+  value: z.boolean(),
+});
+
 export const TiledStopsPropertySchema = z.object({
   name: z.literal('stops'),
   type: z.literal('string'),
@@ -54,6 +60,7 @@ export const TiledObjectActiveObjectTypePropertySchema = z.object({
 export const TILED_DOOR_PROPERTY_NAME = {
   FLIP: 'flip',
   ID: 'id',
+  IS_LEVEL_ENTRANCE: 'isLevelEntrance',
 } as const;
 export const TiledDoorPropertyEnumSchema = z.nativeEnum(TILED_DOOR_PROPERTY_NAME);
 export type TiledDoorPropertyEnum = z.infer<typeof TiledDoorPropertyEnumSchema>;

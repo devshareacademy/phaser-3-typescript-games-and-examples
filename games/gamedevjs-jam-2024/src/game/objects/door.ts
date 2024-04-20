@@ -9,6 +9,7 @@ type DoorConfig = {
   y: number;
   flipX: boolean;
   id: number;
+  isLevelEntrance: boolean;
 };
 
 const DOOR_STATE = {
@@ -24,16 +25,26 @@ export class Door implements ButtonPoweredObject {
   #sprite: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
   #id: number;
   #doorState: DoorState;
+  #isLevelEntrance: boolean;
 
   constructor(config: DoorConfig) {
     this.#id = config.id;
     this.#scene = config.scene;
+    this.#isLevelEntrance = config.isLevelEntrance;
     this.#doorState = DOOR_STATE.CLOSED;
     this.#sprite = config.scene.physics.add
       .sprite(config.x, config.y, SPRITE_SHEET_ASSET_KEYS.DOOR, 0)
       .setFlipX(config.flipX)
       .setOrigin(0, 0.5);
     this.#setTexture();
+    if (this.#isLevelEntrance) {
+      console.log(1);
+      this.#doorState = DOOR_STATE.OPEN;
+      this.#setTexture();
+      this.#scene.physics.world.once(Phaser.Physics.Arcade.Events.WORLD_STEP, () => {
+        this.#sprite.body.enable = true;
+      });
+    }
   }
 
   get sprite(): Phaser.Types.Physics.Arcade.SpriteWithDynamicBody {
@@ -42,6 +53,19 @@ export class Door implements ButtonPoweredObject {
 
   get id(): number {
     return this.#id;
+  }
+
+  get isLevelEntrance(): boolean {
+    return this.#isLevelEntrance;
+  }
+
+  public async closeDoor(): Promise<void> {
+    return new Promise((resolve) => {
+      this.#sprite.play(ANIMATION_KEY.DOOR_OPEN_TO_CLOSED);
+      this.#sprite.once(Phaser.Animations.Events.ANIMATION_COMPLETE_KEY + ANIMATION_KEY.DOOR_OPEN_TO_CLOSED, () => {
+        resolve();
+      });
+    });
   }
 
   /**

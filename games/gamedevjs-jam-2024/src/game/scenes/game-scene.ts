@@ -15,6 +15,11 @@ import { setupTutorial } from '../tutorial/tutorial-utils';
 import { Dialog } from '../objects/dialog';
 import { InfoPanel } from '../objects/info-panel';
 
+const BACKGROUND_POSITION = {
+  1: { x: 0, y: -200 },
+  2: { x: -30, y: -120 },
+} as const;
+
 const isOutLinePipeline = (value: unknown): value is OutlinePipelinePlugin =>
   !!value && typeof value === 'object' && 'add' in value;
 
@@ -34,13 +39,13 @@ export default class GameScene extends Phaser.Scene {
   #smasherGroup!: Phaser.GameObjects.Group;
   #currentEnergy: number;
   #maxEnergy: number;
-  #energyText!: Phaser.GameObjects.Text;
   #energyContainer!: Phaser.GameObjects.Container;
   #exitZone!: Phaser.GameObjects.Zone;
   #currentLevel: number;
   #npcDialogModal!: Dialog;
   #mainDialogModal!: Dialog;
   #infoPanel!: InfoPanel;
+  #finishedLevel: boolean;
 
   constructor() {
     super({ key: SceneKeys.GameScene });
@@ -53,7 +58,8 @@ export default class GameScene extends Phaser.Scene {
     this.#bridges = [];
     this.#currentEnergy = 0;
     this.#maxEnergy = 0;
-    this.#currentLevel = 1;
+    this.#currentLevel = 2;
+    this.#finishedLevel = false;
   }
 
   get currentEnergy(): number {
@@ -72,6 +78,8 @@ export default class GameScene extends Phaser.Scene {
 
   public async create(): Promise<void> {
     // main background
+    const bgPosition = BACKGROUND_POSITION[this.#currentLevel] as { x: number; y: number };
+    this.add.image(bgPosition.x, bgPosition.y, IMAGE_ASSET_KEYS.BACKGROUND, 0).setOrigin(0);
     this.add.image(this.scale.width / 2, this.scale.height / 2, `LEVEL_${this.#currentLevel}`, 0);
     const tiledMapData = this.make.tilemap({ key: `TILED_LEVEL_${this.#currentLevel}` });
     const exitZone = this.#createExitZone(tiledMapData);
@@ -140,7 +148,6 @@ export default class GameScene extends Phaser.Scene {
     });
     // collisionLayer.renderDebug(this.add.graphics());
 
-    this.#energyText = this.add.text(10, 10, '').setOrigin(0);
     this.#energyContainer = this.add.container(this.scale.width - 10, 10, []);
     for (let i = 0; i < this.#maxEnergy; i += 1) {
       const img = this.add
@@ -194,9 +201,22 @@ export default class GameScene extends Phaser.Scene {
         });
       });
     }
+    if (this.#currentLevel !== 1) {
+      this.input.enabled = false;
+      await this.#npcs[0].playEnterLevel();
+      for (const door of this.#doors) {
+        if (door.isLevelEntrance) {
+          await door.closeDoor();
+        }
+      }
+      this.input.enabled = true;
+    }
   }
 
   public update(): void {
+    if (this.#finishedLevel) {
+      return;
+    }
     this.#npcs.forEach((npc) => npc.update());
     this.#speakers.forEach((speaker) => speaker.update());
     this.#belts.forEach((belt) => belt.update());
@@ -210,9 +230,8 @@ export default class GameScene extends Phaser.Scene {
   public npcHasLeftScene(): void {
     const hasAllNpcsLeft = this.#npcs.every((npc) => npc.hasExitedLevel);
     if (hasAllNpcsLeft) {
+      this.#finishedLevel = true;
       this.scene.start(SceneKeys.GameScene, { level: (this.#currentLevel += 1) });
-    } else {
-      console.log('keep playing');
     }
   }
 
@@ -222,7 +241,6 @@ export default class GameScene extends Phaser.Scene {
   }
 
   #updateEnergyUI(): void {
-    this.#energyText.setText(`${this.currentEnergy} / ${this.#maxEnergy}`);
     this.#energyContainer.list.forEach((energy, index) => {
       let alpha = 0.4;
       if (index < this.#currentEnergy) {
@@ -301,6 +319,7 @@ export default class GameScene extends Phaser.Scene {
         y: obj.y,
         flipX: this.#shouldFlipGameObject(obj.properties),
         id: this.#getIdFromObject(obj.properties),
+        isLevelEntrance: this.#isDoorLevelEntrance(obj.properties),
       });
       gameObjects.add(door.sprite);
       this.#doors.push(door);
@@ -421,6 +440,20 @@ export default class GameScene extends Phaser.Scene {
       return false;
     }
     const parsedProperty = TiledSchema.TiledObjectFlipPropertySchema.safeParse(flipProp);
+    if (!parsedProperty.success) {
+      return false;
+    }
+    return parsedProperty.data.value;
+  }
+
+  #isDoorLevelEntrance(objectProperties: TiledSchema.TiledObjectProperty[]): boolean {
+    const isLevelEntranceProp = objectProperties.find(
+      (prop) => prop.name === TiledSchema.TILED_DOOR_PROPERTY_NAME.IS_LEVEL_ENTRANCE,
+    );
+    if (!isLevelEntranceProp) {
+      return false;
+    }
+    const parsedProperty = TiledSchema.TiledObjectIsLevelEntrancePropertySchema.safeParse(isLevelEntranceProp);
     if (!parsedProperty.success) {
       return false;
     }

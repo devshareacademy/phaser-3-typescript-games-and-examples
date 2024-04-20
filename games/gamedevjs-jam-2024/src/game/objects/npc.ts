@@ -38,6 +38,7 @@ export class NPC {
   #targetPosition: number | undefined;
   #waitForNpcToReachTargetPositionCallback: (() => void) | undefined;
   #inTutorial: boolean;
+  #isEnteringLevel: boolean;
 
   constructor(config: NpcConfig) {
     this.#scene = config.scene;
@@ -55,6 +56,7 @@ export class NPC {
     this.#colliders = [];
     this.#speakers = config.speakers;
     this.#inTutorial = false;
+    this.#isEnteringLevel = false;
 
     this.#sprite.on(Phaser.Input.Events.POINTER_DOWN, () => {
       this.handlePlayerClick();
@@ -103,6 +105,9 @@ export class NPC {
   }
 
   public collidedWithWall(): void {
+    if (this.#isEnteringLevel) {
+      return;
+    }
     if (this.#direction === DIRECTION.LEFT) {
       this.#moveRight();
       return;
@@ -170,6 +175,28 @@ export class NPC {
       };
       this.#switchStates();
       this.#sprite.setVelocityX(20);
+    });
+  }
+
+  public async playEnterLevel(): Promise<void> {
+    return new Promise((resolve) => {
+      this.#isEnteringLevel = true;
+      (this.#sprite.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
+      this.#sprite.setVelocityX(0);
+      this.#sprite.play(ANIMATION_KEY.NPC_1_WALK);
+      const originalX = this.#sprite.x;
+      this.#sprite.setX(-30);
+      this.#scene.tweens.add({
+        targets: this.#sprite,
+        x: originalX,
+        duration: 1200,
+        onComplete: () => {
+          (this.#sprite.body as Phaser.Physics.Arcade.Body).setAllowGravity(true);
+          this.#sprite.play(ANIMATION_KEY.NPC_1_IDLE);
+          this.#isEnteringLevel = true;
+          resolve();
+        },
+      });
     });
   }
 
