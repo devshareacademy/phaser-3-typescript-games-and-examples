@@ -12,6 +12,12 @@ export const TiledObjectIsLevelEntrancePropertySchema = z.object({
   value: z.boolean(),
 });
 
+export const TiledObjectNoButtonPropertySchema = z.object({
+  name: z.literal('noButton'),
+  type: z.literal('bool'),
+  value: z.boolean(),
+});
+
 export const TiledStopsPropertySchema = z.object({
   name: z.literal('stops'),
   type: z.literal('string'),
@@ -38,6 +44,18 @@ export const TiledObjectMaxEnergyPropertySchema = z.object({
 
 export const TiledTargetObjectIdPropertySchema = z.object({
   name: z.literal('objectId'),
+  type: z.literal('int'),
+  value: z.number(),
+});
+
+export const TiledObjectDelayBetweenAttacksPropertySchema = z.object({
+  name: z.literal('delayBetweenAttacks'),
+  type: z.literal('int'),
+  value: z.number(),
+});
+
+export const TiledObjectDelayFromSceneStartPropertySchema = z.object({
+  name: z.literal('delayFromSceneStart'),
   type: z.literal('int'),
   value: z.number(),
 });
@@ -214,6 +232,8 @@ export type TiledBeltObject = z.infer<typeof TiledBeltObjectSchema>;
 
 export const TILED_SMASHER_PROPERTY_NAME = {
   ID: 'id',
+  DELAY_BETWEEN_ATTACKS: 'delayBetweenAttacks',
+  DELAY_FROM_SCENE_START: 'delayFromSceneStart',
 } as const;
 export const TiledSmasherPropertyEnumSchema = z.nativeEnum(TILED_SMASHER_PROPERTY_NAME);
 export type TiledSmasherPropertyEnum = z.infer<typeof TiledSmasherPropertyEnumSchema>;
@@ -237,6 +257,7 @@ export type TiledSmasherObject = z.infer<typeof TiledSmasherObjectSchema>;
 export const TILED_BRIDGE_PROPERTY_NAME = {
   ID: 'id',
   STOPS: 'stops',
+  NO_BUTTON: 'noButton',
 } as const;
 export const TiledBridgePropertyEnumSchema = z.nativeEnum(TILED_BRIDGE_PROPERTY_NAME);
 export type TiledBridgePropertyEnum = z.infer<typeof TiledBridgePropertyEnumSchema>;

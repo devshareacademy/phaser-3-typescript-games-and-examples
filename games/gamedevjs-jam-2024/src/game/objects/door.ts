@@ -38,7 +38,6 @@ export class Door implements ButtonPoweredObject {
       .setOrigin(0, 0.5);
     this.#setTexture();
     if (this.#isLevelEntrance) {
-      console.log(1);
       this.#doorState = DOOR_STATE.OPEN;
       this.#setTexture();
       this.#scene.physics.world.once(Phaser.Physics.Arcade.Events.WORLD_STEP, () => {

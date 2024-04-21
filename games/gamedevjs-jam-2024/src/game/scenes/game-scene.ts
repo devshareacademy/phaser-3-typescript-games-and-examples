@@ -18,6 +18,7 @@ import { InfoPanel } from '../objects/info-panel';
 const BACKGROUND_POSITION = {
   1: { x: 0, y: -200 },
   2: { x: -30, y: -120 },
+  8: { x: -30, y: 0 },
 } as const;
 
 const isOutLinePipeline = (value: unknown): value is OutlinePipelinePlugin =>
@@ -46,6 +47,7 @@ export default class GameScene extends Phaser.Scene {
   #mainDialogModal!: Dialog;
   #infoPanel!: InfoPanel;
   #finishedLevel: boolean;
+  #fullScreenKey: Phaser.Input.Keyboard.Key | undefined;
 
   constructor() {
     super({ key: SceneKeys.GameScene });
@@ -58,7 +60,7 @@ export default class GameScene extends Phaser.Scene {
     this.#bridges = [];
     this.#currentEnergy = 0;
     this.#maxEnergy = 0;
-    this.#currentLevel = 2;
+    this.#currentLevel = 6;
     this.#finishedLevel = false;
   }
 
@@ -67,20 +69,44 @@ export default class GameScene extends Phaser.Scene {
   }
 
   public init(data: GameSceneData): void {
+    this.#finishedLevel = false;
+    this.#maxEnergy = 0;
+    this.#currentEnergy = 0;
+    this.#npcs = [];
+    this.#speakers = [];
+    this.#buttons = [];
+    this.#doors = [];
+    this.#belts = [];
+    this.#smashers = [];
+    this.#bridges = [];
+
     if (Object.keys(data).length === 0) {
       return;
     }
     this.#currentLevel = data.level;
-    if (this.#currentLevel === 5) {
+    if (this.#currentLevel === 9) {
       this.#currentLevel = 1;
     }
   }
 
   public async create(): Promise<void> {
+    // full screen support
+    this.#fullScreenKey = this.input?.keyboard?.addKey(Phaser.Input.Keyboard.KeyCodes.F);
     // main background
-    const bgPosition = BACKGROUND_POSITION[this.#currentLevel] as { x: number; y: number };
+    const bgPosition = (BACKGROUND_POSITION[this.#currentLevel] || BACKGROUND_POSITION[2]) as { x: number; y: number };
     this.add.image(bgPosition.x, bgPosition.y, IMAGE_ASSET_KEYS.BACKGROUND, 0).setOrigin(0);
     this.add.image(this.scale.width / 2, this.scale.height / 2, `LEVEL_${this.#currentLevel}`, 0);
+    // add full screen button
+    this.add
+      .image(5, 5, IMAGE_ASSET_KEYS.FULLSCREEN_BUTTON)
+      .setOrigin(0)
+      .setScale(0.75)
+      .setDepth(4)
+      .setInteractive()
+      .on(Phaser.Input.Events.POINTER_DOWN, () => {
+        this.scale.toggleFullscreen();
+      });
+
     const tiledMapData = this.make.tilemap({ key: `TILED_LEVEL_${this.#currentLevel}` });
     const exitZone = this.#createExitZone(tiledMapData);
     if (exitZone === undefined) {
@@ -108,6 +134,7 @@ export default class GameScene extends Phaser.Scene {
       const wallCollider = this.physics.add.collider(npc.sprite, collisionLayer, () => {
         if (npc.sprite.body.blocked.left || npc.sprite.body.blocked.right) {
           npc.collidedWithWall();
+          return;
         }
         if (npc.sprite.body.blocked.down) {
           return;
@@ -157,6 +184,7 @@ export default class GameScene extends Phaser.Scene {
       this.#energyContainer.addAt(img, 0);
     }
     this.#updateEnergyUI();
+    this.add.image(0, 0, IMAGE_ASSET_KEYS.OVERLAY, 0).setOrigin(0).setAlpha(0.2).setDepth(5);
 
     this.#npcDialogModal = new Dialog({
       scene: this,
@@ -214,6 +242,10 @@ export default class GameScene extends Phaser.Scene {
   }
 
   public update(): void {
+    if (this.#wasFullScreenKeyPressed()) {
+      this.scale.toggleFullscreen();
+    }
+
     if (this.#finishedLevel) {
       return;
     }
@@ -236,8 +268,11 @@ export default class GameScene extends Phaser.Scene {
   }
 
   public triggerGameOver(): void {
-    this.scene.pause();
-    // TODO: show menu for restarting scene
+    this.cameras.main.fadeOut(1000, 0, 0, 0, (camera, progress) => {
+      if (progress === 1) {
+        this.scene.restart({ level: this.#currentLevel });
+      }
+    });
   }
 
   #updateEnergyUI(): void {
@@ -498,6 +533,34 @@ export default class GameScene extends Phaser.Scene {
     return parsedProperty.data.value;
   }
 
+  #getDelayFromStart(objectProperties: TiledSchema.TiledObjectProperty[]): number {
+    const prop = objectProperties.find(
+      (prop) => prop.name === TiledSchema.TILED_SMASHER_PROPERTY_NAME.DELAY_FROM_SCENE_START,
+    );
+    if (!prop) {
+      return -1;
+    }
+    const parsedProperty = TiledSchema.TiledObjectDelayFromSceneStartPropertySchema.safeParse(prop);
+    if (!parsedProperty.success) {
+      return 0;
+    }
+    return parsedProperty.data.value;
+  }
+
+  #getDelayBetweenAttacks(objectProperties: TiledSchema.TiledObjectProperty[]): number {
+    const prop = objectProperties.find(
+      (prop) => prop.name === TiledSchema.TILED_SMASHER_PROPERTY_NAME.DELAY_BETWEEN_ATTACKS,
+    );
+    if (!prop) {
+      return -1;
+    }
+    const parsedProperty = TiledSchema.TiledObjectDelayBetweenAttacksPropertySchema.safeParse(prop);
+    if (!parsedProperty.success) {
+      return 0;
+    }
+    return parsedProperty.data.value;
+  }
+
   #createCollisionLayer(tiledMapData: Phaser.Tilemaps.Tilemap): Phaser.Tilemaps.TilemapLayer | undefined {
     const collisionTiles = tiledMapData.addTilesetImage(
       IMAGE_ASSET_KEYS.COLLISION.toLowerCase(),
@@ -592,8 +655,8 @@ export default class GameScene extends Phaser.Scene {
         x: obj.x,
         y: obj.y,
         id: this.#getIdFromObject(obj.properties),
-        delayBetweenAttacks: 1000,
-        delayFromSceneStart: 1000,
+        delayBetweenAttacks: this.#getDelayBetweenAttacks(obj.properties),
+        delayFromSceneStart: this.#getDelayFromStart(obj.properties),
       });
       smashers.push(smasher);
     }
@@ -627,6 +690,12 @@ export default class GameScene extends Phaser.Scene {
         height: obj.height,
       });
       bridges.push(bridge);
+
+      const hasNoButton = this.#doesBridgeHaveNoButton(obj.properties);
+
+      if (hasNoButton) {
+        bridge.setInitialPowerLevel(1);
+      }
     }
     return bridges;
   }
@@ -641,5 +710,24 @@ export default class GameScene extends Phaser.Scene {
       return [];
     }
     return parsedProperty.data.value.split(',').map((val) => parseInt(val, 10));
+  }
+
+  #doesBridgeHaveNoButton(objectProperties: TiledSchema.TiledObjectProperty[]): boolean {
+    const prop = objectProperties.find((prop) => prop.name === TiledSchema.TILED_BRIDGE_PROPERTY_NAME.NO_BUTTON);
+    if (!prop) {
+      return false;
+    }
+    const parsedProperty = TiledSchema.TiledObjectNoButtonPropertySchema.safeParse(prop);
+    if (!parsedProperty.success) {
+      return false;
+    }
+    return parsedProperty.data.value;
+  }
+
+  #wasFullScreenKeyPressed() {
+    if (this.#fullScreenKey === undefined) {
+      return false;
+    }
+    return Phaser.Input.Keyboard.JustDown(this.#fullScreenKey);
   }
 }

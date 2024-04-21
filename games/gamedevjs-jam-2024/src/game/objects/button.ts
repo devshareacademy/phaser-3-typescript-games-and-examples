@@ -77,17 +77,20 @@ export class Button {
 
   #setTexture(): void {
     if (this.#energyLevel === 0) {
-      this.#sprite.setAlpha(0.25);
+      this.#sprite.setFrame(0);
       return;
     }
     if (this.#energyLevel === 1) {
-      this.#sprite.setAlpha(0.5);
+      this.#sprite.setFrame(1);
+      if (this.#maxEnergy === 1) {
+        this.#sprite.setFrame(4);
+      }
       return;
     }
     if (this.#energyLevel === 2) {
-      this.#sprite.setAlpha(0.75);
+      this.#sprite.setFrame(2);
       return;
     }
-    this.#sprite.setAlpha(1);
+    this.#sprite.setFrame(3);
   }
 }

@@ -35,7 +35,7 @@ export class InfoPanel {
     return {
       fontFamily: "'Orbitron', sans-serif",
       fontSize: '12px',
-      resolution: 20,
+      resolution: 12,
       wordWrap: {
         width: 175,
       },

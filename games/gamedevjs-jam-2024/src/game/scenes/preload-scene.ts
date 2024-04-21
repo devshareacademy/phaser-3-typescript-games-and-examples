@@ -31,11 +31,11 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image(IMAGE_ASSET_KEYS.BRIDGE_TILE, '/bridgeTile.png');
     this.load.image(IMAGE_ASSET_KEYS.BRIDGE_SUPPORT, '/bridgeSupport.png');
     this.load.image(IMAGE_ASSET_KEYS.BRIDGE_BASE, '/bridgeBase.png');
-    this.load.spritesheet(SPRITE_SHEET_ASSET_KEYS.SPEAKER, '/Screen1.png', {
+    this.load.spritesheet(SPRITE_SHEET_ASSET_KEYS.SPEAKER, '/custom_screen1.png', {
       frameWidth: 32,
       frameHeight: 32,
     });
-    this.load.spritesheet(SPRITE_SHEET_ASSET_KEYS.BUTTON, '/Screen2.png', {
+    this.load.spritesheet(SPRITE_SHEET_ASSET_KEYS.BUTTON, '/custom_screen2.png', {
       frameWidth: 32,
       frameHeight: 42,
     });
@@ -72,10 +72,19 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.tilemapTiledJSON(TILED_LEVEL_JSON.TILED_LEVEL_3, '/test_level3.json');
     this.load.image(IMAGE_ASSET_KEYS.LEVEL_4, '/test_level4.png');
     this.load.tilemapTiledJSON(TILED_LEVEL_JSON.TILED_LEVEL_4, '/test_level4.json');
+    this.load.image(IMAGE_ASSET_KEYS.LEVEL_5, '/test_level5.png');
+    this.load.tilemapTiledJSON(TILED_LEVEL_JSON.TILED_LEVEL_5, '/test_level5.json');
+    this.load.image(IMAGE_ASSET_KEYS.LEVEL_6, '/test_level6.png');
+    this.load.tilemapTiledJSON(TILED_LEVEL_JSON.TILED_LEVEL_6, '/test_level6.json');
+    this.load.image(IMAGE_ASSET_KEYS.LEVEL_7, '/test_level7.png');
+    this.load.tilemapTiledJSON(TILED_LEVEL_JSON.TILED_LEVEL_7, '/test_level7.json');
+    this.load.image(IMAGE_ASSET_KEYS.LEVEL_8, '/test_level8.png');
+    this.load.tilemapTiledJSON(TILED_LEVEL_JSON.TILED_LEVEL_8, '/test_level8.json');
     this.load.setPath('assets/images');
     this.load.image(IMAGE_ASSET_KEYS.COLLISION, '/collision.png');
     this.load.image(IMAGE_ASSET_KEYS.DASH_CIRCLE, '/dash-circle.png');
     this.load.image(IMAGE_ASSET_KEYS.BACKGROUND, '/Background.png');
+    this.load.image(IMAGE_ASSET_KEYS.OVERLAY, '/overlay/28.png');
     this.load.setPath('assets/data');
     this.load.json(DATA_ASSET_KEYS.ANIMATIONS, '/animations.json');
     this.load.setPath('assets/images/flare');
@@ -86,6 +95,7 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image(IMAGE_ASSET_KEYS.ENERGY, '/energy.png');
     this.load.image(IMAGE_ASSET_KEYS.PROFILE_HEAD, '/head.png');
     this.load.image(IMAGE_ASSET_KEYS.INFO_PANEL, '/info_modal.png');
+    this.load.image(IMAGE_ASSET_KEYS.FULLSCREEN_BUTTON, 'transparentDark28.png');
 
     this.load.setPath('assets/images/tutorial');
     this.load.image(TUTORIAL_IMAGE_ASSET_KEYS.TUTORIAL_SPEAKER, '/speaker.png');

@@ -19,10 +19,22 @@ type LevelData = {
 
 export async function waitForInput(scene: Phaser.Scene): Promise<void> {
   return new Promise((resolve) => {
+    let returned = false;
+    scene.input.once(Phaser.Input.Events.POINTER_DOWN, () => {
+      if (returned) {
+        return;
+      }
+      returned = true;
+      resolve();
+    });
     if (scene.input.keyboard === null) {
-      return resolve();
+      return;
     }
     scene.input.keyboard.once(Phaser.Input.Keyboard.Events.ANY_KEY_DOWN, () => {
+      if (returned) {
+        return;
+      }
+      returned = true;
       resolve();
     });
   });

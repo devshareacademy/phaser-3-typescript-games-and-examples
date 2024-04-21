@@ -193,7 +193,7 @@ export class NPC {
         onComplete: () => {
           (this.#sprite.body as Phaser.Physics.Arcade.Body).setAllowGravity(true);
           this.#sprite.play(ANIMATION_KEY.NPC_1_IDLE);
-          this.#isEnteringLevel = true;
+          this.#isEnteringLevel = false;
           resolve();
         },
       });

@@ -56,12 +56,11 @@ export class Bridge implements ButtonPoweredObject {
     this.#bridgeDirection = BRIDGE_DIRECTION.UP;
     this.#spriteContainer = this.#scene.add.container(config.x, this.#stops[0], []).setDepth(2);
     this.#createBridgeSprites();
-
     this.#spriteContainer.setSize(this.#width, this.#height);
-
     this.#scene.physics.world.enable(this.#spriteContainer);
+    const offsetX = (config.x + this.#width - (this.#spriteContainer.body as Phaser.Physics.Arcade.Body).center.x) / 2;
     (this.#spriteContainer.body as Phaser.Physics.Arcade.Body)
-      .setOffset(TILE_SIZE * 2, TILE_SIZE * 2.5)
+      .setOffset(offsetX, TILE_SIZE * 2.5)
       .setImmovable(true)
       .setAllowGravity(false);
   }

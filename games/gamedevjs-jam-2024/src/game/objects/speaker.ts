@@ -93,21 +93,19 @@ export class Speaker {
   }
 
   #setTexture(): void {
-    this.#sprite.setAlpha(1);
-    return;
     if (this.#energyLevel === 0) {
-      this.#sprite.setAlpha(0.25);
+      this.#sprite.setFrame(0);
       return;
     }
     if (this.#energyLevel === 1) {
-      this.#sprite.setAlpha(0.5);
+      this.#sprite.setFrame(1);
       return;
     }
     if (this.#energyLevel === 2) {
-      this.#sprite.setAlpha(0.75);
+      this.#sprite.setFrame(2);
       return;
     }
-    this.#sprite.setAlpha(1);
+    this.#sprite.setFrame(3);
   }
 
   #displaySpeakerRange(show: boolean): void {

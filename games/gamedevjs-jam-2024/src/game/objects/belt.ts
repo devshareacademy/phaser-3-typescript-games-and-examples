@@ -42,8 +42,12 @@ export class Belt implements ButtonPoweredObject {
     this.#createSprites();
     this.#beltSpriteContainer.setSize(this.#width, TILE_SIZE);
     this.#scene.physics.world.enable(this.#beltSpriteContainer);
+
+    const offsetX =
+      (config.x + this.#width - (this.#beltSpriteContainer.body as Phaser.Physics.Arcade.Body).center.x - 16) / 2;
+
     (this.#beltSpriteContainer.body as Phaser.Physics.Arcade.Body)
-      .setOffset(TILE_SIZE * 4, -2)
+      .setOffset(offsetX, -2)
       .setImmovable(true)
       .setAllowGravity(false);
   }

@@ -4,16 +4,16 @@
  "layers":[
         {
          "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 2, 46, 46, 46, 2, 3, 2, 46, 46, 46, 2, 0, 0,
-            0, 0, 0, 46, 3, 46, 3, 46, 46, 46, 46, 47, 46, 46, 0, 0,
-            0, 0, 0, 46, 46, 47, 46, 0, 0, 0, 46, 46, 46, 3, 0, 0],
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 82, 0, 0, 0, 0, 143,
+            0, 0, 0, 27, 27, 0, 0, 0, 14, 14, 39, 14, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 14, 14, 19, 14, 0, 0, 0, 0,
+            14, 12, 14, 0, 0, 14, 14, 14, 48, 48, 19, 2, 26, 21, 26, 0,
+            20, 39, 20, 20, 20, 20, 20, 39, 29, 29, 39, 14, 2, 12, 21, 0,
+            0, 0, 0, 3, 2, 0, 0, 0, 2, 46, 46, 2, 0, 0, 0, 0,
+            0, 0, 0, 46, 3, 0, 0, 0, 46, 46, 46, 2, 0, 0, 0, 0,
+            0, 0, 0, 3, 46, 0, 0, 0, 46, 3, 47, 46, 0, 0, 0, 0],
          "height":9,
-         "id":16,
+         "id":19,
          "locked":true,
          "name":"background",
          "opacity":1,
@@ -24,38 +24,17 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 82, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 85,
-            0, 0, 0, 82, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 93,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "data":[0, 63, 0, 0, 0, 0, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 54, 0, 0, 0, 0, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            5, 71, 6, 82, 82, 4, 36, 6, 82, 82, 82, 82, 4, 5, 36, 5,
+            73, 23, 24, 82, 82, 22, 23, 24, 82, 82, 82, 82, 22, 23, 73, 23,
+            82, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 62,
+            82, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 62,
+            5, 5, 6, 80, 80, 4, 5, 6, 82, 82, 82, 82, 4, 5, 5, 5,
+            36, 14, 15, 83, 83, 13, 14, 15, 83, 82, 82, 83, 13, 12, 14, 14,
+            12, 14, 15, 83, 83, 13, 26, 15, 82, 82, 82, 82, 13, 14, 14, 36],
          "height":9,
-         "id":3,
-         "locked":true,
-         "name":"doors",
-         "opacity":0.36,
-         "type":"tilelayer",
-         "visible":true,
-         "width":16,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "data":[0, 45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 54, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            5, 5, 6, 18, 71, 62, 71, 18, 18, 18, 71, 62, 71, 18, 18, 4,
-            23, 23, 24, 0, 73, 0, 73, 0, 0, 0, 73, 0, 73, 0, 0, 22,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            5, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 5,
-            14, 26, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 14,
-            14, 14, 15, 0, 0, 0, 0, 31, 32, 33, 0, 0, 0, 0, 13, 12],
-         "height":9,
-         "id":13,
+         "id":1,
          "locked":true,
          "name":"blocks",
          "opacity":1,
@@ -69,11 +48,32 @@
          "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117,
-            117, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            117, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 83, 83, 83, 83, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 62, 62, 62, 62, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 121, 0, 0, 121, 0, 0, 0, 0],
+         "height":9,
+         "id":13,
+         "locked":true,
+         "name":"bridge",
+         "opacity":0.53,
+         "type":"tilelayer",
+         "visible":false,
+         "width":16,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "data":[0, 0, 0, 0, 0, 0, 117, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 117, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 117, 117, 0, 0, 117, 117, 117, 0, 0, 0, 0, 117, 117, 117, 117,
+            117, 117, 117, 82, 82, 117, 117, 117, 82, 82, 82, 82, 117, 117, 117, 117,
+            117, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 117,
+            117, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 117,
+            117, 117, 117, 117, 117, 117, 117, 117, 82, 82, 82, 82, 117, 117, 117, 117,
+            0, 0, 0, 0, 0, 0, 0, 0, 117, 117, 117, 117, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":9,
          "id":8,
@@ -87,44 +87,42 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 121, 0, 0, 82, 82, 0, 121, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-         "height":9,
-         "id":12,
-         "locked":true,
-         "name":"smashers",
-         "opacity":0.48,
-         "type":"tilelayer",
-         "visible":true,
-         "width":16,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 74, 75, 75, 75, 75, 75, 75, 75, 75, 75, 76, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-         "height":9,
+         "draworder":"topdown",
          "id":14,
          "locked":true,
-         "name":"belt",
-         "opacity":0.55,
-         "type":"tilelayer",
-         "visible":true,
-         "width":16,
+         "name":"bridges",
+         "objects":[
+                {
+                 "gid":117,
+                 "height":224,
+                 "id":18,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"id",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"noButton",
+                         "type":"bool",
+                         "value":false
+                        }, 
+                        {
+                         "name":"stops",
+                         "type":"string",
+                         "value":"256,224,96"
+                        }],
+                 "rotation":0,
+                 "type":"Bridge",
+                 "visible":true,
+                 "width":128,
+                 "x":256,
+                 "y":288
+                }],
+         "opacity":0.34,
+         "type":"objectgroup",
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -155,48 +153,20 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
         {
          "draworder":"topdown",
-         "id":4,
+         "id":21,
          "locked":true,
          "name":"doors",
          "objects":[
                 {
                  "gid":85,
                  "height":32,
-                 "id":1,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"flip",
-                         "type":"bool",
-                         "value":false
-                        }, 
-                        {
-                         "name":"id",
-                         "type":"int",
-                         "value":1
-                        }, 
-                        {
-                         "name":"isLevelEntrance",
-                         "type":"bool",
-                         "value":false
-                        }],
-                 "rotation":0,
-                 "type":"Door",
-                 "visible":true,
-                 "width":32,
-                 "x":480,
-                 "y":160
-                }, 
-                {
-                 "gid":85,
-                 "height":32,
-                 "id":17,
+                 "id":26,
                  "name":"",
                  "properties":[
                         {
@@ -207,7 +177,7 @@
                         {
                          "name":"id",
                          "type":"int",
-                         "value":2
+                         "value":1
                         }, 
                         {
                          "name":"isLevelEntrance",
@@ -223,7 +193,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -242,7 +212,7 @@
                         {
                          "name":"currentEnergy",
                          "type":"int",
-                         "value":0
+                         "value":1
                         }, 
                         {
                          "name":"flip",
@@ -286,79 +256,12 @@
                  "type":"Speaker",
                  "visible":true,
                  "width":32,
-                 "x":308,
+                 "x":223,
                  "y":149.73
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":11,
-         "name":"smashers",
-         "objects":[
-                {
-                 "gid":121,
-                 "height":32,
-                 "id":14,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"delayBetweenAttacks",
-                         "type":"int",
-                         "value":1200
-                        }, 
-                        {
-                         "name":"delayFromSceneStart",
-                         "type":"int",
-                         "value":1100
-                        }, 
-                        {
-                         "name":"id",
-                         "type":"int",
-                         "value":2
-                        }],
-                 "rotation":0,
-                 "type":"Smasher",
-                 "visible":true,
-                 "width":32,
-                 "x":352,
-                 "y":128
-                }, 
-                {
-                 "gid":121,
-                 "height":32,
-                 "id":16,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"delayBetweenAttacks",
-                         "type":"int",
-                         "value":1200
-                        }, 
-                        {
-                         "name":"delayFromSceneStart",
-                         "type":"int",
-                         "value":1100
-                        }, 
-                        {
-                         "name":"id",
-                         "type":"int",
-                         "value":0
-                        }],
-                 "rotation":0,
-                 "type":"Smasher",
-                 "visible":true,
-                 "width":32,
-                 "x":160,
-                 "y":128
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -378,12 +281,12 @@
                          "name":"activeObjectType",
                          "propertytype":"ButtonActivateObjectType",
                          "type":"string",
-                         "value":"Door"
+                         "value":"Bridge"
                         }, 
                         {
                          "name":"currentEnergy",
                          "type":"int",
-                         "value":2
+                         "value":1
                         }, 
                         {
                          "name":"flip",
@@ -398,51 +301,7 @@
                         {
                          "name":"maxEnergy",
                          "type":"int",
-                         "value":3
-                        }, 
-                        {
-                         "name":"objectId",
-                         "type":"int",
                          "value":1
-                        }],
-                 "rotation":0,
-                 "type":"Button",
-                 "visible":true,
-                 "width":32,
-                 "x":462,
-                 "y":193
-                }, 
-                {
-                 "gid":105,
-                 "height":42,
-                 "id":18,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"activeObjectType",
-                         "propertytype":"ButtonActivateObjectType",
-                         "type":"string",
-                         "value":"Belt"
-                        }, 
-                        {
-                         "name":"currentEnergy",
-                         "type":"int",
-                         "value":2
-                        }, 
-                        {
-                         "name":"flip",
-                         "type":"bool",
-                         "value":true
-                        }, 
-                        {
-                         "name":"id",
-                         "type":"int",
-                         "value":2
-                        }, 
-                        {
-                         "name":"maxEnergy",
-                         "type":"int",
-                         "value":3
                         }, 
                         {
                          "name":"objectId",
@@ -453,12 +312,12 @@
                  "type":"Button",
                  "visible":true,
                  "width":32,
-                 "x":256,
-                 "y":256
+                 "x":399,
+                 "y":193
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -488,7 +347,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -508,45 +367,16 @@
                  "visible":true,
                  "width":10,
                  "x":508,
-                 "y":192
+                 "y":64
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
-         "id":15,
-         "name":"belts",
-         "objects":[
-                {
-                 "gid":117,
-                 "height":16,
-                 "id":22,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"id",
-                         "type":"int",
-                         "value":0
-                        }],
-                 "rotation":0,
-                 "type":"Belt",
-                 "visible":true,
-                 "width":352,
-                 "x":96,
-                 "y":208
-                }],
-         "opacity":0.52,
-         "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
- "nextlayerid":17,
- "nextobjectid":23,
+ "nextlayerid":22,
+ "nextobjectid":27,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.0",
@@ -653,6 +483,32 @@
          "name":"Hammer",
          "spacing":0,
          "tilecount":16,
+         "tileheight":32,
+         "tilewidth":32
+        }, 
+        {
+         "columns":3,
+         "firstgid":137,
+         "image":"game-jam\/assets\/Free Industrial Zone Tileset\/fence.png",
+         "imageheight":32,
+         "imagewidth":96,
+         "margin":0,
+         "name":"fence",
+         "spacing":0,
+         "tilecount":3,
+         "tileheight":32,
+         "tilewidth":32
+        }, 
+        {
+         "columns":5,
+         "firstgid":140,
+         "image":"game-jam\/assets\/Free Industrial Zone Tileset\/objects1.png",
+         "imageheight":32,
+         "imagewidth":160,
+         "margin":0,
+         "name":"objects1",
+         "spacing":0,
+         "tilecount":5,
          "tileheight":32,
          "tilewidth":32
         }],
