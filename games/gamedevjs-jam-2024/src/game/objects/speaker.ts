@@ -1,5 +1,6 @@
-import { IMAGE_ASSET_KEYS, SPRITE_SHEET_ASSET_KEYS } from '../assets/asset-keys';
+import { AUDIO_ASSET_KEYS, IMAGE_ASSET_KEYS, SPRITE_SHEET_ASSET_KEYS } from '../assets/asset-keys';
 import GameScene from '../scenes/game-scene';
+import { playSoundFx } from '../utils/sound-utils';
 
 type SpeakerConfig = {
   scene: GameScene;
@@ -90,6 +91,7 @@ export class Speaker {
 
     this.#setTexture();
     this.#displaySpeakerRange(true);
+    playSoundFx(this.#scene, AUDIO_ASSET_KEYS.SPEAKER_BEEP);
   }
 
   #setTexture(): void {

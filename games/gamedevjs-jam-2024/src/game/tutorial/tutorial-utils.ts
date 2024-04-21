@@ -118,10 +118,28 @@ export async function setupTutorial(config: LevelData): Promise<void> {
 }
 
 export async function setupLevel1Tutorial(config: LevelData): Promise<void> {
+  const data = [0, 20, 84, 20, 84, 0, 120, 50, 84, 100, 84, 80, 0, 80];
+  const arrow = config.scene.add
+    .polygon(config.scene.scale.width / 2, config.scene.scale.height / 2, data, 0xff00ff, 1)
+    .setScale(0.3)
+    .setAlpha(0);
+  const arrowTween = config.scene.tweens.add({
+    targets: arrow,
+    scaleX: 0.15,
+    scaleY: 0.15,
+    yoyo: true,
+    repeat: -1,
+    ease: Phaser.Math.Easing.Sine.InOut,
+  });
+
   // highlight speaker by first npc
   const speaker = config.speakers[0].sprite;
-  speaker.setAlpha(1);
+  arrow.setPosition(96, 104);
+  arrow.setAngle(120);
+  arrow.setAlpha(1);
   await waitForInputOnObject(speaker);
+  arrow.setAlpha(0);
+
   config.speakers[0].inTutorial = false;
   config.speakers[0].handlePlayerClick();
   config.speakers[0].inTutorial = true;
@@ -168,7 +186,11 @@ export async function setupLevel1Tutorial(config: LevelData): Promise<void> {
   await showMainMessage(config, 'Let me see if there is anything I can do from my end.');
 
   // highlight button with power to take
+  arrow.setPosition(450, 150);
+  arrow.setAngle(30);
+  arrow.setAlpha(1);
   await waitForInputOnObject(config.buttons[0].sprite);
+  arrow.setAlpha(0);
   config.buttons[0].inTutorial = false;
   config.buttons[0].handlePlayerClick();
   config.buttons[0].inTutorial = true;
@@ -195,7 +217,11 @@ export async function setupLevel1Tutorial(config: LevelData): Promise<void> {
   config.infoPanel.hide();
 
   // highlight door that needs to be opened and then show details about clicking on objects
+  arrow.setPosition(150, 140);
+  arrow.setAngle(120);
+  arrow.setAlpha(1);
   await waitForInputOnObject(config.buttons[1].sprite);
+  arrow.setAlpha(0);
   config.buttons[1].inTutorial = false;
   config.buttons[1].handlePlayerClick();
   config.buttons[1].inTutorial = true;
@@ -214,14 +240,21 @@ export async function setupLevel1Tutorial(config: LevelData): Promise<void> {
   config.infoPanel.hide();
 
   await showNpcMessage(config, 'Nice! Just a little more power and the door should be fully open!');
+
+  arrow.setAlpha(1);
   await waitForInputOnObject(config.buttons[1].sprite);
+  arrow.setAlpha(0);
   config.buttons[1].inTutorial = false;
   config.buttons[1].handlePlayerClick();
   config.buttons[1].inTutorial = true;
   await showNpcMessage(config, "Woo hoo! I'm free!!!!!");
 
   // highlight npc and tell player how to get them to move
+  arrow.setPosition(110, 140);
+  arrow.setAngle(120);
+  arrow.setAlpha(1);
   await waitForInputOnObject(config.npcs[0].sprite);
+  arrow.setAlpha(0);
   config.npcs[0].inTutorial = false;
   config.npcs[0].handlePlayerClick();
   config.npcs[0].inTutorial = true;
@@ -238,6 +271,9 @@ export async function setupLevel1Tutorial(config: LevelData): Promise<void> {
   config.infoPanel.show();
   await waitForInput(config.scene);
   config.infoPanel.hide();
+
+  arrowTween.destroy();
+  arrow.destroy();
 }
 
 /*

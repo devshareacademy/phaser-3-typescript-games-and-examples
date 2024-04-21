@@ -60,7 +60,7 @@ export default class GameScene extends Phaser.Scene {
     this.#bridges = [];
     this.#currentEnergy = 0;
     this.#maxEnergy = 0;
-    this.#currentLevel = 6;
+    this.#currentLevel = 1;
     this.#finishedLevel = false;
   }
 
@@ -90,6 +90,8 @@ export default class GameScene extends Phaser.Scene {
   }
 
   public async create(): Promise<void> {
+    this.cameras.main.fadeIn(1000, 0, 0, 0);
+
     // full screen support
     this.#fullScreenKey = this.input?.keyboard?.addKey(Phaser.Input.Keyboard.KeyCodes.F);
     // main background

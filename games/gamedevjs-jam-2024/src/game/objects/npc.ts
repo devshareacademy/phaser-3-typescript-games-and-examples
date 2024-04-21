@@ -1,8 +1,9 @@
 import { ANIMATION_KEY } from '../schema/data-schema';
-import { SPRITE_SHEET_ASSET_KEYS } from '../assets/asset-keys';
+import { AUDIO_ASSET_KEYS, SPRITE_SHEET_ASSET_KEYS } from '../assets/asset-keys';
 import GameScene from '../scenes/game-scene';
 import { Speaker } from './speaker';
 import { explode, fadeOut, flash, shake } from '../utils/juice-utils';
+import { playSoundFx } from '../utils/sound-utils';
 
 const DIRECTION = {
   LEFT: 'LEFT',
@@ -161,6 +162,7 @@ export class NPC {
           this.#scene.triggerGameOver();
         },
       );
+      playSoundFx(this.#scene, AUDIO_ASSET_KEYS.EXPLOSION);
     });
   }
 

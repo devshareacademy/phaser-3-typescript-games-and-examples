@@ -1,7 +1,8 @@
 import { ANIMATION_KEY } from '../schema/data-schema';
-import { SPRITE_SHEET_ASSET_KEYS } from '../assets/asset-keys';
+import { AUDIO_ASSET_KEYS, SPRITE_SHEET_ASSET_KEYS } from '../assets/asset-keys';
 import GameScene from '../scenes/game-scene';
 import { ButtonPoweredObject } from './button-powered-object';
+import { playSoundFx } from '../utils/sound-utils';
 
 type DoorConfig = {
   scene: GameScene;
@@ -98,13 +99,16 @@ export class Door implements ButtonPoweredObject {
       this.#doorState = DOOR_STATE.CLOSED;
       if (currentState === DOOR_STATE.PARTIAL2) {
         this.#sprite.play(ANIMATION_KEY.DOOR_PARTIAL2_OPEN_TO_CLOSED);
+        playSoundFx(this.#scene, AUDIO_ASSET_KEYS.DOOR_CLOSE);
         return;
       }
       if (currentState === DOOR_STATE.PARTIAL1) {
         this.#sprite.play(ANIMATION_KEY.DOOR_PARTIAL1_OPEN_TO_CLOSED);
+        playSoundFx(this.#scene, AUDIO_ASSET_KEYS.DOOR_CLOSE);
         return;
       }
       this.#sprite.play(ANIMATION_KEY.DOOR_OPEN_TO_CLOSED);
+      playSoundFx(this.#scene, AUDIO_ASSET_KEYS.DOOR_CLOSE);
       return;
     }
     if (powerLevel === 1) {

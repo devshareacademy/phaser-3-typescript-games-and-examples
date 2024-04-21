@@ -3,6 +3,8 @@ import OutlinePipelinePlugin from 'phaser3-rex-plugins/plugins/outlinepipeline-p
 import GameScene from './scenes/game-scene';
 import { SceneKeys } from './scenes/scene-keys';
 import PreloadScene from './scenes/preload-scene';
+import BootScene from './scenes/boot-scene';
+import TitleScene from './scenes/title-scene';
 
 export default class Game {
   private readonly game: Phaser.Game;
@@ -18,11 +20,12 @@ export default class Game {
         autoCenter: Phaser.Scale.CENTER_BOTH,
         mode: Phaser.Scale.FIT,
       },
+      mipmapFilter: 'LINEAR_MIPMAP_LINEAR',
       backgroundColor: '#5c5b5b',
       physics: {
         default: 'arcade',
         arcade: {
-          debug: true,
+          debug: false,
           gravity: {
             y: 800,
           },
@@ -48,11 +51,13 @@ export default class Game {
     this.game = new Phaser.Game(gameConfig);
 
     // add scenes to the game manually so we don't autostart the game
+    this.game.scene.add(SceneKeys.BootScene, BootScene);
     this.game.scene.add(SceneKeys.PreloadScene, PreloadScene);
+    this.game.scene.add(SceneKeys.TitleScene, TitleScene);
     this.game.scene.add(SceneKeys.GameScene, GameScene);
   }
 
   public start(): void {
-    this.game.scene.start(SceneKeys.PreloadScene);
+    this.game.scene.start(SceneKeys.BootScene);
   }
 }

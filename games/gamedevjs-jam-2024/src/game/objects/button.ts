@@ -1,5 +1,6 @@
-import { SPRITE_SHEET_ASSET_KEYS } from '../assets/asset-keys';
+import { AUDIO_ASSET_KEYS, SPRITE_SHEET_ASSET_KEYS } from '../assets/asset-keys';
 import GameScene from '../scenes/game-scene';
+import { playSoundFx } from '../utils/sound-utils';
 import { ButtonPoweredObject } from './button-powered-object';
 
 type ButtonConfig = {
@@ -73,6 +74,7 @@ export class Button {
 
     this.#setTexture();
     this.#connectedObject.powerLevelChanged(this.#energyLevel);
+    playSoundFx(this.#scene, AUDIO_ASSET_KEYS.SWITCH_BEEP);
   }
 
   #setTexture(): void {
