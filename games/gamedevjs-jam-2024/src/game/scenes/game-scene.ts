@@ -15,6 +15,8 @@ import { setupTutorial } from '../tutorial/tutorial-utils';
 import { Dialog } from '../objects/dialog';
 import { InfoPanel } from '../objects/info-panel';
 
+const LOCAL_STORAGE_LEVEL_KEY = 'currentLevel';
+
 const BACKGROUND_POSITION = {
   1: { x: 0, y: -200 },
   2: { x: -30, y: -120 },
@@ -60,7 +62,7 @@ export default class GameScene extends Phaser.Scene {
     this.#bridges = [];
     this.#currentEnergy = 0;
     this.#maxEnergy = 0;
-    this.#currentLevel = 1;
+    this.#currentLevel = 8;
     this.#finishedLevel = false;
   }
 
@@ -81,9 +83,10 @@ export default class GameScene extends Phaser.Scene {
     this.#bridges = [];
 
     if (Object.keys(data).length === 0) {
-      return;
+      this.#getSavedLevel();
+    } else {
+      this.#currentLevel = data.level;
     }
-    this.#currentLevel = data.level;
     if (this.#currentLevel === 9) {
       this.#currentLevel = 1;
     }
@@ -163,16 +166,17 @@ export default class GameScene extends Phaser.Scene {
       });
       npc.addCollider(smasherCollider);
       this.#bridges.forEach((bridge) => {
-        const bridgeCollider2 = this.physics.add.collider(npc.sprite, bridge.bridgeContainer, () => {
-          if (npc.sprite.body.blocked.left || npc.sprite.body.blocked.right) {
+        const bridgeCollider = this.physics.add.collider(npc.sprite, bridge.bridgeContainer, () => {
+          if ((npc.sprite.body.blocked.left || npc.sprite.body.blocked.right) && npc.sprite.body.blocked.down) {
             npc.collideWithBridgeWall();
+            return;
           }
           if (npc.sprite.body.blocked.down) {
             return;
           }
           npc.collideWithBridgeWall();
         });
-        npc.addCollider(bridgeCollider2);
+        npc.addCollider(bridgeCollider);
       });
     });
     // collisionLayer.renderDebug(this.add.graphics());
@@ -186,7 +190,7 @@ export default class GameScene extends Phaser.Scene {
       this.#energyContainer.addAt(img, 0);
     }
     this.#updateEnergyUI();
-    this.add.image(0, 0, IMAGE_ASSET_KEYS.OVERLAY, 0).setOrigin(0).setAlpha(0.2).setDepth(5);
+    this.add.image(0, 0, this.#pickRandomOverlay(), 0).setOrigin(0).setAlpha(0.2).setDepth(5);
 
     this.#npcDialogModal = new Dialog({
       scene: this,
@@ -265,6 +269,7 @@ export default class GameScene extends Phaser.Scene {
     const hasAllNpcsLeft = this.#npcs.every((npc) => npc.hasExitedLevel);
     if (hasAllNpcsLeft) {
       this.#finishedLevel = true;
+      this.#setSavedLevel(this.#currentLevel + 1);
       this.scene.start(SceneKeys.GameScene, { level: (this.#currentLevel += 1) });
     }
   }
@@ -731,5 +736,43 @@ export default class GameScene extends Phaser.Scene {
       return false;
     }
     return Phaser.Input.Keyboard.JustDown(this.#fullScreenKey);
+  }
+
+  #getSavedLevel(): void {
+    if (!localStorage) {
+      return;
+    }
+
+    const results = localStorage.getItem(LOCAL_STORAGE_LEVEL_KEY);
+    if (results === null) {
+      return;
+    }
+    this.#currentLevel = parseInt(results, 10);
+  }
+
+  #setSavedLevel(level: number): void {
+    if (!localStorage) {
+      return;
+    }
+
+    localStorage.setItem(LOCAL_STORAGE_LEVEL_KEY, level.toString());
+  }
+
+  #pickRandomOverlay(): string {
+    const elements = [
+      IMAGE_ASSET_KEYS.OVERLAY_1,
+      IMAGE_ASSET_KEYS.OVERLAY_2,
+      IMAGE_ASSET_KEYS.OVERLAY_3,
+      IMAGE_ASSET_KEYS.OVERLAY_4,
+      IMAGE_ASSET_KEYS.OVERLAY_5,
+      IMAGE_ASSET_KEYS.OVERLAY_6,
+      IMAGE_ASSET_KEYS.OVERLAY_7,
+      IMAGE_ASSET_KEYS.OVERLAY_8,
+      IMAGE_ASSET_KEYS.OVERLAY_9,
+      IMAGE_ASSET_KEYS.OVERLAY_10,
+      IMAGE_ASSET_KEYS.OVERLAY_28,
+    ];
+    const randomIndex = Phaser.Math.Between(0, elements.length - 1);
+    return elements[randomIndex];
   }
 }

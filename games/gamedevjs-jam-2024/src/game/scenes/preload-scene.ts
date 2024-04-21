@@ -100,7 +100,17 @@ export default class PreloadScene extends Phaser.Scene {
     this.load.image(IMAGE_ASSET_KEYS.COLLISION, '/collision.png');
     this.load.image(IMAGE_ASSET_KEYS.DASH_CIRCLE, '/dash-circle.png');
     this.load.image(IMAGE_ASSET_KEYS.BACKGROUND, '/Background.png');
-    this.load.image(IMAGE_ASSET_KEYS.OVERLAY, '/overlay/28.png');
+    this.load.image(IMAGE_ASSET_KEYS.OVERLAY_1, '/overlay/1.png');
+    this.load.image(IMAGE_ASSET_KEYS.OVERLAY_2, '/overlay/2.png');
+    this.load.image(IMAGE_ASSET_KEYS.OVERLAY_3, '/overlay/3.png');
+    this.load.image(IMAGE_ASSET_KEYS.OVERLAY_4, '/overlay/4.png');
+    this.load.image(IMAGE_ASSET_KEYS.OVERLAY_5, '/overlay/5.png');
+    this.load.image(IMAGE_ASSET_KEYS.OVERLAY_6, '/overlay/6.png');
+    this.load.image(IMAGE_ASSET_KEYS.OVERLAY_7, '/overlay/7.png');
+    this.load.image(IMAGE_ASSET_KEYS.OVERLAY_8, '/overlay/8.png');
+    this.load.image(IMAGE_ASSET_KEYS.OVERLAY_9, '/overlay/9.png');
+    this.load.image(IMAGE_ASSET_KEYS.OVERLAY_10, '/overlay/10.png');
+    this.load.image(IMAGE_ASSET_KEYS.OVERLAY_28, '/overlay/28.png');
     this.load.setPath('assets/data');
     this.load.json(DATA_ASSET_KEYS.ANIMATIONS, '/animations.json');
     this.load.setPath('assets/images/flare');
@@ -153,9 +163,9 @@ export default class PreloadScene extends Phaser.Scene {
       return;
     }
     // TODO: fix fade timer and time check
-    if (Date.now() - this.#sceneStartedTime > 1) {
+    if (Date.now() - this.#sceneStartedTime > 1500) {
       this.#startSceneTransition = true;
-      this.cameras.main.fadeOut(1, 0, 0, 0, (camera, progress) => {
+      this.cameras.main.fadeOut(1000, 0, 0, 0, (camera, progress) => {
         if (progress === 1) {
           this.scene.start(SceneKeys.TitleScene);
         }

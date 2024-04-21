@@ -77,6 +77,7 @@ https://free-game-assets.itch.io/free-cyberpunk-overlay-effects-for-platformer-g
 https://free-game-assets.itch.io/free-effects-for-platformer-pixel-art-pack
 https://free-game-assets.itch.io/free-scrolling-city-backgrounds-pixel-art
 https://free-game-assets.itch.io/free-townspeople-cyberpunk-pixel-art
+https://sungraphica.itch.io/sci-fi-game-ui-collection-free-version
 
 https://sangoro.itch.io/vfx-starter-pack
 
@@ -86,6 +87,9 @@ Power Breakout
 https://labs.phaser.io/edit.html?src=src\fx\glow\glow%20fx.js
 https://github.com/yandeu/phaser3-optimal-resolution/tree/master/src
 https://exceptrea.itch.io/laboratory-tileset-revamped-lite
+
+https://rustedstudio.itch.io/cybertracks-volume-1
+https://shapeforms.itch.io/shapeforms-audio-free-sfx
 
 
 ## Bugs
@@ -100,3 +104,5 @@ if player closed door on npc, npc is stuck, this should result in player restart
   - reply and highlight button, when clicked show modal with details
   - on clean, continue level
 - plan out new levels
+
+Bug 1 - on level 6, when you hit wall and elevator is up, player keeps running and does not stop.

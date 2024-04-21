@@ -3,4 +3,5 @@ export const SceneKeys = {
   GameScene: 'GameScene',
   PreloadScene: 'PreloadScene',
   TitleScene: 'TitleScene',
+  CreditsScene: 'CreditsScene',
 } as const;

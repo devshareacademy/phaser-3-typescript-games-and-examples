@@ -123,13 +123,13 @@ export class Belt implements ButtonPoweredObject {
       return;
     }
     let animationSpeed = 20;
-    this.#surfaceSpeed.set(-1, 0);
+    this.#surfaceSpeed.set(-1.5, 0);
     if (this.#beltState === BELT_STATE.SLOW) {
       animationSpeed = 8;
-      this.#surfaceSpeed.set(-0.4, 0);
+      this.#surfaceSpeed.set(-0.9, 0);
     } else if (this.#beltState === BELT_STATE.MED) {
       animationSpeed = 12;
-      this.#surfaceSpeed.set(-0.7, 0);
+      this.#surfaceSpeed.set(-1.2, 0);
     }
 
     this.#startSprite.playReverse({

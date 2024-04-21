@@ -17,7 +17,7 @@ const NPC_STATE = {
 } as const;
 type NpcState = keyof typeof NPC_STATE;
 
-const NPC_VELOCITY = 50;
+const NPC_VELOCITY = 80;
 
 type NpcConfig = {
   scene: GameScene;
@@ -40,6 +40,7 @@ export class NPC {
   #waitForNpcToReachTargetPositionCallback: (() => void) | undefined;
   #inTutorial: boolean;
   #isEnteringLevel: boolean;
+  #justCollidedWithWall: boolean;
 
   constructor(config: NpcConfig) {
     this.#scene = config.scene;
@@ -58,9 +59,10 @@ export class NPC {
     this.#speakers = config.speakers;
     this.#inTutorial = false;
     this.#isEnteringLevel = false;
+    this.#justCollidedWithWall = false;
 
     this.#sprite.on(Phaser.Input.Events.POINTER_DOWN, () => {
-      this.handlePlayerClick();
+      this.handlePlayerClick(true);
     });
   }
 
@@ -109,15 +111,32 @@ export class NPC {
     if (this.#isEnteringLevel) {
       return;
     }
-    if (this.#direction === DIRECTION.LEFT) {
-      this.#moveRight();
+    if (this.#justCollidedWithWall) {
       return;
     }
-    this.#moveLeft();
+
+    this.#justCollidedWithWall = true;
+    if (this.#direction === DIRECTION.LEFT) {
+      this.#moveRight();
+    } else {
+      this.#moveLeft();
+    }
+
+    this.#scene.time.delayedCall(100, () => {
+      this.#justCollidedWithWall = false;
+    });
   }
 
   public collideWithBridgeWall(): void {
-    this.handlePlayerClick();
+    if (this.#justCollidedWithWall) {
+      return;
+    }
+    this.#justCollidedWithWall = true;
+    this.handlePlayerClick(false);
+
+    this.#scene.time.delayedCall(1000, () => {
+      this.#justCollidedWithWall = false;
+    });
   }
 
   public hasEnteredExit(): void {
@@ -243,7 +262,7 @@ export class NPC {
     this.#sprite.body.setOffset(22, 18);
   }
 
-  public handlePlayerClick(): void {
+  public handlePlayerClick(playerClick: boolean): void {
     if (this.#inTutorial) {
       return;
     }
@@ -262,7 +281,7 @@ export class NPC {
       speakerBody.getBounds(speakerBodyBounds);
       return Phaser.Geom.Intersects.CircleToRectangle(speakerBodyBounds, npcBodyRect);
     });
-    if (isOverlapWithSpeaker) {
+    if (isOverlapWithSpeaker || !playerClick) {
       this.#switchStates();
     }
   }

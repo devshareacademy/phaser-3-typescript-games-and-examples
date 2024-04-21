@@ -23,9 +23,17 @@ export default class TitleScene extends Phaser.Scene {
     this.#bg3 = this.add.tileSprite(0, 0, width, height, IMAGE_ASSET_KEYS.TITLE_BG_3).setOrigin(0);
     this.#bg4 = this.add.tileSprite(0, 0, width, height, IMAGE_ASSET_KEYS.TITLE_BG_4).setOrigin(0);
     this.#bg5 = this.add.tileSprite(0, 0, width, height, IMAGE_ASSET_KEYS.TITLE_BG_5).setOrigin(0);
-    this.#bgOverlay = this.add.tileSprite(0, 0, width, height, IMAGE_ASSET_KEYS.OVERLAY).setOrigin(0).setAlpha(0.2);
-    this.add.image(width / 2, 60, IMAGE_ASSET_KEYS.TITLE_TEXT_1, 0);
-    this.add.image(width / 2, 200, IMAGE_ASSET_KEYS.TITLE_TEXT_2, 0).setScale(0.5);
+    this.#bgOverlay = this.add.tileSprite(0, 0, width, height, IMAGE_ASSET_KEYS.OVERLAY_28).setOrigin(0).setAlpha(0.2);
+    this.add.image(width / 2, 80, IMAGE_ASSET_KEYS.TITLE_TEXT_1, 0);
+    const startText = this.add.image(width / 2, 200, IMAGE_ASSET_KEYS.TITLE_TEXT_2, 0).setScale(0.5);
+    this.tweens.add({
+      targets: startText,
+      scaleX: 0.4,
+      scaleY: 0.4,
+      yoyo: true,
+      repeat: -1,
+      ease: Phaser.Math.Easing.Sine.InOut,
+    });
 
     // full screen support
     this.#fullScreenKey = this.input?.keyboard?.addKey(Phaser.Input.Keyboard.KeyCodes.F);

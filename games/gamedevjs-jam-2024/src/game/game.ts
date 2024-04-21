@@ -5,6 +5,7 @@ import { SceneKeys } from './scenes/scene-keys';
 import PreloadScene from './scenes/preload-scene';
 import BootScene from './scenes/boot-scene';
 import TitleScene from './scenes/title-scene';
+import { CreditsScene } from './scenes/credits-scene';
 
 export default class Game {
   private readonly game: Phaser.Game;
@@ -55,6 +56,7 @@ export default class Game {
     this.game.scene.add(SceneKeys.PreloadScene, PreloadScene);
     this.game.scene.add(SceneKeys.TitleScene, TitleScene);
     this.game.scene.add(SceneKeys.GameScene, GameScene);
+    this.game.scene.add(SceneKeys.CreditsScene, CreditsScene);
   }
 
   public start(): void {
