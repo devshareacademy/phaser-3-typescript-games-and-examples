@@ -2,7 +2,7 @@
 
 Contains example code of how to create a custom scene transition for when a scene starts by using a `BitmapMask`.
 
-You can see a live demo of the example here: [Phaser 3 Scene Transition Bitmap Mask](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/shader-battle-scene-transitions/index.html)
+You can see a live demo of the example here: [Phaser 3 Scene Transition Bitmap Mask](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/scene-transition-bitmap-mask/index.html)
 
 ![Example](./docs/example.gif?raw=true)
 
