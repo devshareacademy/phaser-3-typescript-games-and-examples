@@ -1,0 +1,15 @@
+{
+  "eslint.format.enable": true,
+  "eslint.options": {
+    "overrideConfigFile": "config/.eslintrc"
+  },
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "cSpell.words": [
+    "devshareacademy",
+    "mediump",
+    "tweakpane"
+  ]
+}
