@@ -73,8 +73,11 @@ class MainScene extends Phaser.Scene {
 
     this.tweens.add({
       targets: ship,
-      x: width,
+      x: width + 100,
       duration: 6000,
+      onComplete: () => {
+        this.scene.restart();
+      },
     });
   }
 }

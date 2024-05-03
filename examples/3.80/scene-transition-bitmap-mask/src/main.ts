@@ -79,6 +79,7 @@ class MainScene extends Phaser.Scene {
     ])
       .then(() => {
         console.log('scene transition done');
+        this.time.delayedCall(500, () => this.scene.restart());
       })
       .catch(() => undefined);
   }
