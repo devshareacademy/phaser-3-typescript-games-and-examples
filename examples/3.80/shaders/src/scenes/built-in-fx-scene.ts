@@ -5,7 +5,7 @@ const SPRITE_SHEET_ASSET_KEY = 'CHARACTERS';
 
 export class BuiltInFxScene extends Phaser.Scene {
   constructor() {
-    super({ key: BuiltInFxScene.name });
+    super({ key: 'BuiltInFxScene' });
   }
 
   preload(): void {
@@ -23,6 +23,8 @@ export class BuiltInFxScene extends Phaser.Scene {
     const character = this.add.image(487, 310, SPRITE_SHEET_ASSET_KEY, 7);
     // example for builtin
     character.preFX?.addGradient(0x0000ff, 0x00ff00, 0);
+
+    this.cameras.main.postFX.addGradient(0xff0000);
 
     this.input.keyboard?.once('keydown-SPACE', () => {
       this.scene.start('NothingPostFxScene');

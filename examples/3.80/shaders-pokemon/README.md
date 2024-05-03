@@ -1,20 +1,26 @@
-# Phaser 3 TypeScript - Basic Shader Examples
+# Phaser 3 TypeScript - Pokemon Like Battle Scene Transition Shader Examples
 
-Contains example code of how to use various shaders in Phaser 3. This is the sample code that I shared in my tutorial video hosted on YouTube here: TODO.
+Contains example code of how to create Pokemon like battle scene transitions using shaders in Phaser 3. This is the sample code that I shared in my tutorial video hosted on YouTube here: TODO.
 
-You can see a live demo of the examples here: [Shader Examples](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/shader-examples/index.html)
+You can see a live demo of the examples here: [Pokemon Battle Scene Transitions Shader Examples](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/shader-battle-scene-transitions/index.html)
 
-While viewing the examples, if you press the `space` key, you can navigate between various examples. Below is a list of the examples shaders that can be seen and the corresponding files to that example:
+While viewing the examples, you can use the [tweakpane](https://tweakpane.github.io/docs/) gui to switch between the various examples and play the scene transitions.
 
 | Example | Description | Location |
 |---------|-------------|----------|
-| Simple Shader | Example of how to just render out the existing pixels using a shader. | `./src/shaders/nothing-post-fx-pipeline.ts` |
-| Simple Color | Example of how to replace pixels with another color. | `./src/shaders/color-post-fx-pipeline.ts` |
-| Grey Scale | Example of how to apply a grey scale affect to all pixels. | `./src/shaders/grey-scale-post-fx-pipeline.ts` |
-| Screen Wipe | Example of how to use custom variables in a shader to create animations, like a scene transition. | `./src/shaders/wipe-post-fx-pipeline.ts` |
-| Built In Fx | Example of how to use the built in shader effects on game objects. | `./src/scenes/built-in-fx-scene.ts` |
+| Screen Wipe | A simple screen wipe from left to right. | `./src/shaders/wipe-post-fx-pipeline.ts` |
+| Curtain Fall | A screen wipe from top to bottom. | `./src/shaders/curtain-fall-post-fx-pipeline.ts` |
+| Curtain Rise | A screen wipe that resembles curtains rising from a stage. | `./src/shaders/curtain-rise-post-fx-pipeline.ts` |
+| Opening Bars | Vertical bars that open from the center of the screen. | `./src/shaders/opening-bars-post-fx-pipeline.ts` |
+| Closing Bars | Vertical bars that close from the top and bottom of the screen. | `./src/shaders/closing-bars-post-fx-pipeline.ts` |
+| Fade To White | Screen fades to the color white. | `./src/shaders/fade-to-white-post-fx-pipeline.ts` |
+| Fade To Black | Screen fades to the color black. | `./src/shaders/fade-to-black-post-fx-pipeline.ts` |
 
-![Shader Examples](./docs/example.gif?raw=true)
+![Shader Examples 1](./docs/example.gif?raw=true)
+
+![Shader Examples 2](./docs/example2.gif?raw=true)
+
+![Shader Examples 3](./docs/example3.gif?raw=true)
 
 ## Local Development
 

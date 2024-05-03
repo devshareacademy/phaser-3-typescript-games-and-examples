@@ -12,10 +12,11 @@ uniform sampler2D uMainSampler;
 varying vec2 outTexCoord;
 uniform float uCutoff;
 
+vec4 black = vec4(0.0, 0.0, 0.0, 1.0);
+
 void main() {
   vec4 color = texture2D(uMainSampler, outTexCoord);
-  color.rgb = color.rgb * (1.0 - uCutoff);
-  gl_FragColor = color;
+  gl_FragColor = mix(color, black, uCutoff);
 }
 `;
 

@@ -5,7 +5,7 @@ const IMAGE_ASSET_KEY = 'BG';
 
 export class NothingPostFxScene extends Phaser.Scene {
   constructor() {
-    super({ key: NothingPostFxScene.name });
+    super({ key: 'NothingPostFxScene' });
   }
 
   preload(): void {

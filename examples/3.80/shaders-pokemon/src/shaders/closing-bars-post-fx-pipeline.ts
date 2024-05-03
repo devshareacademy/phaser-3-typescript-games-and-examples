@@ -13,8 +13,9 @@ varying vec2 outTexCoord;
 uniform float uCutoff;
 
 void main() {
-  if (abs(outTexCoord.y - 0.5) * 2.0 > (1.0 - uCutoff)) {
-    gl_FragColor = vec4(0, 0, 0, 1);
+  float diff = uCutoff / 2.0;
+  if ((outTexCoord.y >= 1.0 - diff) || (outTexCoord.y <= 0.0 + diff)) {
+    gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
   } else {
     gl_FragColor = texture2D(uMainSampler, outTexCoord);
   }

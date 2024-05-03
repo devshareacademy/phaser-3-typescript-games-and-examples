@@ -5,7 +5,7 @@ const IMAGE_ASSET_KEY = 'BG';
 
 export class WipePostFxScene extends Phaser.Scene {
   constructor() {
-    super({ key: WipePostFxScene.name });
+    super({ key: 'WipePostFxScene' });
   }
 
   preload(): void {
@@ -28,7 +28,7 @@ export class WipePostFxScene extends Phaser.Scene {
 
     // example with updating variable
     this.tweens.add({
-      targets: this.cameras.main.getPostPipeline('WipePostFxPipeline'),
+      targets: this.cameras.main.getPostPipeline(WipePostFxPipeline),
       progress: 1,
       duration: 2000,
       delay: 1000,

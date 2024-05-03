@@ -5,7 +5,7 @@ const IMAGE_ASSET_KEY = 'BG';
 
 export class GreyScalePostFxScene extends Phaser.Scene {
   constructor() {
-    super({ key: GreyScalePostFxScene.name });
+    super({ key: 'GreyScalePostFxScene' });
   }
 
   preload(): void {
@@ -27,7 +27,7 @@ export class GreyScalePostFxScene extends Phaser.Scene {
     this.cameras.main.setPostPipeline(GreyScalePostFxPipeline);
 
     this.input.keyboard?.once('keydown-SPACE', () => {
-      this.scene.start('WipePostFxScene');
+      this.scene.start('DynamicColorPostFxScene');
     });
   }
 }
