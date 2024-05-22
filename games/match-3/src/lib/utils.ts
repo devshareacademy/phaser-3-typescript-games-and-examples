@@ -9,9 +9,10 @@ import {
   Coordinate,
   UpdatedTileLocation,
   NewTileAdded,
+  PossibleMove,
 } from './types';
 
-export function checkBoardForHorizontalMatches(board: Board): Cluster[] {
+export function checkBoardForHorizontalMatches(board: Board, skipMakingActive: boolean): Cluster[] {
   const clusters: Cluster[] = [];
   for (let row = 0; row < board.length; row++) {
     for (let col = 0; col < board[row].length - 2; col++) {
@@ -25,8 +26,10 @@ export function checkBoardForHorizontalMatches(board: Board): Cluster[] {
       }
       if (matchLength >= 3) {
         clusters.push({ row: row, col: col, length: matchLength, type: CLUSTER_TYPE.HORIZONTAL });
-        for (let i = 0; i < matchLength; i += 1) {
-          board[row][col + i].active = true;
+        if (!skipMakingActive) {
+          for (let i = 0; i < matchLength; i += 1) {
+            board[row][col + i].active = true;
+          }
         }
         col += matchLength - 1; // Skip over the matched tiles
       }
@@ -35,7 +38,7 @@ export function checkBoardForHorizontalMatches(board: Board): Cluster[] {
   return clusters;
 }
 
-export function checkBoardForVerticalMatches(board: Board): Cluster[] {
+export function checkBoardForVerticalMatches(board: Board, skipMakingActive: boolean): Cluster[] {
   const clusters: Cluster[] = [];
   for (let col = 0; col < board[0].length; col++) {
     for (let row = 0; row < board.length - 2; row++) {
@@ -49,8 +52,10 @@ export function checkBoardForVerticalMatches(board: Board): Cluster[] {
       }
       if (matchLength >= 3) {
         clusters.push({ row: row, col: col, length: matchLength, type: CLUSTER_TYPE.VERTICAL });
-        for (let i = 0; i < matchLength; i += 1) {
-          board[row + i][col].active = true;
+        if (!skipMakingActive) {
+          for (let i = 0; i < matchLength; i += 1) {
+            board[row + i][col].active = true;
+          }
         }
         row += matchLength - 1; // Skip over the matched tiles
       }
@@ -105,16 +110,19 @@ export function createMatch3GameState(boardLayout: Level, numberOfBasicTileVaria
   }
 
   // remove any starting matches
-  console.log('');
-  findAllMatches(gameState.board);
+  findAllMatches(gameState.board, false);
   while (isActiveTilesOnBoard(gameState.board)) {
     removeAllActiveTilesFromBoard(gameState.board);
     shiftTiles(gameState.board);
+    refillTiles(gameState.board, gameState.numberOfBasicTileVariations);
+    findAllMatches(gameState.board, false);
   }
-  // TODO
 
   // validate there is possible moves
-  // TODO
+  const possibleMoves = getPossibleMoves(gameState.board);
+  if (possibleMoves.length === 0) {
+    return createMatch3GameState(boardLayout, numberOfBasicTileVariations);
+  }
 
   return gameState;
 }
@@ -125,9 +133,9 @@ export function isActiveTilesOnBoard(board: Board): boolean {
   });
 }
 
-export function findAllMatches(board: Board): Cluster[] {
-  const horizontalMatches = checkBoardForHorizontalMatches(board);
-  const verticalMatches = checkBoardForVerticalMatches(board);
+export function findAllMatches(board: Board, skipMakingActive: boolean): Cluster[] {
+  const horizontalMatches = checkBoardForHorizontalMatches(board, skipMakingActive);
+  const verticalMatches = checkBoardForVerticalMatches(board, skipMakingActive);
   return horizontalMatches.concat(verticalMatches);
 }
 
@@ -224,6 +232,48 @@ export function refillTiles(board: Board, tileVariations: number): NewTileAdded[
     }
   }
   return tilesAdded;
+}
+
+export function getPossibleMoves(board: Board): PossibleMove[] {
+  const moves: PossibleMove[] = [];
+  // Check horizontal swaps
+  for (let j = 0; j < board.length; j++) {
+    for (let i = 0; i < board[0].length - 1; i++) {
+      // Swap, find clusters and swap back
+      swapTiles(board, { col: i, row: j }, { col: i + 1, row: j });
+      const matches = findAllMatches(board, true);
+      swapTiles(board, { col: i, row: j }, { col: i + 1, row: j });
+
+      // Check if the swap made a cluster
+      if (matches.length > 0) {
+        // Found a move
+        moves.push({
+          coordinate1: { col: i, row: j },
+          coordinate2: { col: i + 1, row: j },
+        });
+      }
+    }
+  }
+
+  // Check vertical swaps
+  for (let i = 0; i < board[0].length; i++) {
+    for (let j = 0; j < board.length - 1; j++) {
+      // Swap, find clusters and swap back
+      swapTiles(board, { col: i, row: j }, { col: i, row: j + 1 });
+      const matches = findAllMatches(board, true);
+      swapTiles(board, { col: i, row: j }, { col: i, row: j + 1 });
+
+      // Check if the swap made a cluster
+      if (matches.length > 0) {
+        // Found a move
+        moves.push({
+          coordinate1: { col: i, row: j },
+          coordinate2: { col: i, row: j + 1 },
+        });
+      }
+    }
+  }
+  return moves;
 }
 
 export function printBoard(board: Board): void {

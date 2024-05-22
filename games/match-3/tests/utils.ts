@@ -26,14 +26,11 @@ function createMatch3GameStateTests(): void {
 
   suite('should create a board based on the provided level', () => {
     const level = [
-      [1, 1, 1],
-      [1, 1, 1],
-      [1, 1, 1],
+      [1, 1, 0],
+      [0, 1, 1],
+      [1, 0, 1],
     ];
     const gameState = Match3Utils.createMatch3GameState(level, 2);
-    console.log('');
-    Match3Utils.printBoard(gameState.board);
-    console.log(gameState.numberOfBasicTileVariations);
 
     assert.type(gameState, 'object');
     assert.type(gameState.numberOfBasicTileVariations, 'number');
@@ -53,7 +50,7 @@ function checkBoardForHorizontalMatchesTests(): void {
       [0, 1, 0],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForHorizontalMatches(board);
+    const results = Match3Utils.checkBoardForHorizontalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 0);
@@ -66,7 +63,7 @@ function checkBoardForHorizontalMatchesTests(): void {
       [0, 1, 0],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForHorizontalMatches(board);
+    const results = Match3Utils.checkBoardForHorizontalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 1);
@@ -95,7 +92,7 @@ function checkBoardForHorizontalMatchesTests(): void {
       [0, 1, 0],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForHorizontalMatches(board);
+    const results = Match3Utils.checkBoardForHorizontalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 1);
@@ -124,7 +121,7 @@ function checkBoardForHorizontalMatchesTests(): void {
       [1, 1, 1],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForHorizontalMatches(board);
+    const results = Match3Utils.checkBoardForHorizontalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 1);
@@ -153,7 +150,7 @@ function checkBoardForHorizontalMatchesTests(): void {
       [1, 1, 1],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForHorizontalMatches(board);
+    const results = Match3Utils.checkBoardForHorizontalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 2);
@@ -186,7 +183,7 @@ function checkBoardForHorizontalMatchesTests(): void {
       [1, 1, 1, 0, 1],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForHorizontalMatches(board);
+    const results = Match3Utils.checkBoardForHorizontalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 1);
@@ -215,7 +212,7 @@ function checkBoardForHorizontalMatchesTests(): void {
       [1, 1, 1, 1, 0],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForHorizontalMatches(board);
+    const results = Match3Utils.checkBoardForHorizontalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 1);
@@ -244,7 +241,7 @@ function checkBoardForHorizontalMatchesTests(): void {
       [1, 1, 1, 1, 1],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForHorizontalMatches(board);
+    const results = Match3Utils.checkBoardForHorizontalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 1);
@@ -274,10 +271,39 @@ function checkBoardForHorizontalMatchesTests(): void {
     ];
     const board = generateBoard(layout);
     board[1][2].active = true;
-    const results = Match3Utils.checkBoardForHorizontalMatches(board);
+    const results = Match3Utils.checkBoardForHorizontalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 0);
+  });
+
+  suite('should return 1 cluster for a horizontal match and not activate tiles', () => {
+    const layout = [
+      [1, 1, 1],
+      [1, 0, 1],
+      [0, 1, 0],
+    ];
+    const board = generateBoard(layout);
+    const results = Match3Utils.checkBoardForHorizontalMatches(board, true);
+
+    assert.type(results, 'object');
+    assert.equal(results.length, 1);
+    assert.equal(results[0].col, 0);
+    assert.equal(results[0].row, 0);
+    assert.equal(results[0].length, 3);
+    assert.equal(results[0].type, Match3Types.CLUSTER_TYPE.HORIZONTAL);
+
+    // validate board state
+    const matches = ['0:0', '0:1', '0:2'];
+    for (let i = 0; i < layout.length; i += 1) {
+      for (let j = 0; j < layout[0].length; j += 1) {
+        if (matches.includes(`${i}:${j}`)) {
+          assert.equal(board[i][j].active, false);
+        } else {
+          assert.equal(board[i][j].active, false);
+        }
+      }
+    }
   });
 
   suite.run();
@@ -293,7 +319,7 @@ function checkBoardForVerticalMatchesTests(): void {
       [0, 1, 0],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForVerticalMatches(board);
+    const results = Match3Utils.checkBoardForVerticalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 0);
@@ -306,7 +332,7 @@ function checkBoardForVerticalMatchesTests(): void {
       [1, 1, 0],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForVerticalMatches(board);
+    const results = Match3Utils.checkBoardForVerticalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 1);
@@ -335,7 +361,7 @@ function checkBoardForVerticalMatchesTests(): void {
       [1, 1, 0],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForVerticalMatches(board);
+    const results = Match3Utils.checkBoardForVerticalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 1);
@@ -364,7 +390,7 @@ function checkBoardForVerticalMatchesTests(): void {
       [1, 0, 1],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForVerticalMatches(board);
+    const results = Match3Utils.checkBoardForVerticalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 1);
@@ -393,7 +419,7 @@ function checkBoardForVerticalMatchesTests(): void {
       [1, 0, 1],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForVerticalMatches(board);
+    const results = Match3Utils.checkBoardForVerticalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 2);
@@ -428,7 +454,7 @@ function checkBoardForVerticalMatchesTests(): void {
       [1, 0, 1],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForVerticalMatches(board);
+    const results = Match3Utils.checkBoardForVerticalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 1);
@@ -459,7 +485,7 @@ function checkBoardForVerticalMatchesTests(): void {
       [1, 0, 0],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForVerticalMatches(board);
+    const results = Match3Utils.checkBoardForVerticalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 1);
@@ -490,7 +516,7 @@ function checkBoardForVerticalMatchesTests(): void {
       [1, 0, 1],
     ];
     const board = generateBoard(layout);
-    const results = Match3Utils.checkBoardForVerticalMatches(board);
+    const results = Match3Utils.checkBoardForVerticalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 1);
@@ -520,10 +546,39 @@ function checkBoardForVerticalMatchesTests(): void {
     ];
     const board = generateBoard(layout);
     board[2][0].active = true;
-    const results = Match3Utils.checkBoardForHorizontalMatches(board);
+    const results = Match3Utils.checkBoardForHorizontalMatches(board, false);
 
     assert.type(results, 'object');
     assert.equal(results.length, 0);
+  });
+
+  suite('should return 1 cluster for a vertical match and not activate tiles', () => {
+    const layout = [
+      [1, 0, 1],
+      [1, 0, 1],
+      [1, 1, 0],
+    ];
+    const board = generateBoard(layout);
+    const results = Match3Utils.checkBoardForVerticalMatches(board, true);
+
+    assert.type(results, 'object');
+    assert.equal(results.length, 1);
+    assert.equal(results[0].col, 0);
+    assert.equal(results[0].row, 0);
+    assert.equal(results[0].length, 3);
+    assert.equal(results[0].type, Match3Types.CLUSTER_TYPE.VERTICAL);
+
+    // validate board state
+    const matches = ['0:0', '1:0', '2:0'];
+    for (let i = 0; i < layout.length; i += 1) {
+      for (let j = 0; j < layout[0].length; j += 1) {
+        if (matches.includes(`${i}:${j}`)) {
+          assert.equal(board[i][j].active, false);
+        } else {
+          assert.equal(board[i][j].active, false);
+        }
+      }
+    }
   });
 
   suite.run();
@@ -834,9 +889,36 @@ function refillTilesTests(): void {
   suite.run();
 }
 
-//createMatch3GameStateTests();
+function getPossibleMovesTests(): void {
+  const suite = uvu.suite('getPossibleMoves');
+
+  suite('it find all possible moves 1', () => {
+    const layout = [
+      [1, 1, 0],
+      [0, 1, 1],
+      [1, 0, 1],
+    ];
+    const board = generateBoard(layout);
+    const results = Match3Utils.getPossibleMoves(board);
+
+    assert.type(results, 'object');
+    assert.equal(results.length, 8);
+
+    for (let i = 0; i < layout.length; i += 1) {
+      for (let j = 0; j < layout[0].length; j += 1) {
+        assert.equal(board[i][j].type, layout[i][j]);
+        assert.equal(board[i][j].active, false);
+      }
+    }
+  });
+
+  suite.run();
+}
+
+createMatch3GameStateTests();
 checkBoardForHorizontalMatchesTests();
 checkBoardForVerticalMatchesTests();
 shiftTilesTests();
 removeAllActiveTilesFromBoardTests();
 refillTilesTests();
+getPossibleMovesTests();

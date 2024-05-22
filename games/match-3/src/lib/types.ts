@@ -49,3 +49,7 @@ export type NewTileAdded = {
   tile: Tile;
   position: Coordinate;
 };
+export type PossibleMove = {
+  coordinate1: Coordinate;
+  coordinate2: Coordinate;
+};
