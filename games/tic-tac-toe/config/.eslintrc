@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "extends": "@devshareacademy/eslint-config",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+  },
+  "ignorePatterns": ["node_modules", "dist"]
+}

@@ -1,0 +1,15 @@
+☐ download project assets
+☐ update game config
+☐ load in assets
+☐ create buttons
+☐ add hover events with alpha
+☐ core simon logic
+  ☐ generate a random element in the sequence
+  ☐ method to handle player input
+  ☐ track player input until sequence match, or mismatch
+  ☐ reset game
+☐ connect simon to core scene
+  ☐ add simple state for tracking game state
+☐ play a sequence
+  ☐ change game alpha and play sound
+☐ wait for player input

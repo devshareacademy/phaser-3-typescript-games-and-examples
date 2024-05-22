@@ -1,0 +1,12 @@
+## Project Task List
+
+- [ ] download & setup project template (refer to video)
+- [ ] update game config
+- [ ] load in assets
+- [ ] draw game board
+- [ ] draw game pieces
+- [ ] interact with game pieces and toggle frames
+- [ ] create basic tic tac toe class
+- [ ] handle players making a move
+- [ ] add getters to tic tac toe class
+- [ ] connect tic tac toe class to phaser scene
