@@ -8,6 +8,7 @@ import {
   SPECIAL_TILE_TYPE,
   Coordinate,
   UpdatedTileLocation,
+  NewTileAdded,
 } from './types';
 
 export function checkBoardForHorizontalMatches(board: Board): Cluster[] {
@@ -82,6 +83,10 @@ export function getRandomTile(numberOfBasicTileVariations: number): number {
  * @returns {Board}
  */
 export function createMatch3GameState(boardLayout: Level, numberOfBasicTileVariations: number): Match3GameState {
+  if (numberOfBasicTileVariations <= 1) {
+    throw new Error('Invalid game config');
+  }
+
   const gameState: Match3GameState = {
     board: [],
     numberOfBasicTileVariations,
@@ -100,11 +105,24 @@ export function createMatch3GameState(boardLayout: Level, numberOfBasicTileVaria
   }
 
   // remove any starting matches
+  console.log('');
+  findAllMatches(gameState.board);
+  while (isActiveTilesOnBoard(gameState.board)) {
+    removeAllActiveTilesFromBoard(gameState.board);
+    shiftTiles(gameState.board);
+  }
+  // TODO
 
   // validate there is possible moves
   // TODO
 
   return gameState;
+}
+
+export function isActiveTilesOnBoard(board: Board): boolean {
+  return board.some((row) => {
+    return row.some((tile) => tile.active);
+  });
 }
 
 export function findAllMatches(board: Board): Cluster[] {
@@ -178,10 +196,34 @@ export function shiftTiles(board: Board): UpdatedTileLocation[] {
   return shiftedTiles;
 }
 
-function swapTiles(board: Board, tileCoordinate1: Coordinate, tileCoordinate2: Coordinate): void {
+export function swapTiles(board: Board, tileCoordinate1: Coordinate, tileCoordinate2: Coordinate): void {
   const tempTileType = board[tileCoordinate1.row][tileCoordinate1.col];
   board[tileCoordinate1.row][tileCoordinate1.col] = board[tileCoordinate2.row][tileCoordinate2.col];
   board[tileCoordinate2.row][tileCoordinate2.col] = tempTileType;
+}
+
+export function refillTiles(board: Board, tileVariations: number): NewTileAdded[] {
+  const tilesAdded: NewTileAdded[] = [];
+  // start filling board from top to bottom
+  for (let i = 0; i < board[0].length; i += 1) {
+    for (let j = 0; j < board.length; j += 1) {
+      // if space is empty we need to process next in column
+      if (board[j][i].type !== -1) {
+        j += board.length;
+        continue;
+      }
+      // pick random piece
+      board[j][i].type = getRandomTile(tileVariations);
+      tilesAdded.push({
+        tile: board[j][i],
+        position: {
+          col: i,
+          row: j,
+        },
+      });
+    }
+  }
+  return tilesAdded;
 }
 
 export function printBoard(board: Board): void {

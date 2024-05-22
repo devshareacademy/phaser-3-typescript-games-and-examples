@@ -45,3 +45,7 @@ export type UpdatedTileLocation = {
   previousPosition: Coordinate;
   newPosition: Coordinate;
 };
+export type NewTileAdded = {
+  tile: Tile;
+  position: Coordinate;
+};

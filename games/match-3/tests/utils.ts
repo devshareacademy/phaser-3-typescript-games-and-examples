@@ -31,9 +31,9 @@ function createMatch3GameStateTests(): void {
       [1, 1, 1],
     ];
     const gameState = Match3Utils.createMatch3GameState(level, 2);
-    // console.log('');
-    // Match3Utils.printBoard(gameState.board);
-    // console.log(gameState.numberOfBasicTileVariations);
+    console.log('');
+    Match3Utils.printBoard(gameState.board);
+    console.log(gameState.numberOfBasicTileVariations);
 
     assert.type(gameState, 'object');
     assert.type(gameState.numberOfBasicTileVariations, 'number');
@@ -709,8 +709,134 @@ function removeAllActiveTilesFromBoardTests(): void {
   suite.run();
 }
 
-createMatch3GameStateTests();
+function refillTilesTests(): void {
+  const suite = uvu.suite('removeAllActiveTilesFromBoard');
+
+  suite.before.each(() => {
+    const seed = 'f96d18a4-ebca-4241-8109-f543cafba0ed';
+    seedrandom(seed, { global: true });
+  });
+
+  suite('it should not modify the board state if there are no empty tiles', () => {
+    const layout = [
+      [4, 5, 4],
+      [5, 4, 5],
+      [4, 5, 4],
+    ];
+    const board = generateBoard(layout);
+    const results = Match3Utils.refillTiles(board, 2);
+
+    assert.type(results, 'object');
+    assert.equal(results.length, 0);
+    for (let i = 0; i < layout.length; i += 1) {
+      for (let j = 0; j < layout[0].length; j += 1) {
+        assert.equal(board[i][j].type, layout[i][j]);
+      }
+    }
+  });
+
+  suite('it should add new tiles to the board 1', () => {
+    const layout = [
+      [4, -1, 4],
+      [5, 4, 5],
+      [4, 5, 4],
+    ];
+    const board = generateBoard(layout);
+    const results = Match3Utils.refillTiles(board, 2);
+
+    assert.type(results, 'object');
+    assert.equal(results.length, 1);
+
+    const expectedLayout = [
+      [4, 1, 4],
+      [5, 4, 5],
+      [4, 5, 4],
+    ];
+    for (let i = 0; i < expectedLayout.length; i += 1) {
+      for (let j = 0; j < expectedLayout[0].length; j += 1) {
+        assert.equal(board[i][j].type, expectedLayout[i][j]);
+      }
+    }
+  });
+
+  suite('it should add new tiles to the board 2', () => {
+    const layout = [
+      [4, -1, -1],
+      [5, 4, -1],
+      [4, 5, 4],
+    ];
+    const board = generateBoard(layout);
+    const results = Match3Utils.refillTiles(board, 2);
+
+    assert.type(results, 'object');
+    assert.equal(results.length, 3);
+
+    const expectedLayout = [
+      [4, 1, 0],
+      [5, 4, 0],
+      [4, 5, 4],
+    ];
+    for (let i = 0; i < expectedLayout.length; i += 1) {
+      for (let j = 0; j < expectedLayout[0].length; j += 1) {
+        assert.equal(board[i][j].type, expectedLayout[i][j]);
+      }
+    }
+  });
+
+  suite('it should add new tiles to the board 2', () => {
+    const layout = [
+      [-1, -1, -1],
+      [5, 4, -1],
+      [4, 5, -1],
+    ];
+    const board = generateBoard(layout);
+    const results = Match3Utils.refillTiles(board, 2);
+
+    assert.type(results, 'object');
+    assert.equal(results.length, 5);
+
+    const expectedLayout = [
+      [1, 0, 0],
+      [5, 4, 0],
+      [4, 5, 0],
+    ];
+    for (let i = 0; i < expectedLayout.length; i += 1) {
+      for (let j = 0; j < expectedLayout[0].length; j += 1) {
+        assert.equal(board[i][j].type, expectedLayout[i][j]);
+      }
+    }
+  });
+
+  suite('it should add new tiles to the board 3', () => {
+    const layout = [
+      [-1, -1, -1],
+      [5, 4, -1],
+      [4, 5, -1],
+    ];
+    const board = generateBoard(layout);
+    const results = Match3Utils.refillTiles(board, 4);
+
+    assert.type(results, 'object');
+    assert.equal(results.length, 5);
+
+    const expectedLayout = [
+      [2, 0, 1],
+      [5, 4, 0],
+      [4, 5, 1],
+    ];
+    for (let i = 0; i < expectedLayout.length; i += 1) {
+      for (let j = 0; j < expectedLayout[0].length; j += 1) {
+        assert.equal(board[i][j].type, expectedLayout[i][j]);
+      }
+    }
+  });
+
+  suite.run();
+}
+
+//createMatch3GameStateTests();
 checkBoardForHorizontalMatchesTests();
 checkBoardForVerticalMatchesTests();
 shiftTilesTests();
 removeAllActiveTilesFromBoardTests();
+refillTilesTests();
