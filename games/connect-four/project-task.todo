@@ -1,0 +1,14 @@
+☐ download project assets
+☐ update game config
+☐ install connect four npm package
+☐ load in assets
+☐ create board layout
+☐ handle player input
+  ☐ update text in ui
+  ☐ handle hover events
+  ☐ handle click events
+  ☐ add game piece
+☐ handle game over
+  ☐ draw winner message box
+  ☐ update text in ui
+  ☐ reset game
