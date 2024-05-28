@@ -6,6 +6,10 @@ You can see a live demo of the example here: [Phaser 3 Scene Transition Geometry
 
 ![Example](./docs/example.gif?raw=true)
 
+ To learn more about this example, you can watch this video on YouTube here:
+
+[<img src="https://i.ytimg.com/vi/dRwGjVj29s0/hqdefault.jpg">](https://youtu.be/dRwGjVj29s0 "Phaser 3 Tutorial: Custom Level Transitions With Geometry Masks!")
+
 ## Local Development
 
 ### Requirements

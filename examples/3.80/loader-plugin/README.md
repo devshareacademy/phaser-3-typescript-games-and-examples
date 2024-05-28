@@ -2,9 +2,7 @@
 
 Contains example code for reviewing the Phaser 3 Loader Plugin and how to load assets in the `preload` and `create` methods.
 
-You can see a live demo of the example here: [Phaser 3 Arcade Physics Conveyor Belt Demo](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/arcade-physics-conveyor-belt/index.html)
-
-![Example](./docs/example.gif?raw=true)
+You can see a live demo of the example here: [Phaser 3 Loader Plugin Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/loader-plugin/index.html)
 
 ## Local Development
 

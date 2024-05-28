@@ -6,6 +6,10 @@ You can see a live demo of the example here: [Phaser 3 Scene Transition Bitmap M
 
 ![Example](./docs/example.gif?raw=true)
 
+ To learn more about this example, you can watch this video on YouTube here:
+
+[<img src="https://i.ytimg.com/vi/xAxf7BZetBA/hqdefault.jpg">](https://youtu.be/xAxf7BZetBA "Phaser 3 Tutorial: Custom Level Transitions With Bitmap Masks!")
+
 ## Local Development
 
 ### Requirements
