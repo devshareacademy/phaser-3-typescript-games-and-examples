@@ -1,6 +1,6 @@
-# Phaser 3 TypeScript - TEMPLATE
+# Phaser 3 TypeScript - Connect Four
 
-A Phaser 3 TypeScript example TEMPLATE.
+A basic Phaser 3 TypeScript prototype of the game Connect Four.
 
 ## Local Development
 
@@ -39,3 +39,10 @@ you should be able to open `http://myserver.com/index.html` and play your game.
 ### Static Assets
 
 Any static assets like images or audio files should be placed in the `public` folder. It'll then be served at `http://localhost:8080/path-to-file-your-file/file-name.file-type`.
+
+## Ideas for improvement
+
+* add support for mobile
+* add title & game over screens
+* add cpu
+* add animations
