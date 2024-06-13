@@ -2,6 +2,8 @@
 
 A basic Phaser 3 TypeScript prototype of the game Simon.
 
+You can see a live demo of the example here: [Phaser 3 Simon](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/games/simon/index.html)
+
 ## Local Development
 
 ### Requirements
