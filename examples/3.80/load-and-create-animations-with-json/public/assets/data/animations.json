@@ -1,0 +1,172 @@
+{
+  "anims": [
+    {
+      "key": "npc_1_walk_down",
+      "type": "frame",
+      "frames": [
+        {
+          "frame": 0
+        },
+        {
+          "frame": 1
+        },
+        {
+          "frame": 2
+        },
+        {
+          "frame": 1
+        }
+      ],
+      "defaultTextureKey": "characters",
+      "frameRate": 6,
+      "repeat": -1
+    },
+    {
+      "key": "npc_2_walk_down",
+      "type": "frame",
+      "frames": [
+        {
+          "frame": 3
+        },
+        {
+          "frame": 4
+        },
+        {
+          "frame": 5
+        },
+        {
+          "frame": 4
+        }
+      ],
+      "defaultTextureKey": "characters",
+      "frameRate": 6,
+      "repeat": -1
+    },
+    {
+      "key": "npc_3_walk_down",
+      "type": "frame",
+      "frames": [
+        {
+          "frame": 6
+        },
+        {
+          "frame": 7
+        },
+        {
+          "frame": 8
+        },
+        {
+          "frame": 7
+        }
+      ],
+      "defaultTextureKey": "characters",
+      "frameRate": 6,
+      "repeat": -1
+    },
+    {
+      "key": "npc_4_walk_down",
+      "type": "frame",
+      "frames": [
+        {
+          "frame": 9
+        },
+        {
+          "frame": 10
+        },
+        {
+          "frame": 11
+        },
+        {
+          "frame": 10
+        }
+      ],
+      "defaultTextureKey": "characters",
+      "frameRate": 6,
+      "repeat": -1
+    },
+    {
+      "key": "walk_down",
+      "type": "frame",
+      "frames": [
+        {
+          "frame": 54
+        },
+        {
+          "frame": 55
+        },
+        {
+          "frame": 56
+        },
+        {
+          "frame": 55
+        }
+      ],
+      "defaultTextureKey": "characters",
+      "frameRate": 6,
+      "repeat": -1
+    },
+    {
+      "key": "walk_left",
+      "type": "frame",
+      "frames": [
+        {
+          "frame": 66
+        },
+        {
+          "frame": 67
+        },
+        {
+          "frame": 68
+        },
+        {
+          "frame": 67
+        }
+      ],
+      "defaultTextureKey": "characters",
+      "frameRate": 6,
+      "repeat": -1
+    },
+    {
+      "key": "walk_right",
+      "type": "frame",
+      "frames": [
+        {
+          "frame": 78
+        },
+        {
+          "frame": 79
+        },
+        {
+          "frame": 80
+        },
+        {
+          "frame": 79
+        }
+      ],
+      "defaultTextureKey": "characters",
+      "frameRate": 6,
+      "repeat": -1
+    },
+    {
+      "key": "walk_up",
+      "type": "frame",
+      "frames": [
+        {
+          "frame": 90
+        },
+        {
+          "frame": 91
+        },
+        {
+          "frame": 92
+        },
+        {
+          "frame": 91
+        }
+      ],
+      "defaultTextureKey": "characters",
+      "frameRate": 6,
+      "repeat": -1
+    }
+  ]
+}
