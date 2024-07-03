@@ -1,0 +1,83 @@
+[
+  {
+    "path": "assets/images/axulart/character",
+    "files": [
+      {
+        "type": "spritesheet",
+        "key": "player",
+        "url": "custom.png",
+        "frameConfig": { "frameWidth": 64, "frameHeight": 88 }
+      }
+    ]
+  },
+  {
+    "path": "assets/images/monster-tamer/battle-backgrounds",
+    "files": [
+      {
+        "type": "image",
+        "key": "forest",
+        "url": "forest-background.png"
+      }
+    ]
+  },
+  {
+    "path": "assets/images/monster-tamer/monsters",
+    "files": [
+      {
+        "type": "image",
+        "key": "carnodusk",
+        "url": "carnodusk.png"
+      },
+      {
+        "type": "image",
+        "key": "iguanignite",
+        "url": "iguanignite.png"
+      },
+      {
+        "type": "image",
+        "key": "aquavalor",
+        "url": "aquavalor.png"
+      },
+      {
+        "type": "image",
+        "key": "frostsaber",
+        "url": "frostsaber.png"
+      },
+      {
+        "type": "image",
+        "key": "ignivolt",
+        "url": "ignivolt.png"
+      },
+      {
+        "type": "image",
+        "key": "parazoid",
+        "url": "parazoid.png"
+      },
+      {
+        "type": "image",
+        "key": "jivy",
+        "url": "jivy.png"
+      }
+    ]
+  },
+  {
+    "path": "assets/data",
+    "files": [
+      {
+        "type": "json",
+        "key": "item_data",
+        "url": "items.json"
+      }
+    ]
+  },
+  {
+    "path": "assets/audio/xDeviruchi",
+    "files": [
+      {
+        "type": "audio",
+        "key": "title_theme",
+        "url": "Title-Theme.wav"
+      }
+    ]
+  }
+]
