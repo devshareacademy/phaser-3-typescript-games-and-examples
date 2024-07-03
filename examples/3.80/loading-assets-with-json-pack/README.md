@@ -2,11 +2,17 @@
 
 Contains example code of how you can use the built in [Phaser 3 Pack Loader](https://newdocs.phaser.io/docs/3.80.0/focus/Phaser.Loader.LoaderPlugin-pack) to load your various asset files from one central JSON file. This can help you keep your code and config isolated.
 
-Contains example code of how you can use the built in Phaser 3 Arcade Physics Engine to create a conveyor belt like game object that will move objects automatically, and modify their speed when the objects are moving.
-
-You can see a live demo of the example here: [Phaser 3 Asset Loading via Pack Loader Demo](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/arcade-physics-conveyor-belt/index.html)
+You can see a live demo of the example here: [Phaser 3 Asset Loading via Pack Loader Demo](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/loading-assets-with-json-pack/index.html)
 
 ![Example](./docs/example.png?raw=true)
+
+By using the JSON file for loading assets, your `preload` code can go from this:
+
+![Example 1](./docs/example1.png?raw=true)
+
+to this:
+
+![Example 2](./docs/example2.png?raw=true)
 
 ## Local Development
 

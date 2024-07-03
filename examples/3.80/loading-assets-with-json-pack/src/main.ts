@@ -49,6 +49,7 @@ export class Game extends Phaser.Scene {
     // this.load.setPath('assets/audio/xDeviruchi');
     // this.load.audio('title_theme', 'Title-Theme.wav');
 
+    // uncomment this line and comment out code above for example
     // asset pack example
     // this.load.pack('asset_pack', 'assets/data/assets.json');
   }
