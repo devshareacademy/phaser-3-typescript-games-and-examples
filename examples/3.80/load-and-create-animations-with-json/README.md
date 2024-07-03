@@ -2,7 +2,7 @@
 
 Contains example code of how you can use the built in [Phaser 3 Loader Plugin](https://newdocs.phaser.io/docs/3.80.0/focus/Phaser.Loader.LoaderPlugin-animation) to load your animation configurations from one central JSON file. This can help you keep your code and config isolated.
 
-You can see a live demo of the example here: [Phaser 3 Creating Animations With the Loader Plugin Demo](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/loading-assets-with-json-pack/index.html)
+You can see a live demo of the example here: [Phaser 3 Creating Animations With the Loader Plugin Demo](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/load-and-create-animations-with-json/index.html)
 
 ![Example](./docs/example.png?raw=true)
 
