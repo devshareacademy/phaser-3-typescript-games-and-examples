@@ -28,26 +28,26 @@ export class Game extends Phaser.Scene {
     this.load.audio('title_theme', 'Title-Theme.wav');
 
     // duplicated for example
-    // this.load.setPath('assets/images/axulart/character');
-    // this.load.spritesheet('player', 'custom.png', { frameWidth: 64, frameHeight: 88 });
+    this.load.setPath('assets/images/axulart/character');
+    this.load.spritesheet('player2', 'custom.png', { frameWidth: 64, frameHeight: 88 });
 
-    // this.load.setPath('assets/images/monster-tamer/battle-backgrounds');
-    // this.load.image('forest', 'forest-background.png');
+    this.load.setPath('assets/images/monster-tamer/battle-backgrounds');
+    this.load.image('forest2', 'forest-background.png');
 
-    // this.load.setPath('assets/images/monster-tamer/monsters');
-    // this.load.image('carnodusk', 'carnodusk.png');
-    // this.load.image('iguanignite', 'iguanignite.png');
-    // this.load.image('aquavalor', 'aquavalor.png');
-    // this.load.image('frostsaber', 'frostsaber.png');
-    // this.load.image('ignivolt', 'ignivolt.png');
-    // this.load.image('parazoid', 'parazoid.png');
-    // this.load.image('jivy', 'jivy.png');
+    this.load.setPath('assets/images/monster-tamer/monsters');
+    this.load.image('carnodusk2', 'carnodusk.png');
+    this.load.image('iguanignite2', 'iguanignite.png');
+    this.load.image('aquavalor2', 'aquavalor.png');
+    this.load.image('frostsaber2', 'frostsaber.png');
+    this.load.image('ignivolt2', 'ignivolt.png');
+    this.load.image('parazoid2', 'parazoid.png');
+    this.load.image('jivy2', 'jivy.png');
 
-    // this.load.setPath('assets/data');
-    // this.load.json('item_data', 'items.json');
+    this.load.setPath('assets/data');
+    this.load.json('item_data2', 'items.json');
 
-    // this.load.setPath('assets/audio/xDeviruchi');
-    // this.load.audio('title_theme', 'Title-Theme.wav');
+    this.load.setPath('assets/audio/xDeviruchi');
+    this.load.audio('title_theme2', 'Title-Theme.wav');
 
     // uncomment this line and comment out code above for example
     // asset pack example
