@@ -1,8 +1,8 @@
-# Phaser 3 TypeScript - Simon
+# Phaser 3 TypeScript - Connect Four
 
-A basic Phaser 3 TypeScript prototype of the game Simon.
+A basic Phaser 3 TypeScript prototype of the game Connect Four.
 
-You can see a live demo of the example here: [Phaser 3 Simon](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/games/simon/index.html)
+You can see a live demo of the example here: [Phaser 3 Connect Four](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/games/connect-four/index.html)
 
 ## Local Development
 
@@ -44,8 +44,7 @@ Any static assets like images or audio files should be placed in the `public` fo
 
 ## Ideas for improvement
 
-* add simple score mechanic
-* add high local high scores
-* create npm package for the simon game class
 * add support for mobile
 * add title & game over screens
+* add cpu
+* add animations
