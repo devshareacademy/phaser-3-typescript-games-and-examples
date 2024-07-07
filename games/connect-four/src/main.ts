@@ -10,7 +10,6 @@ const GAME_HEIGHT = SCALED_FRAME_SIZE * 6;
 const GAME_WIDTH = SCALED_FRAME_SIZE * 7;
 
 class Game extends Phaser.Scene {
-  private bg!: Phaser.GameObjects.Image;
   private connectFour!: ConnectFour;
 
   constructor() {
@@ -22,6 +21,7 @@ class Game extends Phaser.Scene {
   }
 
   public preload(): void {
+    // load in data
     this.load.spritesheet(ASSET_KEY, 'assets/images/connect-four.png', {
       frameWidth: 32,
       frameHeight: 32,
@@ -29,9 +29,9 @@ class Game extends Phaser.Scene {
   }
 
   public create(): void {
+    // Create game objects
     this.createBoard();
     this.createInputColumns();
-    this.checkForGameOver();
   }
 
   private createBoard(): void {
@@ -39,7 +39,7 @@ class Game extends Phaser.Scene {
       for (let j = 0; j < this.connectFour.board.length; j++) {
         const x = i * SCALED_FRAME_SIZE;
         const y = j * SCALED_FRAME_SIZE;
-        this.add.image(x, y, ASSET_KEY, 2).setOrigin(0).setScale(2).setDepth(2);
+        this.add.image(x, y, ASSET_KEY, 2).setOrigin(0).setScale(SCALE_SIZE).setDepth(2);
       }
     }
   }
@@ -67,13 +67,9 @@ class Game extends Phaser.Scene {
           return;
         }
 
-        try {
-          const currentPlayer = this.connectFour.playersTurn;
-          const coordinate = this.connectFour.makeMove(rect.getData(columnIndexKey) as number);
-          this.addGamePiece(coordinate.row, coordinate.col, currentPlayer);
-        } catch (error) {
-          // do nothing
-        }
+        const currentPlayer = this.connectFour.playersTurn;
+        const coordinate = this.connectFour.makeMove(rect.getData(columnIndexKey) as number);
+        this.addGamePiece(coordinate.row, coordinate.col, currentPlayer);
       });
     }
   }
@@ -82,7 +78,7 @@ class Game extends Phaser.Scene {
     const gamePieceFrame = player === Player.ONE ? 0 : 1;
     const x = col * SCALED_FRAME_SIZE;
     const y = row * SCALED_FRAME_SIZE;
-    this.add.image(x, y, ASSET_KEY, gamePieceFrame).setOrigin(0).setScale(2).setDepth(1);
+    this.add.image(x, y, ASSET_KEY, gamePieceFrame).setOrigin(0).setScale(SCALE_SIZE).setDepth(1);
     this.checkForGameOver();
   }
 
@@ -94,7 +90,11 @@ class Game extends Phaser.Scene {
     this.add
       .rectangle(20, GAME_HEIGHT / 3, GAME_WIDTH - 40, GAME_HEIGHT / 4, 0x000000)
       .setOrigin(0)
-      .setDepth(4);
+      .setDepth(4)
+      .setInteractive()
+      .once(Phaser.Input.Events.POINTER_DOWN as string, () => {
+        this.scene.restart();
+      });
 
     let winText = 'Draw';
     if (this.connectFour.gameWinner) {
@@ -105,17 +105,10 @@ class Game extends Phaser.Scene {
       .text(GAME_WIDTH / 2, GAME_HEIGHT / 3 + 30, winText, { fontSize: '32px' })
       .setOrigin(0.5)
       .setDepth(5);
-
     this.add
-      .text(GAME_WIDTH / 2, GAME_HEIGHT / 2 + 15, 'Click anywhere to play again')
+      .text(GAME_WIDTH / 2, GAME_HEIGHT / 2 + 15, 'Click here to play again!')
       .setOrigin(0.5)
       .setDepth(5);
-
-    setTimeout(() => {
-      this.input.once(Phaser.Input.Events.POINTER_UP as string, () => {
-        this.scene.restart();
-      });
-    }, 100);
   }
 }
 
