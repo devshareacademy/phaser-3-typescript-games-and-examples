@@ -1,6 +1,6 @@
-# Phaser 3 TypeScript - TEMPLATE
+# Phaser 3 TypeScript - Warped Caves Phaser 2 Migration
 
-A Phaser 3 TypeScript implementation TEMPLATE.
+This project is a Phaser 3 migration of the awesome Warped Caves Phaser 2 demo that was created by <a href="https://ansimuz.itch.io/" target="_blank">ansimuz</a>. You can find the original demo for the Phaser 2 demo here: <a href="https://ansimuz.itch.io/warped-caves" target="_blank">Warped Caves Assets Demo</a>.
 
 ## Local Development
 
@@ -14,23 +14,23 @@ A Phaser 3 TypeScript implementation TEMPLATE.
 
 | Command | Description |
 |---------|-------------|
-| `yarn install --frozen-lockfile` | Install project dependencies |
-| `yarn start` | Build project and open web server running project |
-| `yarn build` | Builds code bundle for production |
-| `yarn lint` | Uses ESLint to lint code |
+| `pnpm install --frozen-lockfile` | Install project dependencies |
+| `pnpm start` | Build project and open web server running project |
+| `pnpm build` | Builds code bundle for production |
+| `pnpm lint` | Uses ESLint to lint code |
 
 ### Writing Code
 
-After cloning the repo, run `yarn install --frozen-lockfile` from your project directory. Then, you can start the local development
-server by running `yarn start`.
+After cloning the repo, run `pnpm install --frozen-lockfile` from your project directory. Then, you can start the local development
+server by running `pnpm start`.
 
-After starting the development server with `yarn start`, you can edit any files in the `src` folder
+After starting the development server with `pnpm start`, you can edit any files in the `src` folder
 and parcel will automatically recompile and reload your server (available at `http://localhost:8080`
 by default).
 
 ### Deploying Code
 
-After you run the `yarn build` command, your code will be built into a single bundle located at
+After you run the `pnpm build` command, your code will be built into a single bundle located at
 `dist/*` along with any other assets you project depended.
 
 If you put the contents of the `dist` folder in a publicly-accessible location (say something like `http://myserver.com`),
