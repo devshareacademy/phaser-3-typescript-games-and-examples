@@ -1,0 +1,11 @@
+{
+  "root": true,
+  "extends": "@devshareacademy/eslint-config",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "@typescript-eslint/unbound-method": "off"
+  },
+  "ignorePatterns": ["node_modules", "dist"]
+}
