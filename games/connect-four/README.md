@@ -4,6 +4,12 @@ A basic Phaser 3 TypeScript prototype of the game Connect Four.
 
 You can see a live demo of the example here: [Phaser 3 Connect Four](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/games/connect-four/index.html)
 
+![Example](./docs/example.gif?raw=true)
+
+To learn more about this example, you can watch this video on YouTube here:
+
+Coming soon...
+
 ## Local Development
 
 ### Requirements
