@@ -8,7 +8,7 @@ You can see a live demo of the example here: [Phaser 3 Connect Four](https://dev
 
 To learn more about this example, you can watch this video on YouTube here:
 
-Coming soon...
+[<img src="https://i.ytimg.com/vi/lNXDp78CiT0/hqdefault.jpg">](https://youtu.be/lNXDp78CiT0 "Phaser 3 Tutorial: Creating Game Prototypes - Connect Four")
 
 ## Local Development
 
