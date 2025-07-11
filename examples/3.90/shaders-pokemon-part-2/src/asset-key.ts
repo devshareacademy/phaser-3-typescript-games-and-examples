@@ -1,0 +1,7 @@
+export const SHADER_ASSET_KEYS = Object.freeze({
+  WIPE: 'WIPE',
+  DIAGONAL: 'DIAGONAL',
+  VERTICAL: 'VERTICAL',
+  CLOSE_BARS: 'CLOSE_BARS',
+  TRAPPED: 'TRAPPED',
+});
