@@ -12,6 +12,7 @@ import { GradientTexturePostFxPipeline } from '../shaders/gradient-texture-post-
 import { SHADER_ASSET_KEYS } from '../asset-key';
 
 const IMAGE_ASSET_KEY = 'BG';
+const IMAGE_ASSET_KEY2 = 'BG2';
 
 const pipelines = [
   WipePostFxPipeline,
@@ -32,6 +33,7 @@ export class MainScene extends Phaser.Scene {
   preload(): void {
     // load in data
     this.load.image(IMAGE_ASSET_KEY, 'assets/images/bg.png');
+    this.load.image(IMAGE_ASSET_KEY2, 'assets/images/bg3.png');
 
     // Load gradient textures for the gradient pipeline
     this.load.image(SHADER_ASSET_KEYS.WIPE, 'assets/images/shader/wipe.png');
@@ -43,7 +45,11 @@ export class MainScene extends Phaser.Scene {
 
   create(): void {
     // Create game objects
-    this.add.image(0, 0, IMAGE_ASSET_KEY).setOrigin(0);
+    this.add.image(0, 0, IMAGE_ASSET_KEY2).setOrigin(0);
+    this.add
+      .image(this.scale.width / 2, this.scale.height / 2, IMAGE_ASSET_KEY)
+      .setOrigin(0.5, 0.5)
+      .setScale(2.5);
 
     // example for adding post-fx pipeline
     // add the pipeline to our renderer & update camera to use post pipeline

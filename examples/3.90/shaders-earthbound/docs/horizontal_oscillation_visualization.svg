@@ -1,0 +1,42 @@
+<svg width="500" height="220" viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .label { font: 14px sans-serif; fill: #333; }
+    .axis-label { font: italic 12px sans-serif; fill: #666; }
+    .wave-path { stroke: #007bff; stroke-width: 2.5; fill: none; }
+    .center-line { stroke: #ccc; stroke-width: 1; stroke-dasharray: 5 3; }
+    .arrow { stroke: #e74c3c; stroke-width: 1.5; marker-end: url(#arrowhead); }
+    .arrow-text { font: 12px sans-serif; fill: #e74c3c; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5"
+        markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e74c3c" />
+    </marker>
+  </defs>
+
+  <!-- Main Title -->
+  <text x="250" y="25" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">Horizontal Oscillation Visualization</text>
+
+  <!-- Y-axis (represents horizontal displacement) -->
+  <line x1="50" y1="50" x2="50" y2="190" stroke="#333" stroke-width="1"/>
+  <text x="35" y="120" class="axis-label" transform="rotate(-90, 35, 120)">Displacement</text>
+  <text x="60" y="60" class="axis-label">+ Amplitude</text>
+  <text x="60" y="185" class="axis-label">- Amplitude</text>
+
+  <!-- X-axis (represents vertical position on screen) -->
+  <line x1="50" y1="120" x2="450" y2="120" class="center-line"/>
+  <text x="250" y="205" text-anchor="middle" class="axis-label">Vertical Screen Coordinate (Y)</text>
+
+  <!-- Sine Wave -->
+  <path class="wave-path" d="M 50 120 C 150 50, 250 50, 350 120 S 450 190, 550 120" transform="translate(-50, 0)"/>
+
+  <!-- Amplitude Arrow & Label -->
+  <path class="arrow" d="M 150 118 L 150 70" />
+  <text x="155" y="95" class="arrow-text">Amplitude</text>
+
+  <!-- Frequency Arrow & Label -->
+  <path class="arrow" d="M 100 140 L 300 140" />
+  <text x="190" y="155" class="arrow-text">Frequency (1 cycle)</text>
+
+</svg>

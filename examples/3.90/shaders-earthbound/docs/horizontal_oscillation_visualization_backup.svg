@@ -1,0 +1,73 @@
+<!--
+  This SVG file is designed to be a clear, beginner-friendly visualization of a horizontal oscillation shader effect.
+
+  1.  **Original Pixel Column (Left, Green):** This represents a single, straight vertical line of pixels from an undistorted source image. It establishes the baseline.
+
+  2.  **Sine Wave (Center, Blue):** This is the core of the effect. It's a simple sine wave plotted along the y-axis. It serves as the mathematical "instruction" for how to displace pixels.
+
+  3.  **Distorted Column (Right, Red):** This is the final output. It shows how the original green line looks after being distorted. The horizontal position of any point on this red line is determined by the value of the blue sine wave at the same vertical (y) position.
+
+  4.  **Arrow and Formula (Center):** The arrow explicitly connects the sine wave to the final distorted output, showing that the offset is calculated from the wave's value. The formula `Offset = sin(y) * amplitude` is the exact logic used in the shader, stated in a simple way.
+
+  The overall goal is to show the direct relationship between the sine wave and the final pixel displacement in a clean, easy-to-understand diagram.
+-->
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .label {
+      font-family: sans-serif;
+      font-size: 18px;
+    }
+    .axis {
+      stroke: black;
+      stroke-width: 1;
+    }
+    .wave {
+      stroke: #007bff;
+      stroke-width: 2;
+      fill: none;
+    }
+    .line {
+      stroke: #28a745;
+      stroke-width: 4;
+    }
+    .distorted-line {
+      stroke: #dc3545;
+      stroke-width: 4;
+    }
+    .arrow {
+      stroke: #6c757d;
+      stroke-width: 1.5;
+      marker-end: url(#arrowhead);
+    }
+    .note {
+      font-family: sans-serif;
+      font-size: 14px;
+      fill: #333;
+    }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+
+  <!-- Labels -->
+  <text x="50" y="40" class="label">Original Pixel Column</text>
+  <text x="250" y="40" class="label">Sine Wave</text>
+  <text x="450" y="40" class="label">Distorted Column</text>
+
+  <!-- Original Line -->
+  <line x1="100" y1="80" x2="100" y2="350" class="line" />
+
+  <!-- Sine Wave -->
+  <path class="wave" d="M275,80 C325,150 225,250 275,350" />
+  <line x1="275" y1="80" x2="275" y2="350" class="axis" />
+
+  <!-- Distorted Line -->
+  <path class="distorted-line" d="M475,80 C525,150 425,250 475,350" />
+
+  <!-- Explanatory Arrow and Text -->
+  <line x1="325" y1="150" x2="475" y2="150" class="arrow" />
+  <text x="340" y="145" class="note">Offset = sin(y) * amplitude</text>
+</svg>
