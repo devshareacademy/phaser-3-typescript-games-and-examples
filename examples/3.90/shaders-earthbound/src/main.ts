@@ -5,6 +5,7 @@ import { HorizontalOscillationScene } from './scenes/horizontal-oscillation-scen
 import { MainScene } from './scenes/main-scene';
 import { ScrollingScene } from './scenes/scrolling-scene';
 import { LoadingScene } from './scenes/loading-scene';
+// import { TunnelEffectScene } from './scenes/tunnel-effect-scene';
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
   type: Phaser.WEBGL,
@@ -27,4 +28,5 @@ game.scene.add('ScrollingScene', ScrollingScene);
 game.scene.add('HorizontalOscillationScene', HorizontalOscillationScene);
 game.scene.add('VerticalOscillationScene', VerticalOscillationScene);
 game.scene.add('ConcaveDistortionScene', ConcaveDistortionScene);
+// game.scene.add('TunnelEffectScene', TunnelEffectScene);
 game.scene.start('LoadingScene');

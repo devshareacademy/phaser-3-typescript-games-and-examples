@@ -11,7 +11,7 @@ export class TunnelEffectScene extends BaseScene {
   }
 
   preload(): void {
-    this.load.image(TUNNEL_BG_ASSET, 'assets/images/shader/original.png');
+    this.load.image(TUNNEL_BG_ASSET, 'assets/images/shader/tunnel/tunnel.png');
   }
 
   create(): void {
@@ -22,7 +22,7 @@ export class TunnelEffectScene extends BaseScene {
 
     this.bgImage = this.add
       .image(this.cameras.main.width / 2, this.cameras.main.height / 2 + 20, TUNNEL_BG_ASSET)
-      .setScale(0.5);
+      .setScale(2);
     this.bgImage.setPostPipeline(TunnelEffectPostFxPipeline.name);
     this.tunnelPipeline = this.bgImage.getPostPipeline(TunnelEffectPostFxPipeline.name) as TunnelEffectPostFxPipeline;
 
