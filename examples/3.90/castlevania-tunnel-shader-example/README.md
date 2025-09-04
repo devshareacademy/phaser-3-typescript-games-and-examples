@@ -4,11 +4,9 @@ Recreate Castlevania IV’s legendary tunnel effect! 🌀 In this WebGL tutorial
 
 [<img src="https://i.ytimg.com/vi/rCipJqPoRFU/hqdefault.jpg">](https://youtu.be/rCipJqPoRFU "WebGL Shader Tutorial: Castlevania IV Tunnel Effect")
 
-You can see a live demo of the examples here: [Pass Texture to Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/pass-texture-to-shader-example/index.html)
+You can see a live demo of the examples here: [Castlevania Tunnel Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/castlevania-tunnel-shader-example/index.html)
 
-![Shader Examples 1](./docs/example.gif?raw=true)
-
-![Shader Examples 2](./docs/example2.gif?raw=true)
+![Shader Example 1](./docs/example.gif?raw=true)
 
 ## Local Development
 
