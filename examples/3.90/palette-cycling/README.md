@@ -4,11 +4,13 @@ Contains example code of how to create a palette cycling effect shader in Phaser
 
 [<img src="https://i.ytimg.com/vi/RJCBg5fFPM4/hqdefault.jpg">](https://youtu.be/RJCBg5fFPM4 "Phaser 3 Shader Tutorial — Recreating EarthBound’s Palette Cycling Effect")
 
-You can see a live demo of the examples here: [Pass Texture to Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/pass-texture-to-shader-example/index.html)
+You can see a live demo of the example here: [Palette Cycling Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/palette-cycling/index.html)
 
 ![Shader Examples 1](./docs/example.gif?raw=true)
 
 ![Shader Examples 2](./docs/example2.gif?raw=true)
+
+![Shader Examples 3](./docs/example3.gif?raw=true)
 
 ## Local Development
 
