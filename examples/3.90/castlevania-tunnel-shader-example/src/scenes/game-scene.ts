@@ -78,7 +78,7 @@ export class GameScene extends Phaser.Scene {
     });
 
     this.#pane.addBinding(this.#pipeline, 'curve', {
-      min: 1.0,
+      min: 0.0,
       max: 5.0,
       step: 0.1,
       label: 'Curve',

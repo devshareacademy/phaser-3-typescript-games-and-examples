@@ -11,26 +11,26 @@ uniform float u_scrollSpeed;
 uniform float u_curve;
 
 void main() {
-    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-    float centerY = 0.5;
+  vec2 uv = gl_FragCoord.xy / u_resolution.xy;
+  float centerY = 0.5;
 
-    // Compute vertical distance from center
-    float dy = (uv.y - centerY);
+  // Compute vertical distance from center
+  float dy = (uv.y - centerY);
 
-    // Strength curve: bigger scale farther from center (cylinder effect)
-    float scale = 1.0 + u_strength * pow(abs(dy), u_curve);
+  // Strength curve: bigger scale farther from center (cylinder effect)
+  float scale = 1.0 + u_strength * pow(abs(dy), u_curve);
 
-    // Horizonal UV remapped by inverse scale centered
-    float centeredX = (uv.x - 0.5) / scale + 0.5;
+  // Horizonal UV remapped by inverse scale centered
+  float centeredX = (uv.x - 0.5) / scale + 0.5;
 
-    // Vertical scroll for motion
-    float v = fract(uv.y + u_time * u_scrollSpeed);
+  // Vertical scroll for motion
+  float v = fract(uv.y + u_time * u_scrollSpeed);
 
-    vec2 finalUV = vec2(centeredX, v);
+  vec2 finalUV = vec2(centeredX, v);
 
-    // sample texture
-    vec4 color = texture2D(u_main, finalUV);
-    gl_FragColor = color;
+  // sample texture
+  vec4 color = texture2D(u_main, finalUV);
+  gl_FragColor = color;
 }
 `;
 
