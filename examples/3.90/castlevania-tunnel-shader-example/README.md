@@ -1,8 +1,8 @@
-# Phaser 3 TypeScript - Palette Cycling Example
+# Phaser 3 TypeScript - Super Castlevania IV Tunnel Shader Example
 
-Contains example code of how to create a palette cycling effect shader in Phaser 3. This is the sample code that I shared in my tutorial video hosted on YouTube here:
+Recreate Castlevania IV’s legendary tunnel effect! 🌀 In this WebGL tutorial, we’ll build a concave distortion shader that bends a flat image into a scrolling tunnel — just like the SNES classic. This is the sample code that I shared in my tutorial video hosted on YouTube here:
 
-Coming soon...
+[<img src="https://i.ytimg.com/vi/rCipJqPoRFU/hqdefault.jpg">](https://youtu.be/rCipJqPoRFU "WebGL Shader Tutorial: Castlevania IV Tunnel Effect")
 
 You can see a live demo of the examples here: [Pass Texture to Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/pass-texture-to-shader-example/index.html)
 
