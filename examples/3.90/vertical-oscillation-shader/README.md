@@ -2,15 +2,13 @@
 
 Contains example code of how to create a vertical oscillation effect shader in Phaser 3. This is the sample code that I shared in my tutorial video hosted on YouTube here:
 
-[<img src="https://i.ytimg.com/vi/RJCBg5fFPM4/hqdefault.jpg">](https://youtu.be/RJCBg5fFPM4 "Phaser 3 Shader Tutorial — Recreating EarthBound’s Palette Cycling Effect")
+[<img src="https://i.ytimg.com/vi/AxZG7aBXmFQ/hqdefault.jpg">](https://youtu.be/AxZG7aBXmFQ "Phaser 3 Shader Tutorial — Recreating EarthBound’s Horizontal Oscillation Effect")
 
-You can see a live demo of the example here: [Palette Cycling Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/palette-cycling/index.html)
+You can see a live demo of the example here: [Palette Cycling Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/vertical-oscillation-shader/index.html)
 
 ![Shader Examples 1](./docs/example.gif?raw=true)
 
 ![Shader Examples 2](./docs/example2.gif?raw=true)
-
-![Shader Examples 3](./docs/example3.gif?raw=true)
 
 ## Local Development
 
