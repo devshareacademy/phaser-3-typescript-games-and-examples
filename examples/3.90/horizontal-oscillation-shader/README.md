@@ -2,7 +2,7 @@
 
 Contains example code of how to create a horizontal oscillation effect shader in Phaser 3. This is the sample code that I shared in my tutorial video hosted on YouTube here:
 
-[<img src="https://i.ytimg.com/vi/hvHxfP04lrw/hqdefault.jpg">](https://youtu.be/hvHxfP04lrw "Phaser 3 Shader Tutorial — Recreating EarthBound’s Horizontal Oscillation Effect")
+[<img src="https://i.ytimg.com/vi/AxZG7aBXmFQ/hqdefault.jpg">](https://youtu.be/AxZG7aBXmFQ "Phaser 3 Shader Tutorial — Recreating EarthBound’s Horizontal Oscillation Effect")
 
 You can see a live demo of the example here: [Horizontal Oscillation Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/horizontal-oscillation-shader/index.html)
 
