@@ -12,7 +12,9 @@ const SCENES = [
   'ScrollingScene',
   'HorizontalOscillationScene',
   'VerticalOscillationScene',
+  'InterleavedOscillationScene',
   'ConcaveDistortionScene',
+  'UbershaderScene',
 ];
 
 export class BaseScene extends Phaser.Scene {

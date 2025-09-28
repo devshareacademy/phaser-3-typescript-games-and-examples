@@ -15,6 +15,6 @@ export class LoadingScene extends Phaser.Scene {
   }
 
   create(): void {
-    this.scene.start('MainScene');
+    this.scene.start('BattleScene');
   }
 }

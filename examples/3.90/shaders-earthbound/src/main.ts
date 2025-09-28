@@ -2,9 +2,12 @@ import Phaser from 'phaser';
 import { ConcaveDistortionScene } from './scenes/concave-distortion-scene';
 import { VerticalOscillationScene } from './scenes/vertical-oscillation-scene';
 import { HorizontalOscillationScene } from './scenes/horizontal-oscillation-scene';
+import { InterleavedOscillationScene } from './scenes/interleaved-oscillation-scene';
+import { UbershaderScene } from './scenes/ubershader-scene';
 import { MainScene } from './scenes/main-scene';
 import { ScrollingScene } from './scenes/scrolling-scene';
 import { LoadingScene } from './scenes/loading-scene';
+import { BattleScene } from './scenes/battle-scene';
 // import { TunnelEffectScene } from './scenes/tunnel-effect-scene';
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
@@ -27,6 +30,9 @@ game.scene.add('MainScene', MainScene);
 game.scene.add('ScrollingScene', ScrollingScene);
 game.scene.add('HorizontalOscillationScene', HorizontalOscillationScene);
 game.scene.add('VerticalOscillationScene', VerticalOscillationScene);
+game.scene.add('InterleavedOscillationScene', InterleavedOscillationScene);
 game.scene.add('ConcaveDistortionScene', ConcaveDistortionScene);
+game.scene.add('UbershaderScene', UbershaderScene);
+game.scene.add('BattleScene', BattleScene);
 // game.scene.add('TunnelEffectScene', TunnelEffectScene);
 game.scene.start('LoadingScene');
