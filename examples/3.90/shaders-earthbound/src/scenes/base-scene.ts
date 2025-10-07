@@ -15,6 +15,7 @@ const SCENES = [
   'InterleavedOscillationScene',
   'ConcaveDistortionScene',
   'UbershaderScene',
+  'LightningScene',
 ];
 
 export class BaseScene extends Phaser.Scene {

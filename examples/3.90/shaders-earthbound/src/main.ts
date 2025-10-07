@@ -8,6 +8,10 @@ import { MainScene } from './scenes/main-scene';
 import { ScrollingScene } from './scenes/scrolling-scene';
 import { LoadingScene } from './scenes/loading-scene';
 import { BattleScene } from './scenes/battle-scene';
+import { LightningScene } from './scenes/lightning-scene';
+import { TorchScene } from './scenes/torch-scene';
+import { MarvelSnapScene } from './scenes/marvel-snap-scene';
+import { FunScene } from './scenes/fun-scene';
 // import { TunnelEffectScene } from './scenes/tunnel-effect-scene';
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
@@ -34,5 +38,9 @@ game.scene.add('InterleavedOscillationScene', InterleavedOscillationScene);
 game.scene.add('ConcaveDistortionScene', ConcaveDistortionScene);
 game.scene.add('UbershaderScene', UbershaderScene);
 game.scene.add('BattleScene', BattleScene);
+game.scene.add('LightningScene', LightningScene);
 // game.scene.add('TunnelEffectScene', TunnelEffectScene);
+game.scene.add('TorchScene', TorchScene);
+game.scene.add('MarvelSnapScene', MarvelSnapScene);
+game.scene.add('FunScene', FunScene);
 game.scene.start('LoadingScene');
