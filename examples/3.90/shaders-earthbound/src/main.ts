@@ -12,6 +12,7 @@ import { LightningScene } from './scenes/lightning-scene';
 import { TorchScene } from './scenes/torch-scene';
 import { MarvelSnapScene } from './scenes/marvel-snap-scene';
 import { FunScene } from './scenes/fun-scene';
+import { TransparencyScene } from './scenes/transparency-scene';
 // import { TunnelEffectScene } from './scenes/tunnel-effect-scene';
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
@@ -43,4 +44,5 @@ game.scene.add('LightningScene', LightningScene);
 game.scene.add('TorchScene', TorchScene);
 game.scene.add('MarvelSnapScene', MarvelSnapScene);
 game.scene.add('FunScene', FunScene);
+game.scene.add('TransparencyScene', TransparencyScene);
 game.scene.start('LoadingScene');
