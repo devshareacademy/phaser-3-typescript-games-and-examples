@@ -11,12 +11,24 @@
         height: 100vh;
         width: 100vw;
         overflow: hidden;
-        background: #d7d7d7;
+        background: #212123;
+      }
+            .logo {
+        position: absolute;
+        bottom: 0;
+        right: 0;
       }
     </style>
 	</head>
 	<body>
 		<div class="container" id="game-container"></div>
 		<script type="module" src="/src/main.ts"></script>
+        <img src="assets/logo.png" class="logo" width="600" />
+    <script>
+      function toggleFullscreen() {
+        document.documentElement.requestFullscreen();
+      }
+      console.log('toggleFullscreen');
+    </script>
 	</body>
 </html>
