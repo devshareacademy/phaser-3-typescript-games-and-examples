@@ -2,7 +2,7 @@
 
 Contains example code of how to create a background scrolling effect shader in Phaser 3. This is the sample code that I shared in my tutorial video hosted on YouTube here:
 
-[<img src="https://i.ytimg.com/vi/RJCBg5fFPM4/hqdefault.jpg">](https://youtu.be/RJCBg5fFPM4 "Phaser 3 Shader Tutorial — Recreating EarthBound’s Palette Cycling Effect")
+[<img src="https://i.ytimg.com/vi/4a99UlaQA9k/hqdefault.jpg">](https://youtu.be/4a99UlaQA9k "Phaser 3 Shader Tutorial — Recreating EarthBound’s Background Scrolling Effect")
 
 You can see a live demo of the example here: [Background Scrolling Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/background-scrolling-shader-example/index.html)
 
