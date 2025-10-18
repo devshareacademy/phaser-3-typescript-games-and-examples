@@ -1,0 +1,25 @@
+{
+  "hash": "84718ca7",
+  "configHash": "2accdfc5",
+  "lockfileHash": "567dc23b",
+  "browserHash": "6898716e",
+  "optimized": {
+    "phaser": {
+      "src": "../../node_modules/.pnpm/phaser@3.90.0/node_modules/phaser/dist/phaser.js",
+      "file": "phaser.js",
+      "fileHash": "b958acd7",
+      "needsInterop": true
+    },
+    "tweakpane": {
+      "src": "../../node_modules/.pnpm/tweakpane@4.0.3/node_modules/tweakpane/dist/tweakpane.js",
+      "file": "tweakpane.js",
+      "fileHash": "fd65194c",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-Y2F7D3TJ": {
+      "file": "chunk-Y2F7D3TJ.js"
+    }
+  }
+}
