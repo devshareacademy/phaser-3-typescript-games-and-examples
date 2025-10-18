@@ -4,7 +4,7 @@ Contains example code of how to create a background scrolling effect shader in P
 
 [<img src="https://i.ytimg.com/vi/RJCBg5fFPM4/hqdefault.jpg">](https://youtu.be/RJCBg5fFPM4 "Phaser 3 Shader Tutorial — Recreating EarthBound’s Palette Cycling Effect")
 
-You can see a live demo of the example here: [Background Scrolling Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/palette-cycling/index.html)
+You can see a live demo of the example here: [Background Scrolling Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/background-scrolling-shader-example/index.html)
 
 ![Shader Example 1](./docs/example.gif?raw=true)
 
