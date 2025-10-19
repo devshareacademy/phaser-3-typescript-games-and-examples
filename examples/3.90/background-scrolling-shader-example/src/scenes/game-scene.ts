@@ -4,7 +4,7 @@ import { ASSET_KEYS, SCENE_KEYS } from '../common';
 import { BackgroundScrollingPostFxPipeline } from '../shaders/background-scrolling-post-fx-pipeline';
 
 const PANE_SETTINGS = {
-  background: 'texture_102',
+  background: 'texture_102_marked',
   speedX: 0.05,
   speedY: 0.05,
 };
