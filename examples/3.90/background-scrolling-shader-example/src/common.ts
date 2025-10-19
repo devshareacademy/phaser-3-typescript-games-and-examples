@@ -4,6 +4,7 @@ export const ASSET_KEYS = Object.freeze({
     texture_045: 'assets/images/shader/045.png',
     texture_061: 'assets/images/shader/061.png',
     texture_102: 'assets/images/shader/102.png',
+    texture_102_marked: 'assets/images/shader/102-marked.png',
   },
 });
 
