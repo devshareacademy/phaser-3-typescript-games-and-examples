@@ -1,12 +1,16 @@
-# Phaser 3 TypeScript - Transparency Example
+# Phaser 3 TypeScript - Combined Shaders Example
 
-Contains example code of how to create a transparency effect shader in Phaser 3. This is the sample code that I shared in my tutorial video hosted on YouTube here:
+Contains example code of how to create combined shader effects in Phaser 3. This is the sample code that I shared in my tutorial video hosted on YouTube here:
 
 [<img src="https://i.ytimg.com/vi/38596z0sj90/hqdefault.jpg">](https://youtu.be/38596z0sj90 "Phaser 3 Shader Tutorial — Recreating EarthBound’s Transparency Effect")
 
 You can see a live demo of the example here: [Transparency Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/transparency-shader/index.html)
 
-![Shader Examples 1](./docs/example.gif?raw=true)
+![Shader Examples 1](https://devshareacademy.github.io/static-cdn/images/documentation/examples/combined-shaders/example1.gif?raw=true)
+
+![Shader Examples 2](https://devshareacademy.github.io/static-cdn/images/documentation/examples/combined-shaders/example2.gif?raw=true)
+
+![Shader Examples 3](https://devshareacademy.github.io/static-cdn/images/documentation/examples/combined-shaders/example3.gif?raw=true)
 
 ## Local Development
 

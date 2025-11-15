@@ -69,6 +69,14 @@ export class TransparencyPostFxPipeline extends Phaser.Renderer.WebGL.Pipelines.
     this.#textureLayer2 = this.game.textures.getFrame(textureKey).glTexture;
   }
 
+  set textureLayer1GLTexture(webGLTexture: Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper) {
+    this.#textureLayer1 = webGLTexture;
+  }
+
+  set textureLayer2GLTexture(webGLTexture: Phaser.Renderer.WebGL.Wrappers.WebGLTextureWrapper) {
+    this.#textureLayer2 = webGLTexture;
+  }
+
   /**
    * Called before the pipeline is rendered. Sets the uniforms required by the shader.
    */

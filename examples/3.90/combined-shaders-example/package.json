@@ -1,7 +1,7 @@
 {
-	"name": "@devshareacademy/phaser-3-transparency-shader-example",
+	"name": "@devshareacademy/phaser-3-combined-shaders-example",
 	"version": "1.0.0",
-	"description": "Contains example code of how to create a transparency effect shader in Phaser 3.",
+	"description": "Contains example code of how to combine shaders in Phaser 3.",
 	"scripts": {
 		"start": "vite --config config/vite.config.js",
 		"build": "tsc && vite build --config config/vite.config.js",
