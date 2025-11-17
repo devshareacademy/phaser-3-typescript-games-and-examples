@@ -6,10 +6,7 @@ export class LoadingScene extends Phaser.Scene {
   }
 
   preload(): void {
-    // this.load.image(ASSET_KEYS.GRID, 'assets/images/shader/grid.png');
-    // this.load.image(ASSET_KEYS.TUNNEL, 'assets/images/shader/tunnel.png');
-
-    this.load.setBaseURL("https://devshareacademy.github.io/static-cdn/images/misc/castlevania-tunnel-example");
+    this.load.setBaseURL('https://devshareacademy.github.io/cdn/images/misc/castlevania-tunnel-example');
     this.load.image(ASSET_KEYS.GRID, 'grid.png');
     this.load.image(ASSET_KEYS.TUNNEL, 'tunnel.png');
   }
