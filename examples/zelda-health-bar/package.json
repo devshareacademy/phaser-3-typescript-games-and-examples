@@ -1,6 +1,6 @@
 {
 	"name": "@devshareacademy/phaser-3-parallax-scrolling-background",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "A Phaser 3 example of a parallax scrolling background.",
 	"scripts": {
 		"start": "vite --config config/vite.config.js",
