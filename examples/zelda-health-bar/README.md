@@ -6,7 +6,7 @@ If you click on the Phaser 3 Scene, the health bar will update to show that the 
 
 You can see a live demo of this example here: <a href="https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/zelda-health-bar/index.html" target="_blank">Zelda Like Health Bar - Phaser 3</a>
 
-![Zelda Like Health Bar Example](example.gif?raw=true)
+![Zelda Like Health Bar Example](https://devshareacademy.github.io/cdn/images/documentation/examples/zelda-health-bar/example.gif?raw=true)
 
 ## Example with events
 

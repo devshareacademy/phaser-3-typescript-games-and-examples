@@ -19,7 +19,7 @@ export class Ui extends Phaser.Scene {
   }
 
   preload(): void {
-    this.load.spritesheet(ASSET_KEY, 'assets/images/heart.png', {
+    this.load.spritesheet(ASSET_KEY, 'https://devshareacademy.github.io/cdn/images/spritesheets/custom/heart.png', {
       frameWidth: 7,
       frameHeight: 7,
     });
