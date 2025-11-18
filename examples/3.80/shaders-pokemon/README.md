@@ -18,11 +18,11 @@ While viewing the examples, you can use the [tweakpane](https://tweakpane.github
 | Fade To White | Screen fades to the color white. | `./src/shaders/fade-to-white-post-fx-pipeline.ts` |
 | Fade To Black | Screen fades to the color black. | `./src/shaders/fade-to-black-post-fx-pipeline.ts` |
 
-![Shader Examples 1](./docs/example.gif?raw=true)
+![Shader Examples 1](https://devshareacademy.github.io/cdn/images/documentation/examples/shaders-pokemon/example.gif?raw=true)
 
-![Shader Examples 2](./docs/example2.gif?raw=true)
+![Shader Examples 2](https://devshareacademy.github.io/cdn/images/documentation/examples/shaders-pokemon/example2.gif?raw=true)
 
-![Shader Examples 3](./docs/example3.gif?raw=true)
+![Shader Examples 3](https://devshareacademy.github.io/cdn/images/documentation/examples/shaders-pokemon/example3.gif?raw=true)
 
 ## Local Development
 

@@ -6,9 +6,9 @@ Contains example code of how to create a vertical oscillation effect shader in P
 
 You can see a live demo of the example here: [Vertical Oscillation Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/vertical-oscillation-shader/index.html)
 
-![Shader Examples 1](./docs/example.gif?raw=true)
+![Shader Examples 1](https://devshareacademy.github.io/cdn/images/documentation/examples/vertical-oscillation-shader/example.gif?raw=true)
 
-![Shader Examples 2](./docs/example2.gif?raw=true)
+![Shader Examples 2](https://devshareacademy.github.io/cdn/images/documentation/examples/vertical-oscillation-shader/example2.gif?raw=true)
 
 ## Local Development
 
