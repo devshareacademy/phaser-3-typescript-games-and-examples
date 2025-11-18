@@ -6,7 +6,7 @@ Contains example code of how to create a background scrolling effect shader in P
 
 You can see a live demo of the example here: [Background Scrolling Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/background-scrolling-shader-example/index.html)
 
-![Shader Example 1](./docs/example.gif?raw=true)
+![Shader Example 1](https://devshareacademy.github.io/cdn/images/documentation/examples/background-scrolling-shader-example/example.gif?raw=true)
 
 ## Local Development
 

@@ -19,9 +19,9 @@ While viewing the examples, you can use the [tweakpane](https://tweakpane.github
 | Fade To Black | Screen fades to the color black. | `./src/shaders/fade-to-black-post-fx-pipeline.ts` |
 | Gradient | Choose different gradients to create various effects | `./src/shaders/gradient-texture-post-fx-pipeline.ts` |
 
-![Shader Examples 1](./docs/example.gif?raw=true)
+![Shader Examples 1](https://devshareacademy.github.io/cdn/images/documentation/examples/shaders-pokemon-part-2/example.gif?raw=true)
 
-![Shader Examples 2](./docs/example2.gif?raw=true)
+![Shader Examples 2](https://devshareacademy.github.io/cdn/images/documentation/examples/shaders-pokemon-part-2/example2.gif?raw=true)
 
 ## Local Development
 

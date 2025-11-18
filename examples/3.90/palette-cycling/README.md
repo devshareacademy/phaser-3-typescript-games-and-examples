@@ -6,11 +6,11 @@ Contains example code of how to create a palette cycling effect shader in Phaser
 
 You can see a live demo of the example here: [Palette Cycling Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/palette-cycling/index.html)
 
-![Shader Examples 1](./docs/example.gif?raw=true)
+![Shader Examples 1](https://devshareacademy.github.io/cdn/images/documentation/examples/palette-cycling/example.gif?raw=true)
 
-![Shader Examples 2](./docs/example2.gif?raw=true)
+![Shader Examples 2](https://devshareacademy.github.io/cdn/images/documentation/examples/palette-cycling/example2.gif?raw=true)
 
-![Shader Examples 3](./docs/example3.gif?raw=true)
+![Shader Examples 3](https://devshareacademy.github.io/cdn/images/documentation/examples/palette-cycling/example3.gif?raw=true)
 
 ## Local Development
 

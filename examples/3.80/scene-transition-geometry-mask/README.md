@@ -4,7 +4,7 @@ Contains example code of how to create a custom scene transition for when a scen
 
 You can see a live demo of the example here: [Phaser 3 Scene Transition Geometry Mask](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/scene-transition-geometry-mask/index.html)
 
-![Example](./docs/example.gif?raw=true)
+![Example](https://devshareacademy.github.io/cdn/images/documentation/examples/scene-transition-geometry-mask/example.gif?raw=true)
 
  To learn more about this example, you can watch this video on YouTube here:
 

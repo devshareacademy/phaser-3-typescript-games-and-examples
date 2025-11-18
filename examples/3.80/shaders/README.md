@@ -16,7 +16,7 @@ While viewing the examples, if you press the `space` key, you can navigate betwe
 | Screen Wipe | Example of how to use custom variables in a shader to create animations, like a scene transition. | `./src/shaders/wipe-post-fx-pipeline.ts` |
 | Built In Fx | Example of how to use the built in shader effects on game objects. | `./src/scenes/built-in-fx-scene.ts` |
 
-![Shader Examples](./docs/example.gif?raw=true)
+![Shader Examples](https://devshareacademy.github.io/cdn/images/documentation/examples/shaders/example.gif?raw=true)
 
 ## Local Development
 

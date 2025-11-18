@@ -4,15 +4,15 @@ Contains example code of how you can use the built in [Phaser 3 Loader Plugin](h
 
 You can see a live demo of the example here: [Phaser 3 Creating Animations With the Loader Plugin Demo](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/load-and-create-animations-with-json/index.html)
 
-![Example](./docs/example.png?raw=true)
+![Example](https://devshareacademy.github.io/cdn/images/documentation/examples/load-and-create-animations-with-json/example.png?raw=true)
 
 By using the JSON file for creating your animations, your code can go from this:
 
-![Example 1](./docs/example1.png?raw=true)
+![Example 1](https://devshareacademy.github.io/cdn/images/documentation/examples/load-and-create-animations-with-json/example1.png?raw=true)
 
 to this:
 
-![Example 2](./docs/example2.png?raw=true)
+![Example 2](https://devshareacademy.github.io/cdn/images/documentation/examples/load-and-create-animations-with-json/example2.png?raw=true)
 
 ## Local Development
 

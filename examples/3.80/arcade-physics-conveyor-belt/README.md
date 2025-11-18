@@ -4,7 +4,7 @@ Contains example code of how you can use the built in Phaser 3 Arcade Physics En
 
 You can see a live demo of the example here: [Phaser 3 Arcade Physics Conveyor Belt Demo](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/arcade-physics-conveyor-belt/index.html)
 
-![Example](./docs/example.gif?raw=true)
+![Example](https://devshareacademy.github.io/cdn/images/documentation/examples/arcade-physics-conveyor-belt/example.gif?raw=true)
 
 ## Local Development
 
