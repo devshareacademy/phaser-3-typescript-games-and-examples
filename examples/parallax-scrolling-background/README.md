@@ -4,7 +4,7 @@ A Phaser 3 TypeScript example of a parallax scrolling background.
 
 Parallax scrolling is a technique where background images move past the camera more slowly than foreground images, which can be used to create an illusion of depth in 2D games.
 
-**Credit:** The images used in this demo were created by <a href="www.ansimuz.com" target="_blank">Ansimuz</a>.
+**Credit:** The images used in this demo were created by <a href="https://ansimuz.itch.io/" target="_blank">Ansimuz</a>.
 
 If you are interested in learning more about this example, you can watch a video on YouTube by clicking on the thumbnail below:
 
@@ -12,7 +12,7 @@ If you are interested in learning more about this example, you can watch a video
 
 You can see a live demo of this example here: <a href="https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/parallax-scrolling-background/index.html" target="_blank">Parallax Scrolling Background - Phaser 3</a>
 
-![Phaser 3 Parallax Scrolling Background](example.gif?raw=true)
+![Phaser 3 Parallax Scrolling Background](https://devshareacademy.github.io/cdn/images/documentation/examples/parallax-scrolling-background/example.gif?raw=true)
 
 ## Local Development
 

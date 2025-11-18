@@ -18,10 +18,11 @@ class Game extends Phaser.Scene {
   }
 
   preload(): void {
-    this.load.image(AssetKeys.BACKGROUND, 'assets/images/background.png');
-    this.load.image(AssetKeys.FOG, 'assets/images/fog.png');
-    this.load.image(AssetKeys.FOREGROUND, 'assets/images/foreground.png');
-    this.load.image(AssetKeys.TREES, 'assets/images/trees.png');
+    this.load.setBaseURL('https://devshareacademy.github.io/cdn/images/asset-packs/ansimuz/silent-hill-style-assets');
+    this.load.image(AssetKeys.BACKGROUND, 'background.png');
+    this.load.image(AssetKeys.FOG, 'fog.png');
+    this.load.image(AssetKeys.FOREGROUND, 'foreground.png');
+    this.load.image(AssetKeys.TREES, 'trees.png');
   }
 
   create(): void {
