@@ -4,7 +4,7 @@ A Phaser 3 TypeScript example of using the built in Nine Slice functionality to 
 
 Nine Slice Scaling is a technique where we can easily scale images and protect the corners of the images so they don't become blurry or distorted.
 
-![Nine Slice Scaling](/examples/3.60/nine-slice-built-in/docs/example.png?raw=true "Nine Slice Scaling Example")
+![Nine Slice Scaling](https://devshareacademy.github.io/cdn/images/documentation/examples/nine-slice-built-in/example.png?raw=true "Nine Slice Scaling Example")
 
 **Credit:** The images used in this demo were created by <a href="https://www.kenney.nl/assets/ui-pack-space-expansion" target="_blank">Kenny</a>.
 
