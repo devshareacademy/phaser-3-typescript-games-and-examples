@@ -1,6 +1,6 @@
 {
 	"name": "@devshareacademy/phaser-3-nine-slice-built-in",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "A Phaser 3 example of using nine slice to scale images.",
 	"scripts": {
 		"start": "vite --config config/vite.config.js",
@@ -34,7 +34,13 @@
 	"resolutions": {},
 	"prettier": "@devshareacademy/prettier-config",
 	"volta": {
-		"node": "16.15.0",
-		"yarn": "1.22.11"
+		"node": "20.11.1",
+		"yarn": "1.22.11",
+		"pnpm": "8.15.4"
+	},
+	"engines": {
+		"node": ">=20.11.0",
+		"npm": ">=10.2.0",
+		"pnpm": ">=8.15.0"
 	}
 }
