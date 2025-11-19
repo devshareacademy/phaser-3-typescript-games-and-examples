@@ -33,8 +33,8 @@ class MainScene extends Phaser.Scene {
   }
 
   public preload(): void {
-    this.load.image('BACKGROUND', 'assets/images/ansimuz/starfighter/background.png');
-    this.load.spritesheet('SHIP', 'assets/images/ansimuz/warped-vehicle/ship.png', {
+    this.load.image('BACKGROUND', 'https://devshareacademy.github.io/cdn/images/asset-packs/ansimuz/starfighter/background.png');
+    this.load.spritesheet('SHIP', 'https://devshareacademy.github.io/cdn/images/asset-packs/ansimuz/warped-vehicle/ship.png', {
       frameWidth: 176,
       frameHeight: 96,
     });

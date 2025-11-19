@@ -1,6 +1,6 @@
 [
   {
-    "path": "assets/images/axulart/character",
+    "path": "https://devshareacademy.github.io/cdn/images/asset-packs/axulart/8-direction-character",
     "files": [
       {
         "type": "spritesheet",
@@ -11,7 +11,7 @@
     ]
   },
   {
-    "path": "assets/images/monster-tamer/battle-backgrounds",
+    "path": "https://devshareacademy.github.io/cdn/images/asset-packs/monster-tamer/battle-backgrounds",
     "files": [
       {
         "type": "image",
@@ -21,7 +21,7 @@
     ]
   },
   {
-    "path": "assets/images/monster-tamer/monsters",
+    "path": "https://devshareacademy.github.io/cdn/images/asset-packs/monster-tamer/monsters",
     "files": [
       {
         "type": "image",
@@ -71,12 +71,12 @@
     ]
   },
   {
-    "path": "assets/audio/xDeviruchi",
+    "path": "https://devshareacademy.github.io/cdn/audio/xDeviruchi",
     "files": [
       {
         "type": "audio",
         "key": "title_theme",
-        "url": "Title-Theme.wav"
+        "url": "title-theme.wav"
       }
     ]
   }

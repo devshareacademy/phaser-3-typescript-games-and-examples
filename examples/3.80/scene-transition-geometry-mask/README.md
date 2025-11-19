@@ -2,7 +2,7 @@
 
 Contains example code of how to create a custom scene transition for when a scene starts by using a `GeometryMask`.
 
-You can see a live demo of the example here: [Phaser 3 Scene Transition Geometry Mask](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/scene-transition-geometry-mask/index.html)
+You can see a live demo of the example here: <a href="https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/scene-transition-geometry-mask/index.html" target="_blank">Phaser 3 Scene Transition Geometry Mask</a>
 
 ![Example](https://devshareacademy.github.io/cdn/images/documentation/examples/scene-transition-geometry-mask/example.gif?raw=true)
 
@@ -14,9 +14,9 @@ You can see a live demo of the example here: [Phaser 3 Scene Transition Geometry
 
 ### Requirements
 
-[Node.js](https://nodejs.org) and [pNPm](https://pnpm.io/) are required to install dependencies and run scripts via `pnpm`.
+<a href="https://nodejs.org" target="_blank">Node.js</a> and <a href="https://pnpm.io/" target="_blank">PnPm</a> are required to install dependencies and run scripts via `pnpm`.
 
-[Vite](https://vitejs.dev/) is required to bundle and serve the web application. This is included as part of the projects dev dependencies.
+<a href="https://vitejs.dev/" target="_blank">Vite</a> is required to bundle and serve the web application. This is included as part of the projects dev dependencies.
 
 ### Available Commands
 
@@ -50,9 +50,9 @@ Any static assets like images or audio files should be placed in the `public` fo
 
 ## Credits
 
-The assets used in this demo were made from free assets that were created from the following artists: [ansimuz](https://ansimuz.itch.io/).
+The assets used in this demo were made from free assets that were created from the following artists: <a href="https://ansimuz.itch.io" target="_blank">ansimuz</a>.
 
 List of assets:
 
-* [Star Fighter](https://ansimuz.itch.io/star-fighter)
-* [Warped Vehicles](https://ansimuz.itch.io/warped-vehicles)
+* <a href="https://ansimuz.itch.io/star-fighter" target="_blank">Star Fighter</a>
+* <a href="https://ansimuz.itch.io/warped-vehicles" target="_blank">Warped Vehicles</a>

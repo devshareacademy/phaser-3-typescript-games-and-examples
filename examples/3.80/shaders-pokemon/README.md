@@ -4,9 +4,9 @@ Contains example code of how to create Pokemon like battle scene transitions usi
 
 [<img src="https://i.ytimg.com/vi/t0bFMxaTg7s/hqdefault.jpg">](https://youtu.be/t0bFMxaTg7s "Phaser 3 Shader Tutorial: Recreating Pokemon Battle Scene Transitions!")
 
-You can see a live demo of the examples here: [Pokemon Battle Scene Transitions Shader Examples](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/shader-battle-scene-transitions/index.html)
+You can see a live demo of the examples here: <a href="https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/shader-battle-scene-transitions/index.html" target="_blank">Pokemon Battle Scene Transitions Shader Examples</a>
 
-While viewing the examples, you can use the [tweakpane](https://tweakpane.github.io/docs/) gui to switch between the various examples and play the scene transitions.
+While viewing the examples, you can use the <a href="https://tweakpane.github.io/docs/" target="_blank">tweakpane</a> gui to switch between the various examples and play the scene transitions.
 
 | Example | Description | Location |
 |---------|-------------|----------|
@@ -28,31 +28,31 @@ While viewing the examples, you can use the [tweakpane](https://tweakpane.github
 
 ### Requirements
 
-[Node.js](https://nodejs.org) and [Yarn](https://yarnpkg.com/) are required to install dependencies and run scripts via `yarn`.
+<a href="https://nodejs.org" target="_blank">Node.js</a> and <a href="https://pnpm.io/" target="_blank">PnPm</a> are required to install dependencies and run scripts via `pnpm`.
 
-[Vite](https://vitejs.dev/) is required to bundle and serve the web application. This is included as part of the projects dev dependencies.
+<a href="https://vitejs.dev/" target="_blank">Vite</a> is required to bundle and serve the web application. This is included as part of the projects dev dependencies.
 
 ### Available Commands
 
 | Command | Description |
 |---------|-------------|
-| `yarn install --frozen-lockfile` | Install project dependencies |
-| `yarn start` | Build project and open web server running project |
-| `yarn build` | Builds code bundle for production |
-| `yarn lint` | Uses ESLint to lint code |
+| `pnpm install --frozen-lockfile` | Install project dependencies |
+| `pnpm start` | Build project and open web server running project |
+| `pnpm build` | Builds code bundle for production |
+| `pnpm lint` | Uses ESLint to lint code |
 
 ### Writing Code
 
-After cloning the repo, run `yarn install --frozen-lockfile` from your project directory. Then, you can start the local development
-server by running `yarn start`.
+After cloning the repo, run `pnpm install --frozen-lockfile` from your project directory. Then, you can start the local development
+server by running `pnpm start`.
 
-After starting the development server with `yarn start`, you can edit any files in the `src` folder
+After starting the development server with `pnpm start`, you can edit any files in the `src` folder
 and parcel will automatically recompile and reload your server (available at `http://localhost:8080`
 by default).
 
 ### Deploying Code
 
-After you run the `yarn build` command, your code will be built into a single bundle located at
+After you run the `pnpm build` command, your code will be built into a single bundle located at
 `dist/*` along with any other assets you project depended.
 
 If you put the contents of the `dist` folder in a publicly-accessible location (say something like `http://myserver.com`),
@@ -64,10 +64,10 @@ Any static assets like images or audio files should be placed in the `public` fo
 
 ## Credits
 
-The assets used in this demo were made from free assets that were created from the following artists: [AxulArt](https://axulart.itch.io/) and [The Pixel Nook](https://the-pixel-nook.itch.io)
+The assets used in this demo were made from free assets that were created from the following artists: <a href="https://axulart.itch.io/" target="_blank">AxulArt</a> and <a href="https://the-pixel-nook.itch.io" target="_blank">Pixel Nook</a>.
 
 List of assets:
 
-* [Basic Plains Set](https://axulart.itch.io/axularts-basicplains-tileset-ver2)
-* [Character](https://axulart.itch.io/small-8-direction-characters)
-* [Buildings](https://the-pixel-nook.itch.io/rpg-building-pack)
+* <a href="https://axulart.itch.io/axularts-basicplains-tileset-ver2" target="_blank">Basic Plains Set</a>
+* <a href="https://axulart.itch.io/small-8-direction-characters" target="_blank">Character</a>
+* <a href="https://the-pixel-nook.itch.io/rpg-building-pack" target="_blank">Buildings</a>
