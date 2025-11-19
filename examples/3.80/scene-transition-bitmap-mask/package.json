@@ -1,6 +1,6 @@
 {
 	"name": "@devshareacademy/phaser-3-bitmap-mask-example",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "A basic Phaser 3 example of using a bitmap mask.",
 	"scripts": {
 		"start": "vite --config config/vite.config.js",

@@ -11,11 +11,13 @@ export class Game extends Phaser.Scene {
   }
 
   public preload(): void {
-    this.load.setPath('assets/images');
+    this.load.setBaseURL('https://devshareacademy.github.io/cdn/images/asset-packs/craftpix');
+    this.load.setPath('industrial-zone-tileset-pixel-art');
     this.load.image('LEVEL', 'level.png');
     this.load.spritesheet('BELT', 'belt.png', { frameWidth: 32, frameHeight: 32 });
-    this.load.spritesheet('PUNK_IDLE', 'Punk_idle.png', { frameWidth: 48, frameHeight: 48 });
-    this.load.spritesheet('PUNK_RUN', 'Punk_run.png', { frameWidth: 48, frameHeight: 48 });
+    this.load.setPath('cyberpunk-sprites-pixel-art');
+    this.load.spritesheet('PUNK_IDLE', 'punk_idle.png', { frameWidth: 48, frameHeight: 48 });
+    this.load.spritesheet('PUNK_RUN', 'punk_run.png', { frameWidth: 48, frameHeight: 48 });
   }
 
   public create(): void {

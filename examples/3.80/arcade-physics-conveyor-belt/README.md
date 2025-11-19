@@ -2,7 +2,7 @@
 
 Contains example code of how you can use the built in Phaser 3 Arcade Physics Engine to create a conveyor belt like game object that will move objects automatically, and modify their speed when the objects are moving.
 
-You can see a live demo of the example here: [Phaser 3 Arcade Physics Conveyor Belt Demo](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/arcade-physics-conveyor-belt/index.html)
+You can see a live demo of the example here: <a href="https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/arcade-physics-conveyor-belt/index.html" target="_blank">Phaser 3 Arcade Physics Conveyor Belt Demo</a>
 
 ![Example](https://devshareacademy.github.io/cdn/images/documentation/examples/arcade-physics-conveyor-belt/example.gif?raw=true)
 
@@ -10,9 +10,9 @@ You can see a live demo of the example here: [Phaser 3 Arcade Physics Conveyor B
 
 ### Requirements
 
-[Node.js](https://nodejs.org) and [pNPm](https://pnpm.io/) are required to install dependencies and run scripts via `pnpm`.
+<a href="https://nodejs.org" target="_blank">Node.js</a> and <a href="https://pnpm.io/" target="_blank">PnPm</a> are required to install dependencies and run scripts via `pnpm`.
 
-[Vite](https://vitejs.dev/) is required to bundle and serve the web application. This is included as part of the projects dev dependencies.
+<a href="https://vitejs.dev/" target="_blank">Vite</a> is required to bundle and serve the web application. This is included as part of the projects dev dependencies.
 
 ### Available Commands
 
@@ -46,9 +46,9 @@ Any static assets like images or audio files should be placed in the `public` fo
 
 ## Credits
 
-The assets used in this demo were made from free assets that were created from the following artists: [craftpix.net](https://free-game-assets.itch.io/).
+The assets used in this demo were made from free assets that were created from the following artists: <a href="https://free-game-assets.itch.io/" target="_blank">craftpix.net</a>.
 
 List of assets:
 
-* [Cyberpunk Sprites](https://free-game-assets.itch.io/free-3-cyberpunk-sprites-pixel-art)
-* [Industrial Zone Tileset](https://free-game-assets.itch.io/free-industrial-zone-tileset-pixel-art)
+* <a href="https://free-game-assets.itch.io/free-3-cyberpunk-sprites-pixel-art" target="_blank">Cyberpunk Sprites</a>
+* <a href="https://free-game-assets.itch.io/free-industrial-zone-tileset-pixel-art" target="_blank">Industrial Zone Tileset</a>

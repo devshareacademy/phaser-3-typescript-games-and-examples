@@ -1,8 +1,8 @@
 # Phaser 3 TypeScript - Creating Animations via JSON
 
-Contains example code of how you can use the built in [Phaser 3 Loader Plugin](https://newdocs.phaser.io/docs/3.80.0/focus/Phaser.Loader.LoaderPlugin-animation) to load your animation configurations from one central JSON file. This can help you keep your code and config isolated.
+Contains example code of how you can use the built in <a href="https://newdocs.phaser.io/docs/3.80.0/focus/Phaser.Loader.LoaderPlugin-animation" target="_blank">Phaser 3 Loader Plugin</a> to load your animation configurations from one central JSON file. This can help you keep your code and config isolated.
 
-You can see a live demo of the example here: [Phaser 3 Creating Animations With the Loader Plugin Demo](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/load-and-create-animations-with-json/index.html)
+You can see a live demo of the example here: <a href="https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/load-and-create-animations-with-json/index.html" target="_blank">Phaser 3 Creating Animations With the Loader Plugin Demo</a>
 
 ![Example](https://devshareacademy.github.io/cdn/images/documentation/examples/load-and-create-animations-with-json/example.png?raw=true)
 
@@ -18,9 +18,9 @@ to this:
 
 ### Requirements
 
-[Node.js](https://nodejs.org) and [pNPm](https://pnpm.io/) are required to install dependencies and run scripts via `pnpm`.
+<a href="https://nodejs.org" target="_blank">Node.js</a> and <a href="https://pnpm.io/" target="_blank">PnPm</a> are required to install dependencies and run scripts via `pnpm`.
 
-[Vite](https://vitejs.dev/) is required to bundle and serve the web application. This is included as part of the projects dev dependencies.
+<a href="https://vitejs.dev/" target="_blank">Vite</a> is required to bundle and serve the web application. This is included as part of the projects dev dependencies.
 
 ### Available Commands
 
@@ -54,7 +54,4 @@ Any static assets like images or audio files should be placed in the `public` fo
 
 ## Credits
 
-List of assets from some great artists used in this demo:
-
-* [xdeviruchi Sound Cloud](https://soundcloud.com/xdeviruchi)
-* [Small 8-direction Characters](https://axulart.itch.io/small-8-direction-characters)
+The assets in this demo were created by <a href="https://finalbossblues.itch.io/" target="_blank">finalbossblues</a>.
