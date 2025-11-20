@@ -34,10 +34,11 @@ class Game extends Phaser.Scene {
   }
 
   public preload(): void {
-    this.load.audio(ASSET_KEYS.SOUND1, 'assets/audio/simonSound1.mp3');
-    this.load.audio(ASSET_KEYS.SOUND2, 'assets/audio/simonSound2.mp3');
-    this.load.audio(ASSET_KEYS.SOUND3, 'assets/audio/simonSound3.mp3');
-    this.load.audio(ASSET_KEYS.SOUND4, 'assets/audio/simonSound4.mp3');
+    this.load.setBaseURL('https://devshareacademy.github.io/cdn/audio/misc/simon');
+    this.load.audio(ASSET_KEYS.SOUND1, 'simonSound1.mp3');
+    this.load.audio(ASSET_KEYS.SOUND2, 'simonSound2.mp3');
+    this.load.audio(ASSET_KEYS.SOUND3, 'simonSound3.mp3');
+    this.load.audio(ASSET_KEYS.SOUND4, 'simonSound4.mp3');
   }
 
   public create(): void {

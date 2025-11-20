@@ -12,7 +12,7 @@ class Game extends Phaser.Scene {
   }
 
   preload(): void {
-    this.load.spritesheet(SPRITE_ASSET_KEY, 'assets/images/blocks.png', {
+    this.load.spritesheet(SPRITE_ASSET_KEY, 'https://devshareacademy.github.io/cdn/images/spritesheets/custom/blocks.png', {
       frameWidth: 16,
       frameHeight: 16,
     });
