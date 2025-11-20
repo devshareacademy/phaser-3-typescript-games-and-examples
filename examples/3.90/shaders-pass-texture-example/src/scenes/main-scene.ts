@@ -12,8 +12,9 @@ export class MainScene extends Phaser.Scene {
 
   preload(): void {
     // load in data
-    this.load.image(IMAGE_ASSET_KEY, 'assets/images/bg.png');
-    this.load.image(SHADER_ASSET_KEY, 'assets/images/shader/noise.png');
+    this.load.setBaseURL('https://devshareacademy.github.io/cdn/images');
+    this.load.image(IMAGE_ASSET_KEY, 'asset-packs/monster-tamer/misc/background.png');
+    this.load.image(SHADER_ASSET_KEY, 'misc/shader/noise.png');
   }
 
   create(): void {

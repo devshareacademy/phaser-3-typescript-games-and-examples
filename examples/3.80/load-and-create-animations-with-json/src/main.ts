@@ -6,8 +6,9 @@ export class Game extends Phaser.Scene {
   }
 
   public preload(): void {
-    this.load.spritesheet('characters', 'assets/images/characters.png', { frameWidth: 26, frameHeight: 36 });
-    this.load.image('bg', 'assets/images/town.png');
+    this.load.setBaseURL('https://devshareacademy.github.io/cdn/images/asset-packs/finalbosslbues');
+    this.load.spritesheet('characters', 'characters.png', { frameWidth: 26, frameHeight: 36 });
+    this.load.image('bg', 'town.png');
 
     // to use the animation loader, you need to uncomment the line below and comment out the
     // animation creation code in the create method

@@ -22,7 +22,7 @@ class Game extends Phaser.Scene {
 
   public preload(): void {
     // load in data
-    this.load.spritesheet(ASSET_KEY, 'assets/images/connect-four.png', {
+    this.load.spritesheet(ASSET_KEY, 'https://devshareacademy.github.io/cdn/images/spritesheets/custom/connect-four.png', {
       frameWidth: 32,
       frameHeight: 32,
     });

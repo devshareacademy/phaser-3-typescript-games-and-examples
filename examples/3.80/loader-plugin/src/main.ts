@@ -8,7 +8,10 @@ export class Game extends Phaser.Scene {
   public preload(): void {
     console.log('preload invoked');
     console.log(this.load.list);
-    this.load.image('BACKGROUND', 'assets/images/ansimuz/starfighter/background.png');
+
+    this.load.setBaseURL('https://devshareacademy.github.io/cdn/images/asset-packs/ansimuz/starfighter');
+
+    this.load.image('BACKGROUND', 'background.png');
     console.log(this.load.list);
 
     // fired when all files in the queue are loaded
@@ -30,7 +33,7 @@ export class Game extends Phaser.Scene {
     this.add.image(this.scale.width / 2, this.scale.height / 2, 'BACKGROUND', 0);
 
     // // loading assets
-    this.load.image('SHIP', 'assets/images/ansimuz/starfighter/ship-a1.png');
+    this.load.image('SHIP', 'ship-a1.png');
     console.log(this.load.list);
     this.load.on(Phaser.Loader.Events.COMPLETE, () => {
       console.log('create - file loading completed');
@@ -45,7 +48,7 @@ export class Game extends Phaser.Scene {
     // // example of items being added to queue while in progress or after
     this.time.delayedCall(500, () => {
       //   console.log(this.load.list);
-      this.load.image('ROCK', 'assets/images/ansimuz/starfighter/big-a.png');
+      this.load.image('ROCK', 'big-a.png');
       //   console.log(this.load.list);
 
       this.load.start();

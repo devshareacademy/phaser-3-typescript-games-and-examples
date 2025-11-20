@@ -6,9 +6,9 @@ Contains example code of how to create a interleaved oscillation effect shader i
 
 You can see a live demo of the example here: <a href="https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/interleaved-oscillation-shader/index.html" target="_blank">Interleaved Oscillation Shader Example</a>
 
-![Shader Examples 1](./docs/example1.gif?raw=true)
+![Shader Examples 1](https://devshareacademy.github.io/cdn/images/documentation/examples/interleaved-oscillation-shader/example1.gif?raw=true)
 
-![Shader Examples 2](./docs/example1.gif?raw=true)
+![Shader Examples 2](https://devshareacademy.github.io/cdn/images/documentation/examples/interleaved-oscillation-shader/example2.gif?raw=true)
 
 ## Local Development
 

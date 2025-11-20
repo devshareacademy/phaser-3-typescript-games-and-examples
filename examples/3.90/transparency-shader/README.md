@@ -6,7 +6,7 @@ Contains example code of how to create a transparency effect shader in Phaser 3.
 
 You can see a live demo of the example here: [Transparency Shader Example](https://devshareacademy.github.io/phaser-3-typescript-games-and-examples/examples/3.90/transparency-shader/index.html)
 
-![Shader Examples 1](./docs/example.gif?raw=true)
+![Shader Examples 1](https://devshareacademy.github.io/cdn/images/documentation/examples/transparency-shader/example.gif?raw=true)
 
 ## Local Development
 

@@ -10,7 +10,10 @@ class Game extends Phaser.Scene {
   }
 
   preload(): void {
-    this.load.image(AssetKeys.PANEL, 'assets/images/glassPanel_corners.png');
+    this.load.image(
+      AssetKeys.PANEL,
+      'https://devshareacademy.github.io/cdn/images/asset-packs/kenney/ui-pack-space-expansion/glassPanel_corners.png',
+    );
   }
 
   create(): void {
