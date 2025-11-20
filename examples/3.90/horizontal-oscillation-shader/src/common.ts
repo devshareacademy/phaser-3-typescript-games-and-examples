@@ -1,9 +1,9 @@
 export const ASSET_KEYS = Object.freeze({
   indexed: {
-    texture_004: 'assets/images/shader/004.png',
-    texture_045: 'assets/images/shader/045.png',
-    texture_061: 'assets/images/shader/061.png',
-    texture_102: 'assets/images/shader/102.png',
+    texture_004: '004.png',
+    texture_045: '045.png',
+    texture_061: '061.png',
+    texture_102: '102.png',
   },
 });
 

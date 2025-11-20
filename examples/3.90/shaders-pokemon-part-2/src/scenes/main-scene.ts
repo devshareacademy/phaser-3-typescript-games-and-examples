@@ -31,14 +31,15 @@ export class MainScene extends Phaser.Scene {
 
   preload(): void {
     // load in data
-    this.load.image(IMAGE_ASSET_KEY, 'assets/images/bg.png');
+    this.load.setBaseURL('https://devshareacademy.github.io/cdn/images');
+    this.load.image(IMAGE_ASSET_KEY, 'asset-packs/monster-tamer/misc/background.png');
 
     // Load gradient textures for the gradient pipeline
-    this.load.image(SHADER_ASSET_KEYS.WIPE, 'assets/images/shader/wipe.png');
-    this.load.image(SHADER_ASSET_KEYS.VERTICAL, 'assets/images/shader/wipe-vertical.png');
-    this.load.image(SHADER_ASSET_KEYS.CLOSE_BARS, 'assets/images/shader/close-bars.png');
-    this.load.image(SHADER_ASSET_KEYS.DIAGONAL, 'assets/images/shader/wipe-diagonal.png');
-    this.load.image(SHADER_ASSET_KEYS.TRAPPED, 'assets/images/shader/trapped.png');
+    this.load.image(SHADER_ASSET_KEYS.WIPE, 'misc/shader/gradient/wipe.png');
+    this.load.image(SHADER_ASSET_KEYS.VERTICAL, 'misc/shader/gradient/wipe-vertical.png');
+    this.load.image(SHADER_ASSET_KEYS.CLOSE_BARS, 'misc/shader/gradient/close-bars.png');
+    this.load.image(SHADER_ASSET_KEYS.DIAGONAL, 'misc/shader/gradient/wipe-diagonal.png');
+    this.load.image(SHADER_ASSET_KEYS.TRAPPED, 'misc/shader/gradient/trapped.png');
   }
 
   create(): void {

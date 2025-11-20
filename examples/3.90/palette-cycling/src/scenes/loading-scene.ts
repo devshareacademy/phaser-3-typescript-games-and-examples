@@ -6,6 +6,8 @@ export class LoadingScene extends Phaser.Scene {
   }
 
   preload(): void {
+    this.load.setBaseURL('https://devshareacademy.github.io/cdn/images/misc');
+
     for (const [key, path] of Object.entries(ASSET_KEYS.indexed)) {
       this.load.image(key, path);
     }
