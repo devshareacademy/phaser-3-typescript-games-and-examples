@@ -37,7 +37,6 @@
 	"prettier": "@devshareacademy/prettier-config",
 	"volta": {
 		"node": "20.11.1",
-		"yarn": "1.22.11",
 		"pnpm": "8.15.4"
 	},
 	"engines": {
